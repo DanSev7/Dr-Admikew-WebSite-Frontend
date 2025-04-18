@@ -1,0 +1,330 @@
+{
+  "centerName": "Xarunta Qalliinka Gaarka ah ee Dr. Admikew",
+  "slogan": "Caafimaadkaaga Habkaaga",
+  "nav": {
+    "home": "Bogga Hore",
+    "about": "Nagu Saabsan",
+    "services": "Adeegyada",
+    "servicesMenu": {
+      "overview": "Adeegyadayada",
+      "home": "Adeegyada Guriga"
+    },
+    "doctors": "Dhakhaatiirta",
+    "contact": "Nala Soo Xiriir",
+    "bookAppointment": "Ballan Qabso"
+  },
+  "hero": {
+    "tagline": "Caafimaadkaaga Habkaaga",
+    "description": "Qalliino horumarsan oo leh tignoolajiyad casri ah iyo daryeel naxariis leh",
+    "bookAppointment": "Ballan Qabso",
+    "viewServices": "Adeegyadayada"
+  },
+  "whyChooseUs": {
+    "title": "Maxaa Noo Dooranaysaa",
+    "description": "Khibrad qalliinka oo heer sare ah kooxdayada takhasuska leh",
+    "features": {
+      "expertise": {
+        "title": "Dhakhaatiir Takhasus leh",
+        "description": "Dhakhaatiir aad u tababaran oo khibrad leh"
+      },
+      "technology": {
+        "title": "Tignoolajiyad Casri ah",
+        "description": "Qalab caafimaad oo casri ah iyo xarumo"
+      },
+      "care": {
+        "title": "Daryeel Bukaanka",
+        "description": "Daryeel shaqsi ah iyo taageero dhammaystiran"
+      },
+      "support": {
+        "title": "Taageero 24/7",
+        "description": "Caawinta caafimaad iyo daryeel 24-ka saac"
+      }
+    }
+  },
+  "services": {
+    "title": "Adeegyadayada",
+    "pageTitle": "Adeegyada Qalliinka",
+    "pageDescription": "Daryeel qalliin oo dhammaystiran oo leh tignoolajiyad casri ah iyo takhasusleyaal khibrad leh",
+    "subtitle": "Daryeel qalliin oo dhammaystiran dhammaan baahiyahaaga",
+    "viewAll": "Arag Dhammaan Adeegyada",
+    "searchPlaceholder": "Raadi adeegyada...",
+    "noResults": "Ma jiraan adeegyo la helay",
+    "ourCenterAreas": "Goobaha Adeegga",
+    "categories": {
+      "all": "Dhammaan Adeegyada",
+      "surgical": "Qalliinka",
+      "specialized": "Takhasuska",
+      "general": "Guud"
+    },
+    "items": {
+      "cardio": {
+        "title": "Qalliinka Wadnaha",
+        "description": "Qalliinada horumarsan ee wadnaha, sambabaha iyo laabta",
+        "procedures": [
+          "Wadnaha Xididada Dhiigga",
+          "Qalliinka Valve-ka Wadnaha",
+          "Qalliinka Sambabaha",
+          "Dib u Dhiska Laabta"
+        ]
+      },
+      "neuro": {
+        "title": "Qalliinka Maskaxda",
+        "description": "Daryeel qalliin oo gaar ah oo maskaxda, lafta dhabarka iyo neerfaha",
+        "procedures": [
+          "Qalliinka Burooyinka Maskaxda",
+          "Qalliinka Lafta Dhabarka",
+          "Qalliinka Xididada Dhiigga Maskaxda",
+          "Qalliinka Neerfaha Dibadda"
+        ]
+      },
+      "maxillofacial": {
+        "title": "Qalliinka Wajiga",
+        "description": "Qalliinada wajiga, afka iyo dhuunta",
+        "procedures": [
+          "Qalliinka Dhuunta",
+          "Dib u Dhiska Wajiga",
+          "Beegashada Ilkaha",
+          "Daaweynta TMJ"
+        ]
+      },
+      "plastic": {
+        "title": "Qalliinka Qurxinta & Dib u Dhiska",
+        "description": "Qalliinada qurxinta iyo dib u dhiska",
+        "procedures": [
+          "Qalliinka Dib u Dhiska",
+          "Daaweynta Gubashada",
+          "Qalliinka Gacmaha",
+          "Qalliinka Microscope-ka"
+        ]
+      },
+      "pediatric": {
+        "title": "Qalliinka Carruurta",
+        "description": "Daryeel qalliin oo gaar ah oo carruurta",
+        "procedures": [
+          "Sixidda Cilladaha Dhalashada",
+          "Qalliinka Dhaawaca Carruurta",
+          "Qalliinka Yar",
+          "Qalliinka Dhallaanka"
+        ]
+      },
+      "urological": {
+        "title": "Qalliinka Kaadida",
+        "description": "Daaweynta qalliinka ee kaadida iyo taranka ragga",
+        "procedures": [
+          "Qalliinka Kelyaha",
+          "Qalliinka Prostate-ka",
+          "Qalliinka Kaadihaynta",
+          "Daaweynta Dhagaxa"
+        ]
+      },
+      "general": {
+        "title": "Qalliinka Guud",
+        "description": "Noocyo kala duwan oo qalliinno guud ah",
+        "procedures": [
+          "Qalliinka Caloosha",
+          "Sixidda Hernia",
+          "Qalliinka Endocrine",
+          "Qalliinka Laparoscopic"
+        ]
+      },
+      "ophthalmology": {
+        "title": "Qalliinka Indhaha",
+        "description": "Qalliinada horumarsan ee xaaladaha indhaha",
+        "procedures": [
+          "Qalliinka Cataract-ka",
+          "Daaweynta Glaucoma",
+          "Qalliinka Retina",
+          "Bedelka Cornea"
+        ]
+      }
+    },
+    "cta": {
+      "title": "Ma u Baahan Tahay La-talin?",
+      "description": "Kooxdayada qalliinka ee khibradda leh ayaa halkan kuu jooga. Ballan sameyso maanta.",
+      "button": "Ballan Qabso"
+    },
+    "common": {
+      "backToServices": "Ku Noqo Adeegyada",
+      "procedures": "Hawlaha La Heli Karo",
+      "specialists": "Takhasuslayaashayada",
+      "bookAppointment": "Ballan Qabso",
+      "scheduleConsultation": "La-talin Qabso",
+      "relatedServices": "Adeegyo La Xiriira",
+      "viewMore": "Faahfaahin Dheeraad ah"
+    },
+    "faq": {
+      "title": "Su'aalaha Inta Badan La Isweydiiyo",
+      "noQuestions": "Ma jiraan su'aalo adeegan ku saabsan"
+    },
+    "gallery": {
+      "title": "Sawirrada",
+      "viewLarger": "Riix si aad u aragto sawir weyn",
+      "noImages": "Ma jiraan sawirro adeegan ku saabsan"
+    }
+  },
+  "emergency": {
+    "contact": {
+      "title": "Xiriirka Degdegga ah",
+      "number": "+251 25 278 2051"
+    },
+    "ambulance": {
+      "title": "Adeegga Ambalaaska",
+      "availability": "24/7 Diyaar"
+    },
+    "hours": {
+      "title": "Saacadaha Shaqada",
+      "availability": "24 Saac Furan"
+    }
+  },
+  "footer": {
+    "aboutUs": "Ku Saabsan Xarunteena",
+    "aboutDescription": "Waxaan nahay xarun qalliin oo takhasus leh oo bixisa adeegyo caafimaad oo dhammeystiran.",
+    "siteLinks": "Linkiyada Bogga",
+    "contact": "Xiriir",
+    "phone": "Telefoon",
+    "hours": "Saacadaha Shaqada",
+    "getDirections": "Ka hel khariidada",
+    "working": "Had iyo jeer halkan kuu nahay - Adeeg 24/7!",
+    "developedBy": "Waxaa sameeyay YourName"
+  },
+  "faq": {
+    "title": "Su'aalaha Inta Badan La Isweydiiyo",
+    "description": "Ka hel jawaabaha su'aalaha guud ee ku saabsan adeegyadayada qalliinka.",
+    "contactPrompt": "Haddii aadan ka helin su'aashaada halkan, fadlan nala soo xiriir.",
+    "available": "24/7 diyaar ayaan u nahay su'aalahaaga",
+    "questions": {
+      "surgeryTypes": {
+        "question": "Noocee qalliin ayaad samaysaan?",
+        "answer": "Waxaan bixinaa noocyo kala duwan oo qalliin ah oo ay ku jiraan wadnaha iyo laabta, maskaxda, wajiga, guud ahaan, carruurta, qurxinta, iyo qalliinka kaadida."
+      },
+      "consultation": {
+        "question": "Sideen balan u qabsan karaa?",
+        "answer": "Waxaad balan ka qabsan kartaa adoo si toos ah u soo waca xarunteena ama buuxiya foomka xiriirka ee websaydkayaga. Shaqaalaheena ayaa kula soo xiriiri doona 24 saac gudahood."
+      },
+      "insurance": {
+        "question": "Ma aqbashaan caymiska?",
+        "answer": "Haa, waxaan la shaqeynaa inta badan shirkadaha caymiska waaweyn. Fadlan la xiriir shaqaalaheena maamulka si aad u hesho macluumaad gaar ah oo ku saabsan caymiskaaga."
+      },
+      "beforeSurgery": {
+        "question": "Maxaan filayaa qalliinka ka hor?",
+        "answer": "Ka hor qalliinka, waxaad yeelan doontaa la-talin dhammeystiran oo dhakhtarkaaga qalliinka ah, waxaad heli doontaa tilmaamo faahfaahsan oo qalliinka ka horeeya, iyo baaritaanno caafimaad oo lagama maarmaan ah si loo hubiyo inaad diyaar u tahay qalliinka."
+      },
+      "postCare": {
+        "question": "Daryeel noocee ah ayaad bixisaan qalliinka kadib?",
+        "answer": "Waxaan bixinaa daryeel dhammeystiran oo qalliinka kadib ah oo ay ku jiraan booqashooyin joogto ah, adeegyo baxnaanin marka loo baahdo, iyo taageero degdeg ah 24/7 bukaanadeena."
+      }
+    }
+  },
+  "achievements": {
+    "title": "Waxa Aan Gaarnay",
+    "stats": {
+      "doctors": {
+        "number": "20+",
+        "title": "Dhakhaatiir Takhasus Leh",
+        "description": "Dhakhaatiir khibrad leh oo ku takhasusay qeybaha kala duwan"
+      },
+      "surgeries": {
+        "number": "1000+",
+        "title": "Qalliino Guul Ah",
+        "description": "Qalliino si guul leh loo dhammeeyay"
+      },
+      "satisfaction": {
+        "number": "98%",
+        "title": "Raalli Ahaanshaha Bukaanka",
+        "description": "Jawaab-celin wanaagsan oo ka timid bukaanadeena"
+      },
+    "experience": {
+    "number": "6+",
+    "title": "Bilood Khibrad ah",
+    "description": "Bilood adeeg caafimaad oo daacad ah",
+    "icon": "FaHandHoldingMedical"
+  }
+
+    }
+  },
+  "testimonials": {
+    "title": "Waxa Ay Bukaanadu Ka Yiraahdeen"
+  },
+"contact": {
+    "title": "Nala Soo Xiriir",
+    "subtitle": "Wixii su'aalo ama faallooyin ah, si xor ah noola soo xiriir halkan",
+    "infoTitle": "Macluumaadka Xiriirka",
+    "addressTitle": "Cinwaanka",
+    "address": "Jijiga, Itoobiya",
+    "phoneTitle": "Lambarka Taleefanka",
+    "phone": "+251 25 278 2051",
+    "emailTitle": "Iimaylka",
+    "email": "info@dradmikewcenter.com",
+    "formTitle": "Noo Soo Dir Farriin",
+    "form": {
+      "title": "Nala Soo Xiriir",
+      "name": "Magaca oo Dhamaystiran",
+      "description": "Su’aal ama faallo ma hayso? Waxaan jeclaan lahayn inaan maqalno.",
+      "namePlaceholder": "Geli magacaaga oo buuxa",
+      "required": "* Goobaha looga baahanyahay waa lama huraan",
+      "phone": "Lambarka Telefoonka",
+      "email": "Cinwaanka Email-ka",
+      "emailPlaceholder": "Geli cinwaanka email-kaaga",
+      "subject": "Cinwaan (Subject)",
+      "subjectPlaceholder": "Geli cinwaanka fariinta",
+      "message": "Fariin",
+      "messagePlaceholder": "Halkan ku qor fariintaada",
+      "submit": "Dir Fariinta",
+      "submitting": "Diraya...",
+      "error": "Haye! Qalad ayaa dhacay. Fadlan dib isku day.",
+      "success": "Mahadsanid! Fariintaada waa la diray.",
+      "stayConnected": "La Soco Si Joogto Ah"
+    }
+  },
+  "booking": {
+    "title": "Ballan Qabso",
+    "centerVisit": "Booqashada Xarunta",
+    "homeService": "Adeega Guriga",
+    "homeServiceWarning": "Adeega guriga waxaa heli kara dadka degan Jigjiga oo keliya.",
+    "mrn": "Lambarka Diiwaanka Caafimaadka",
+    "mrnPlaceholder": "Geli lambarka diiwaankaaga haddii aad hayso",
+    "date": "Taariikhda Ballanta",
+    "selectDoctor": "Dooro Dhakhtar",
+    "selectDoctorPlaceholder": "Dooro dhakhtar",
+    "selectServices": "Dooro Adeegyada",
+    "selectedServices": "Adeegyada La Doortay",
+    "submit": "Ballan Qabso",
+    "time": "Waqtiga Ballanta",
+    "services": {
+      "laboratory": "Baaritaanada Sheybaarka",
+      "x-ray": "Raajo",
+      "ultrasound": "Ultrasound",
+      "laboratoryTitle": "Dooro Baaritaanada Sheybaarka",
+      "xrayTitle": "Dooro Adeegyada Raajo",
+      "ultrasoundTitle": "Dooro Adeegyada Ultrasound",
+      "homeTitle": "Dooro Adeegyada Guriga",
+      "others": "Adeegyo Kale",
+      "othersPlaceholder": "Fadlan sheeg adeegyada kale ee aad u baahan tahay..."
+    },
+    "selectDepartment": "Dooro Qaybta",
+    "selectDepartmentPlaceholder": "Dooro qaybta"
+  },
+  "common": {
+    "cancel": "Jooji",
+    "confirm": "Xaqiiji",
+    "remove": "Tirtir"
+  },
+  "doctors": {
+    "specialties": {
+      "cardio": "Qalliinka Wadnaha",
+      "neuro": "Qalliinka Maskaxda",
+      "plastic": "Qalliinka Qurxinta",
+      "general": "Qalliinka Guud",
+      "internist": "Dhakhtarka Gudaha"
+    }
+  },
+  "payment": {
+    "successTitle": "Bixinta Waa La Guuleystay",
+    "pendingTitle": "Bixintu Way Socotaa",
+    "failedMessage": "Bixintu way guuldareysatay. Fadlan isku day mar kale ama la xiriir taageerada.",
+    "successMessage": "Bixintaadu si guul leh ayaa loo dhammeeyay.",
+    "pendingMessage": "Bixintaada waa la farsameynayaa. Fadlan sug...",
+    "errorFetchingStatus": "Waxaa dhacay khalad inta la helayo xaaladda bixinta. Fadlan dib u cusboonaysii bogga.",
+    "backToHome": "Ku noqo Bogga Hore"
+  }
+} 

@@ -1,0 +1,400 @@
+{
+  "centerName": "Dr. Admikew Surgery Specialty Center",
+  "slogan": "Your Health, Your Way",
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "servicesMenu": {
+      "overview": "Our Services",
+      "home": "Home Services"
+    },
+    "doctors": "Doctors",
+    "contact": "Contact",
+    "bookAppointment": "Book Appointment"
+  },
+  "footer": {
+    "aboutUs": "About Our Center",
+    "aboutDescription": "We are a specialized surgical center providing comprehensive medical services with state-of-the-art facilities.",
+    "siteLinks": "Site Links",
+    "contact": "Contact",
+    "phone": "Phone",
+    "hours": "Opening Hours",
+    "getDirections": "Get Directions on Map",
+    "working": "Always Here for You - 24/7 Service!",
+    "developedBy": "Developed by @Danaye"
+  },
+  "faq": {
+    "title": "FAQ",
+    "description": "Find answers to common questions about our surgical services and procedures.",
+    "contactPrompt": "If you don't see your question here, please don't hesitate to contact us.",
+    "available": "Available 24/7 for your questions",
+    "questions": {
+      "surgeryTypes": {
+        "question": "What types of surgeries do you perform?",
+        "answer": "We offer a wide range of surgical procedures including cardiothoracic, neurosurgery, maxillofacial, general, pediatric, plastic and reconstructive surgery, and urological procedures."
+      },
+      "consultation": {
+        "question": "How do I schedule a consultation?",
+        "answer": "You can schedule a consultation by calling our center directly or filling out the contact form on our website. Our staff will get back to you within 24 hours."
+      },
+      "insurance": {
+        "question": "Do you accept insurance?",
+        "answer": "Yes, we work with most major insurance providers. Please contact our administrative staff for specific information about your insurance coverage."
+      },
+      "beforeSurgery": {
+        "question": "What should I expect before surgery?",
+        "answer": "Before surgery, you'll have a comprehensive consultation with your surgeon, receive detailed pre-operative instructions, and undergo necessary medical evaluations to ensure you're ready for the procedure."
+      },
+      "postCare": {
+        "question": "What post-operative care do you provide?",
+        "answer": "We provide comprehensive post-operative care including regular follow-up visits, rehabilitation services when needed, and 24/7 emergency support for our patients."
+      }
+    },
+    "noQuestions": "No FAQs available for this service"
+  },
+  "achievements": {
+    "title": "What We Have Achieved",
+    "stats": {
+      "doctors": {
+        "number": "20+",
+        "title": "Specialist Doctors",
+        "description": "Expert surgeons across multiple specialties",
+        "icon": "FaUserMd"
+      },
+      "surgeries": {
+        "number": "15+",
+        "title": "Successful Surgeries",
+        "description": "Successfully completed operations",
+        "icon": "FaHospital"
+      },
+      "satisfaction": {
+        "number": "98%",
+        "title": "Patient Satisfaction",
+        "description": "Positive feedback from our patients",
+        "icon": "FaAward"
+      },
+      "experience": {
+        "number": "6+",
+        "title": "Months Experience",
+        "description": "Years of dedicated medical service",
+        "icon": "FaHandHoldingMedical"
+      }
+    }
+  },
+  "testimonials": {
+    "title": "Patient Testimonials",
+    "subtitle": "What our patients say about us"
+  },
+  "hero": {
+    "tagline": "Your Health, Your Way",
+    "description": "Advanced surgical procedures with state-of-the-art technology and compassionate care.",
+    "bookAppointment": "Book Appointment",
+    "viewServices": "Our Services"
+  },
+  "whyChooseUs": {
+    "title": "Why Choose Us",
+    "description": "Experience excellence in surgical care with our dedicated team of specialists",
+    "features": {
+      "expertise": {
+        "title": "Expert Surgeons",
+        "description": "Highly qualified and experienced surgical specialists"
+      },
+      "technology": {
+        "title": "Advanced Technology",
+        "description": "State-of-the-art medical equipment and facilities"
+      },
+      "care": {
+        "title": "Patient-Centered Care",
+        "description": "Personalized attention and comprehensive support"
+      },
+      "support": {
+        "title": "24/7 Support",
+        "description": "Round-the-clock medical assistance and care"
+      }
+    }
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive surgical care for all your needs",
+    "viewAll": "View All Services",
+    "pageTitle": "Our Surgical Services",
+    "pageDescription": "Comprehensive surgical care with state-of-the-art technology and expert specialists",
+    "searchPlaceholder": "Search services...",
+    "noResults": "No services found matching your search",
+    "ourCenterAreas" : "Service Areas",
+    "categories": {
+      "all": "All Services",
+      "surgical": "Surgical",
+      "specialized": "Specialized",
+      "general": "General"
+    },
+    "areas":{
+      "icu": {
+        "title": "ICU Unit"
+      },
+      "radiology": {
+        "title": "Radiology Unit"
+      },
+      "emergency" : {
+        "title": "Emergency Unit"
+      },
+      "laboratory": {
+        "title": "Laboratory Unit"
+      },
+      "digital-xray": {
+        "title": "Digital X-Ray Unit"
+      },
+      "outpatient": {
+        "title": "OutPatient Unit"
+      },
+      "inpatient": {
+        "title": "InPatient Unit"
+      },
+      "operation-theater": {
+        "title":"Operation Theater"
+      }
+      
+    },
+    "items": {
+      "cardio": {
+        "title": "Cardiothoracic Surgery",
+        "description": "Advanced surgical procedures for heart, lungs, and chest",
+        "procedures": [
+          "Coronary Artery Bypass",
+          "Heart Valve Surgery",
+          "Lung Surgery",
+          "Chest Wall Reconstruction"
+        ]
+      },
+      "neuro": {
+        "title": "Neurosurgery",
+        "description": "Specialized surgical care for brain, spine, and nervous system",
+        "procedures": [
+          "Brain Tumor Surgery",
+          "Spine Surgery",
+          "Neurovascular Surgery",
+          "Peripheral Nerve Surgery"
+        ]
+      },
+      "maxillofacial": {
+        "title": "Maxillofacial Surgery",
+        "description": "Surgical procedures for face, mouth, and jaw",
+        "procedures": [
+          "Jaw Surgery",
+          "Facial Reconstruction",
+          "Dental Implants",
+          "TMJ Treatment"
+        ]
+      },
+      "plastic": {
+        "title": "Plastic & Reconstructive Surgery",
+        "description": "Aesthetic and reconstructive surgical procedures",
+        "procedures": [
+          "Reconstructive Surgery",
+          "Burn Treatment",
+          "Hand Surgery",
+          "Microsurgery"
+        ]
+      },
+      "pediatric": {
+        "title": "Pediatric Surgery",
+        "description": "Specialized surgical care for children",
+        "procedures": [
+          "Congenital Defect Correction",
+          "Pediatric Trauma Surgery",
+          "Minimally Invasive Surgery",
+          "Neonatal Surgery"
+        ]
+      },
+      "urological": {
+        "title": "Urological Surgery",
+        "description": "Surgical treatment for urinary tract and male reproductive system",
+        "procedures": [
+          "Kidney Surgery",
+          "Prostate Surgery",
+          "Bladder Surgery",
+          "Stone Treatment"
+        ]
+      },
+      "general": {
+        "title": "General Surgery",
+        "description": "Wide range of general surgical procedures",
+        "procedures": [
+          "Abdominal Surgery",
+          "Hernia Repair",
+          "Endocrine Surgery",
+          "Laparoscopic Surgery"
+        ]
+      },
+      "ophthalmology": {
+        "title": "Ophthalmology Surgery",
+        "description": "Advanced surgical procedures for eye conditions",
+        "procedures": [
+          "Cataract Surgery",
+          "Glaucoma Treatment",
+          "Retinal Surgery",
+          "Corneal Transplant"
+        ]
+      }
+    },
+    "cta": {
+      "title": "Need a Consultation?",
+      "description": "Our expert surgical team is here to help you. Schedule a consultation today.",
+      "button": "Book an Appointment"
+    },
+    "common": {
+      "backToServices": "Back to Services",
+      "procedures": "Available Procedures",
+      "specialists": "Our Specialists",
+      "bookAppointment": "Book an Appointment",
+      "scheduleConsultation": "Schedule Consultation",
+      "relatedServices": "Related Services",
+      "viewMore": "View More Details"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "noQuestions": "No FAQs available for this service"
+    },
+    "gallery": {
+      "title": "Photo Gallery",
+      "viewLarger": "Click to view larger image",
+      "noImages": "No images available for this service"
+    }
+  },
+  "emergency": {
+    "contact": {
+      "title": "Emergency Contact",
+      "number": "+251 25 278 2051"
+    },
+    "ambulance": {
+      "title": "Ambulance Service",
+      "availability": "24/7 Available"
+    },
+    "hours": {
+      "title": "Working Hours",
+      "availability": "Open 24 Hours"
+    }
+  },
+  "doctors": {
+    "title": "Our Expert Doctors",
+    "subtitle": "Meet our team of experienced surgical specialists",
+    "viewAll": "View All Doctors",
+    "team": {
+      "admikew": {
+        "name": "Dr. Admikew Bekele",
+        "specialty": "Cardiothoracic Surgeon"
+      },
+      "migbaru": {
+        "name": "Dr. Migbaru",
+        "specialty": "Neurosurgeon"
+      },
+      "girma": {
+        "name": "Dr. Girma Mogos",
+        "specialty": "Plastic Surgeon"
+      },
+      "biruk": {
+        "name": "Dr. Biruk Umer",
+        "specialty": "General Surgeon"
+      }
+    },
+    "specialties": {
+      "cardio": "Cardiothoracic Surgery",
+      "neuro": "Neurosurgery",
+      "plastic": "Plastic Surgery",
+      "general": "General Surgery",
+      "internist": "Internal Medicine"
+    }
+  },
+    "contact": {
+      "title": "Contact Us",
+      "subtitle": "For any questions or comments feel free to contact us here",
+      "infoTitle": "Contact Information",
+      "addressTitle": "Address",
+      "phoneTitle": "Phone",
+      "emailTitle": "Email",
+      "formTitle": "Send Us a Message",
+      "bookAppointmentTitle": "Book Appointment",
+      "form": {
+        "title": "Get in Touch",
+        "name": "Full Name",
+        "description": "For general questions, please send us a message and we'll get right back to you. You can also call us directly to speak with a member of our service team or insurance expert.",
+        "namePlaceholder": "Enter your full name",
+        "required": "* Required fields",
+        "phone": "Phone Number",
+        "email": "Email Address",
+        "emailPlaceholder": "Enter your email address",
+        "subject": "Subject",
+        "subjectPlaceholder": "Enter the subject",
+        "message": "Message",
+        "messagePlaceholder": "Type your message here",
+        "submit": "Send Message",
+        "submitting": "Sending...",
+        "error": "Oops! Something went wrong. Please try again later.",
+        "success": "Thank you! Your message has been sent.",
+        "stayConnected": "Stay Connected"
+      }
+    },
+  "booking": {
+    "title": "Book an Appointment",
+    "centerVisit": "Center Visit",
+    "homeService": "Home Service",
+    "homeServiceWarning": "Home service is available only for residents of Jigjiga.",
+    "mrn": "MRN",
+    "mrnPlaceholder": "Enter your MRN if you have one",
+    "appointment": "Clinic Visit",
+    "personalInfo": "Personal Information",
+    "email": "Email Address",
+    "age": "Age",
+    "selectSex": "Select",
+    "sex": "Sex",
+    "male": "Male",
+    "female": "Female",
+    "phone": "Phone Number",
+    "date": "Appointment Date",
+    "location": "Location",
+    "selectDoctor": "Select Doctor",
+    "selectDoctorPlaceholder": "Choose a doctor",
+    "selectServices": "Select Services",
+    "selectedServices": "Selected Services",
+    "requiredFields": "Fields marked with * are required",
+    "submit": "Submit Appointment",
+    "time": "Appointment Time",
+    "submitting": "Sending...",
+    "services": {
+      "laboratory": "Laboratory Tests",
+      "x-ray": "X-Ray",
+      "ultrasound": "Ultrasound",
+      "laboratoryTitle": "Select Laboratory Tests",
+      "xrayTitle": "Select X-Ray Services",
+      "ultrasoundTitle": "Select Ultrasound Services",
+      "homeTitle": "Select Home Services",
+      "home": {
+        "woundCare": "Wound Care",
+        "injection": "Injection",
+        "followup": "Follow-up Consultation",
+        "nursing": "Nursing Care",
+        "others": "Other Services",
+        "othersPlaceholder": "Please specify any other services you need..."
+      },
+      "homeServices": "Home Services",
+      "locationNote": "Currently, we only provide home services in Jigjiga"
+    },
+    "selectDepartment": "Select Department",
+    "selectDepartmentPlaceholder": "Choose a department"
+  },
+  "common": {
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "remove": "Remove"
+  },
+  "payment": {
+    "successTitle": "Payment Successful",
+    "pendingTitle": "Payment Processing",
+    "failedMessage": "Payment failed. Please try again or contact support.",
+    "successMessage": "Your payment was successfully completed.",
+    "pendingMessage": "Your payment is being processed. Please wait...",
+    "errorFetchingStatus": "Error fetching payment status. Please refresh the page.",
+    "backToHome": "Back to Home"
+  }
+}

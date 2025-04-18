@@ -1,0 +1,349 @@
+{
+  "centerName": "ዶ/ር አድምቀው ቀዶ ጥገና ስፔሻሊቲ ማእከል",
+  "slogan": "ጤናዎ በእርስዎ መንገድ",
+  "nav": {
+    "home": "ዋና ገጽ",
+    "about": "ስለ እኛ",
+    "services": "አገልግሎቶች",
+    "servicesMenu": {
+      "overview": "አገልግሎቶቻችን",
+      "home": "የቤት አገልግሎቶች"
+    },
+    "doctors": "ሐኪሞች",
+    "contact": "አድራሻ",
+    "bookAppointment": "ቀጠሮ ያስይዙ"
+  },
+  "footer": {
+    "aboutUs": "ስለ እኛ",
+    "aboutDescription": "የተሟላ የሕክምና አገልግሎት በዘመናዊ መሣሪያዎች የምናቀርብ የቀዶ ጥገና ማእከል ነን።",
+    "siteLinks": "የድረ-ገጽ አድራሻዎች",
+    "contact": "አድራሻ",
+    "phone": "ስልክ",
+    "hours": "የስራ ሰዓት",
+    "getDirections": "በካርታ ላይ አድራሻውን ይመልከቱ",
+    "working":"ለእርስዎ ሁልጊዜ እዚህ ነን - 24/7 አገልግሎት!",
+    "developedBy": "በ @Danaye የተዘጋጀ"
+  },
+  "faq": {
+    "title": "ተደጋግመው የሚጠየቁ ጥያቄዎች",
+    "description": "ስለ ቀዶ ጥገና አገልግሎታችን እና ሂደቶች የሚጠየቁ ጥያቄዎችን ያግኙ።",
+    "contactPrompt": "ጥያቄዎ ከዚህ ካልተገኘ እባክዎን ያግኙን።",
+    "available": "24/7 ለጥያቄዎችዎ ዝግጁ ነን",
+    "questions": {
+      "surgeryTypes": {
+        "question": "ምን አይነት ቀዶ ጥገናዎችን ታከናውናላችሁ?",
+        "answer": "የልብ ፣ የነርቭ፣ የአፍና መንጋጋ፣ ጠቅላላ፣ የህጻናት፣ የፕላስቲክና ሪኮንስትራክቲቭ እንዲሁም የሽንት ቧንባ ቀዶ ጥገናዎችን እናከናውናለን።"
+      },
+      "consultation": {
+        "question": "እንዴት ቀጠሮ ማስያዝ እችላለሁ?",
+        "answer": "በቀጥታ ወደ ማእከላችን በመደወል ወይም በድረ-ገጻችን ላይ ያለውን ቅጽ በመሙላት ቀጠሮ ማስያዝ ይችላሉ። ሰራተኞቻችን በ24 ሰዓት ውስጥ ያገኙዎታል።"
+      },
+      "insurance": {
+        "question": "ኢንሹራንስ ትቀበላላችሁ?",
+        "answer": "አዎ፣ ከብዙ ዋና ዋና የኢንሹራንስ አቅራቢዎች ጋር እንሰራለን። እባክዎን ስለ እርስዎ ኢንሹራንስ ሽፋን ዝርዝር መረጃ ለማግኘት የአስተዳደር ሰራተኞቻችንን ያግኙ።"
+      },
+      "beforeSurgery": {
+        "question": "ከቀዶ ጥገና በፊት ምን መጠበቅ አለብኝ?",
+        "answer": "ከቀዶ ጥገና በፊት፣ ከቀዶ ጥገና ሐኪምዎ ጋር ሁሉን አቀፍ ምክክር ያደርጋሉ፣ ዝርዝር መመሪያዎችን ያገኛሉ፣ እንዲሁም ለቀዶ ጥገናው ዝግጁ መሆንዎን ለማረጋገጥ አስፈላጊ የሕክምና ግምገማዎች ይደረጋሉ።"
+      },
+      "postCare": {
+        "question": "ከቀዶ ጥገና በኋላ ምን እንክብካቤ ታደርጋላችሁ?",
+        "answer": "መደበኛ የክትትል ጉብኝቶችን፣ አስፈላጊ ሲሆን የመልሶ ማገገሚያ አገልግሎቶችን፣ እና ለታካሚዎቻችን 24/7 ድጋፍ የምናቀርብ ሁሉን አቀፍ የድህረ-ቀዶ ጥገና እንክብካቤ እናቀርባለን።"
+      }
+    },
+    "noQuestions": "ለዚህ አገልግሎት ምንም ጥያቄዎች የሉም"
+  },
+  "achievements": {
+    "title": "ያስመዘገብናቸው ውጤቶች",
+    "stats": {
+      "doctors": {
+        "number": "20+",
+        "title": "ስፔሻሊስት ሐኪሞች",
+        "description": "በተለያዩ መስኮች የሰለጠኑ ቀዶ ጥገና ሐኪሞች",
+        "icon": "FaUserMd"
+      },
+      "surgeries": {
+        "number": "15+",
+        "title": "የተሳኩ ቀዶ ጥገናዎች",
+        "description": "በተሳካ ሁኔታ የተከናወኑ ቀዶ ጥገናዎች",
+        "icon": "FaHospital"
+      },
+      "satisfaction": {
+        "number": "98%",
+        "title": "የታካሚ እርካታ",
+        "description": "ከታካሚዎቻችን የተሰጠ አዎንታዊ ግብረ-መልስ",
+        "icon": "FaAward"
+      },
+      "experience": {
+        "number": "6+",
+        "title": "የልምድ ወራት",
+        "description": "የታማኝ የሕክምና አገልግሎት ዓመታት",
+        "icon": "FaHandHoldingMedical"
+      }
+    }
+  },
+  "testimonials": {
+    "title": "የታካሚዎች አስተያየት",
+    "subtitle": "ታካሚዎቻችን ስለ እኛ የሚሉት"
+  },
+  "hero": {
+    "tagline": "ጤናዎ በእርስዎ መንገድ",
+    "description": "በዘመናዊ ቴክኖሎጂ እና በሙያዊ እንክብካቤ የላቀ የቀዶ ጥገና አገልግሎት",
+    "bookAppointment": "ቀጠሮ ያስይዙ",
+    "viewServices": "አገልግሎቶቻችን"
+  },
+  "whyChooseUs": {
+    "title": "እኛን ለምን ይመርጣሉ",
+    "description": "በተወቃሪ የቀዶ ጥገና ባለሙያዎቻችን ምርጥ አገልግሎት ያግኙ",
+    "features": {
+      "expertise": {
+        "title": "ባለሙያ ቀዶ ጥገና ሐኪሞች",
+        "description": "በከፍተኛ ደረጃ የሰለጠኑ እና ልምድ ያላቸው ስፔሻሊስቶች"
+      },
+      "technology": {
+        "title": "ዘመናዊ ቴክኖሎጂ",
+        "description": "ዘመናዊ የሕክምና መሣሪያዎች እና አገልግሎቶች"
+      },
+      "care": {
+        "title": "በታካሚ ላይ ያተኮረ እንክብካቤ",
+        "description": "ግላዊ ትኩረት እና ሁለንተናዊ ድጋፍ"
+      },
+      "support": {
+        "title": "24/7 ድጋፍ",
+        "description": "ሰዓቱን ሙሉ የሕክምና እርዳታ እና እንክብካቤ"
+      }
+    }
+  },
+  "services": {
+    "title": "አገልግሎቶቻችን",
+    "subtitle": "ለሁሉም የቀዶ ጥገና ፍላጎትዎ ሁለንተናዊ እንክብካቤ",
+    "viewAll": "ሁሉንም አገልግሎቶች ይመልከቱ",
+    "pageTitle": "የቀዶ ጥገና አገልግሎቶቻችን",
+    "pageDescription": "በዘመናዊ ቴክኖሎጂ እና በባለሙያዎች የሚሰጥ ሁለንተናዊ የቀዶ ጥገና አገልግሎት",
+    "searchPlaceholder": "አገልግሎቶችን ይፈልጉ...",
+    "noResults": "በፍለጋዎ የሚመለከት አገልግሎት አልተገኘም",
+    "ourCenterAreas": "የአገልግሎት አካባቢዎች",
+    "categories": {
+      "all": "ሁሉም አገልግሎቶች",
+      "surgical": "ቀዶ ጥገና",
+      "specialized": "ስፔሻላይዝድ",
+      "general": "ጠቅላላ"
+    },
+    "items": {
+      "cardio": {
+        "title": "የልብ ቀዶ ጥገና",
+        "description": "የላቀ የልብ እና የደረት ቀዶ ጥገና",
+        "procedures": [
+          "የልብ አርቴሪ ባይፓስ",
+          "የልብ ቫልቭ ቀዶ ጥገና",
+          "የአንፊራ ቀዶ ጥገና",
+          "የደረት ግድግዳ ግጠማ"
+        ]
+      },
+      "neuro": {
+        "title": "የአዕምሮ ቀዶ ጥገና",
+        "description": "ለአዕምሮ፣ የአንገት አጥንት እና የነርቭ ሲስተም ዩ የቀዶ ጥገና አገልግሎት",
+        "procedures": [
+          "የአዕምሮ ኩነት ቀዶ ጥገና",
+          "የአንገት አጥንት ቀዶ ጥገና",
+          "የነርቭ ቫስኩላር ቀዶ ጥገና",
+          "የፔሪፌራል ነርቭ ቀዶ ጥገና"
+        ]
+      },
+      "maxillofacial": {
+        "title": "የፊትና አፍ ቀዶ ጥገና",
+        "description": "ለፊት፣ አፍ እና መንጋጋ የሚደረጉ ቀዶ ጥገናዎች",
+        "procedures": [
+          "የመንጋጋ ቀዶ ጥገና",
+          "የፊት ሪኮንስትራክሽን",
+          "የጥርስ ኢምፕላንት",
+          "የቲኤምጄ ሕክምና"
+        ]
+      },
+      "plastic": {
+        "title": "የፕላስቲክ እና ሪኮንስትራክቲቭ ቀዶ ጥገና",
+        "description": "የስነ-ጠቀሜታ እና ሪኮንስትራክቲቭ ቀዶ ጥገናዎች",
+        "procedures": [
+          "ሪኮንስትራክቲቭ ቀዶ ጥገና",
+          "የቃጠሎ ሕክምና",
+          "የእጅ ቀዶ ጥገና",
+          "ማይክሮስርጀሪ"
+        ]
+      },
+      "pediatric": {
+        "title": "የህጻናት ቀዶ ጥገና",
+        "description": "ለህጻናት የሚደረጉ ልዩ ቀዶ ጥገናዎች",
+        "procedures": [
+          "የተወለዱ ጉዳቶችን ማስተካከል",
+          "የህጻናት አደጋ ቀዶ ጥገና",
+          "የትንሽ ክትትል ቀዶ ጥገና",
+          "የአዲስ ልጅ ቀዶ ጥገና"
+        ]
+      },
+      "urological": {
+        "title": "የዩሮሎጂካል ቀዶ ጥገና",
+        "description": "ለሽንት ኩባንያ እና የወንዶች ምድብ ስርዓት የሚደረጉ ቀዶ ጥገናዎች",
+        "procedures": [
+          "የኩላሊት ቀዶ ጥገና",
+          "የፕሮስቴት ቀዶ ጥገና",
+          "የመካከለኛው ቀዶ ጥገና",
+          "የድንጋይ ሕክምና"
+        ]
+      },
+      "general": {
+        "title": "ጠቅላላ ቀዶ ጥገና",
+        "description": "ለጠቅላላ ቀዶ ጥገና የሚደረጉ ሰፊ አገልግሎቶች",
+        "procedures": [
+          "የሆድ ቀዶ ጥገና",
+          "የሂርኒያ ማስተካከል",
+          "የኢንዶክራይን ቀዶ ጥገና",
+          "የላፓሮስኮፒክ ቀዶ ጥገና"
+        ]
+      },
+      "ophthalmology": {
+        "title": "የዐይን ቀዶ ጥገና",
+        "description": "ለዐይን ሁኔታዎች የሚደረጉ የላቀ ቀዶ ጥገናዎች",
+        "procedures": [
+          "የካታራክት ቀዶ ጥገና",
+          "የግላውኮማ ሕክምና",
+          "የሬቲና ቀዶ ጥገና",
+          "የኮርኒያ ሽግግር"
+        ]
+      }
+    },
+    "cta": {
+      "title": "ምክር ይፈልጋሉ?",
+      "description": "የቀዶ ጥገና ባለሙያዎቻችን እርስዎን ለመርዳት ዝግጁ ናቸው። ዛሬ ቀጠሮ ያስይዙ።",
+      "button": "ቀጠሮ ያስይዙ"
+    },
+    "common": {
+      "backToServices": "ወደ አገልግሎቶች ተመለስ",
+      "procedures": "የሚገኙ ሂደቶች",
+      "specialists": "ባለሙያዎቻችን",
+      "bookAppointment": "ቀጠሮ ያስይዙ",
+      "scheduleConsultation": "ምክር ያስይዙ",
+      "relatedServices": "የተዛመዱ አገልግሎቶች",
+      "viewMore": "ተጨማሪ ዝርዝሮችን ይመልከቱ"
+    },
+    "faq": {
+      "title": "ተደጋግመው የሚጠየቁ ጥያቄዎች",
+      "noQuestions": "ለዚህ አገልግሎት ምንም ጥያቄዎች የሉም"
+    }
+  },
+  "emergency": {
+    "contact": {
+      "title": "የአስቸኳይ ጊዜ ስልክ",
+      "number": "+251 25 278 2051"
+    },
+    "ambulance": {
+      "title": "የአምቡላንስ አገልግሎት",
+      "availability": "24/7 ዝግጁ"
+    },
+    "hours": {
+      "title": "የስራ ሰዓታት",
+      "availability": "24 ሰዓት ክፍት"
+    }
+  },
+  "doctors": {
+    "title": "ባለሙያ ሐኪሞቻችን",
+    "subtitle": "የቀዶ ጥገና ባለሙያዎቻችንን ይግኙ",
+    "viewAll": "ሁሉንም ሐኪሞች ይመልከቱ",
+    "team": {
+      "admikew": {
+        "name": "ዶ/ር አድምቀው በቀለ",
+        "specialty": "የልብ ቀዶ ጥገና ሐኪም"
+      },
+      "migbaru": {
+        "name": "ዶ/ር ምግባሩ",
+        "specialty": "የአዕምሮ ቀዶ ጥገና ሐኪም"
+      },
+      "girma": {
+        "name": "ዶ/ር ግርማ ሞገስሞገስ",
+        "specialty": "የፕላስቲክ ቀዶ ጥገና ሐኪም"
+      },
+      "biruk": {
+        "name": "ዶ/ር ብሩክ ኡመር",
+        "specialty": "ጠቅላላ ቀዶ ጥገና ሐኪም"
+      }
+    },
+    "specialties": {
+      "cardio": "የልብ ቀዶ ጥገና",
+      "neuro": "የአዕምሮ ቀዶ ጥገና",
+      "plastic": "የፕላስቲክ ቀዶ ጥገና",
+      "general": "ጠቅላላ ቀዶ ጥገና",
+      "internist": "የውስጥ ደዌ ሐኪም"
+    }
+  },
+    "contact": {
+    "title": "አግኙን",
+    "subtitle": "ለማንኛውም ጥያቄ ወይም አስተያየት እባኮትን እዚህ ያነጋግሩን። ለእርስዎ ምላሽ ለመስጠት የእኛ የደንበኛ ድጋፍ አገልግሎት ክፍል በጥቂት ሰዓታት ውስጥ ምላሽ ያደርስዎታል።",
+    "infoTitle": "የእውቂያ መረጃ",
+    "addressTitle": "አድራሻ",
+    "phoneTitle": "ስልክ",
+    "emailTitle": "ኢሜይል",
+    "formTitle": "መልእክት ይላኩልን",
+    "form": {
+    "title": "አግኙን",
+    "name": "ሙሉ ስም",
+    "description": "ጥያቄ ወይም አስተያየት ካለዎት እኛን ያሳውቁ።",
+    "namePlaceholder": "ሙሉ ስምዎን ያስገቡ",
+    "required": "* ያስፈልጋሉ",
+    "phone": "ስልክ ቁጥር",
+    "email": "የኢሜል አድራሻ",
+    "emailPlaceholder": "የኢሜል አድራሻዎን ያስገቡ",
+    "subject": "ርዕስ",
+    "subjectPlaceholder": "ርዕሱን ያስገቡ",
+    "message": "መልእክት",
+    "messagePlaceholder": "መልእክትዎን እዚህ ያስገቡ",
+    "submit": "መልእክት ላክ",
+    "submitting": "በመላክ ላይ...",
+    "error": "ይቅርታ! አንድ ስህተት ተፈጥሯል። እባኮትን እንደገና ይሞክሩ።",
+    "success": "አመሰግናለሁ! መልእክትዎ ተልኳል።",
+    "stayConnected": "እንደተገናኙ ይቆዩ"
+  }
+  },
+  "booking": {
+    "title": "ቀጠሮ ያስይዙ",
+    "centerVisit": "ማእከል ጉብኝት",
+    "homeService": "የቤት አገልግሎት",
+    "homeServiceWarning": "የቤት አገልግሎት የሚገኘው በጅጅጋ ከተማ ለሚኖሩ ነዋሪዎች ብቻ ነው።",
+    "mrn": "የሕክምና መዝገብ ቁጥር",
+    "mrnPlaceholder": "የሕክምና መዝገብ ቁጥርዎ ካለ ያስገቡ",
+    "date": "የቀጠሮ ቀን",
+    "selectDoctor": "ሐኪም ይምረጡ",
+    "selectDoctorPlaceholder": "ሐኪም ይምረጡ",
+    "selectServices": "አገልግሎቶችን ይምረጡ",
+    "selectedServices": "የተመረጡ አገልግሎቶች",
+    "submit": "ቀጠሮ ያስይዙ",
+    "time": "የቀጠሮ ሰዓት",
+    "services": {
+      "laboratory": "የላቦራቶሪ ምርመራዎች",
+      "x-ray": "ኤክስ-ሬይ",
+      "ultrasound": "ኡልትራሳውንድ",
+      "laboratoryTitle": "የላቦራቶሪ ምርመራዎችን ይምረጡ",
+      "xrayTitle": "የኤክስ-ሬይ አገልግሎቶችን ይምረጡ",
+      "ultrasoundTitle": "የኡልትራሳውንድ አገልግሎቶችን ይምረጡ",
+      "homeTitle": "የቤት አገልግሎቶችን ይምረጡ",
+      "home": {
+        "others": "ሌሎች አገልግሎቶች",
+        "othersPlaceholder": "እባክዎ ሌሎች የሚፈልጓቸውን አገልግሎቶች ይግለጹ..."
+      }
+    },
+    "selectDepartment": "ክፍል ይምረጡ",
+    "selectDepartmentPlaceholder": "ክፍል ይምረጡ"
+  },
+  "common": {
+    "cancel": "ይቅር",
+    "confirm": "አረጋግጥ",
+    "remove": "አስወግድ"
+  },
+  "payment": {
+    "successTitle": "ክፍያው ተሳክቷል",
+    "pendingTitle": "ክፍያ በሂደት ላይ ነው",
+    "failedMessage": "ክፍያው አልተሳካም። እባክዎን ደግመው ይሞክሩ ወይም ደጋፊ ያነጋግሩ።",
+    "successMessage": "ክፍያው በተሳካ ሁኔታ ተጠናቋል።",
+    "pendingMessage": "ክፍያው በሂደት ላይ ነው። እባክዎ ትንሽ ይጠብቁ...",
+    "errorFetchingStatus": "የክፍያ ሁኔታ ማግኘት ላይ ስህተት ተፈጥሯል። እባክዎ ገጹን ዳግም ይጫኑ።",
+    "backToHome": "ወደ መነሻ ገፅ ተመለስ"
+  }
+}

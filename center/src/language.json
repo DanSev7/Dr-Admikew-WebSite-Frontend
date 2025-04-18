@@ -1,0 +1,74 @@
+{
+    "en": {
+      "title": "Dr. Admike Surgery Specialty Center",
+    "home": "Home",
+    "services": "Services",
+    "contact": "Contact",
+    "about": "About",
+    "language": "Language",
+    "dark_mode": "Dark Mode",
+    "get_directions": "Get Directions",
+      "header": {
+        "title": "Dr. Admikew Surgery Specialty Center",
+        "dark_mode": "Dark Mode",
+        "language": "Language"
+      },
+      "footer": {
+        "about": "About Our Center",
+        "site_links": "Site Links",
+        "contacts": "Contacts",
+        "contact_number": "Contact Number",
+        "opening_hours": "Opening Hours (24/7 Service)",
+        "get_directions": "Get Directions on the Map"
+      },
+      "homee": {
+        "why_choose_us": "Why Choose Us?",
+        "achievements": "What We Have Achieved",
+        "testimonials": "Patient Testimonials",
+        "faq": "FAQ"
+      }
+    },
+    "am": {
+      "header": {
+        "title": "ዶክተር አድሚከው የቀዶ ጥገና ማዕከል",
+        "dark_mode": "ጨለማ ሁኔታ",
+        "language": "ቋንቋ"
+      },
+      "footer": {
+        "about": "ስለ ማዕከላችን",
+        "site_links": "የጣቢያ አገናኞች",
+        "contacts": "አገናኞች",
+        "contact_number": "ስልክ ቁጥር",
+        "opening_hours": "የክፍት ሰዓቶች (24/7 አገልግሎት)",
+        "get_directions": "በካርታ ላይ አቅጣጫ ይውሰዱ"
+      },
+      "home": {
+        "why_choose_us": "ለምን እኛን ይምረጡ?",
+        "achievements": "ምን አስተዋወቅናል?",
+        "testimonials": "የታካሚዎቻችን ምስክርነት",
+        "faq": "ተደጋጋሚ ጥያቄዎች"
+      }
+    },
+    "so": {
+      "header": {
+        "title": "Dr. Admikew Xarunta Qalliinka Gaarka ah",
+        "dark_mode": "Habka Madow",
+        "language": "Luuqad"
+      },
+      "footer": {
+        "about": "Ku saabsan Xaruntayada",
+        "site_links": "Xiriiriyeyaasha Bogga",
+        "contacts": "Xiriirada",
+        "contact_number": "Lambarka Taleefanka",
+        "opening_hours": "Saacadaha Furitaanka (Adeeg 24/7)",
+        "get_directions": "Hel Tilmaamaha Khariidada"
+      },
+      "home": {
+        "why_choose_us": "Maxaad Noo Dooranaysaa?",
+        "achievements": "Maxaan Gaarnay?",
+        "testimonials": "Markhaatiyada Bukaanka",
+        "faq": "Su'aalaha La Is Weydiiyo"
+      }
+    }
+  }
+  
