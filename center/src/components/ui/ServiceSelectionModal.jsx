@@ -112,7 +112,8 @@ const ServiceSelectionModal = ({ isOpen, onClose, type, onSelect, selectedServic
                         className="w-4 h-4 text-sky-600 rounded focus:ring-sky-500"
                       />
                       <span className="text-gray-700 text-sm">
-                        {service.name} ({service.price.toFixed(2)} ETB)
+                        {service.name}
+                         {/* ({service.price.toFixed(2)} ETB) */}
                       </span>
                     </label>
                   ))}
