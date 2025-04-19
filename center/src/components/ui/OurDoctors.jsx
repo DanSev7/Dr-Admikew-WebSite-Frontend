@@ -32,7 +32,7 @@ const OurDoctors = () => {
   
 
   return (
-    <section className="py-16 bg-gray-50 ml-10 mr-10">
+    <section className="py-16 bg-gray-50">
       {/* Hero Section with Breadcrumb */}
       <div className="px-7 md:px-8 lg:px-14 xl:px-18 mb-16 mt-6">
         <nav className="mb-8">
