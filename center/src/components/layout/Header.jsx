@@ -160,7 +160,7 @@ const Header = () => {
               <Link to="/services" className="block px-4 py-2 text-gray-700 hover:bg-gray-100" onClick={() => setIsMenuOpen(false)}>
                 {t("nav.servicesMenu.overview")}
               </Link>
-              <Link to="/services/home" className="block px-4 py-2 text-gray-700 hover:bg-gray-100" onClick={() => setIsMenuOpen(false)}>
+              <Link to="/contact" className="block px-4 py-2 text-gray-700 hover:bg-gray-100" onClick={() => setIsMenuOpen(false)}>
                 {t("nav.servicesMenu.home")}
               </Link>
               <Link to="/doctors" className="block px-4 py-2 text-gray-700 hover:bg-gray-100" onClick={() => setIsMenuOpen(false)}>
