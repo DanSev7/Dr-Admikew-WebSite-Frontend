@@ -5,6 +5,16 @@ import { GiKidneys } from 'react-icons/gi';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
+// Import images
+import icuImage from '../assets/images/ICU.jpeg';
+import emergencyImage from '../assets/images/emergency.jpg';
+import laboratoryImage from '../assets/images/laboratory/hormone.png';
+import xrayImage from '../assets/images/x_ray Image.avif';
+import usImage from '../assets/images/us.jpg';
+import opdImage from '../assets/images/opd/OPD.png';
+import ipdImage from '../assets/images/ipd/bed1.jpg';
+import orImage from '../assets/images/or.avif';
+
 const Services = () => {
   const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
@@ -54,12 +64,12 @@ const Services = () => {
       category: "general",
       image: "https://images.unsplash.com/photo-1571772996211-2f02c9727629?q=80&w=500&auto=format&fit=crop",
     },
-    {
-      "icon": <FaEye className='w-12 h-12' />,
-      "key": "ophthalmology",
-      "category": "specialized",
-      "image": "https://images.unsplash.com/photo-1602520076584-c4a14147a6b2?crop=entropy&cs=tinysrgb&fit=max&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fG9waHRhbW9sb2d5fGVufDB8fHx8fDE2NzA1NjA1Mzk&ixlib=rb-1.2.1&q=80&w=500"
-    }
+    // {
+    //   "icon": <FaEye className='w-12 h-12' />,
+    //   "key": "ophthalmology",
+    //   "category": "specialized",
+    //   "image": "https://images.unsplash.com/photo-1602520076584-c4a14147a6b2?crop=entropy&cs=tinysrgb&fit=max&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fG9waHRhbW9sb2d5fGVufDB8fHx8fDE2NzA1NjA1Mzk&ixlib=rb-1.2.1&q=80&w=500"
+    // }
     
   ];
 
@@ -239,14 +249,14 @@ const Services = () => {
   </h2>
   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
     {[
-      { id: "icu", name: "ICU", image: "https://images.unsplash.com/photo-1576091160501-bbe57469278b?q=80&w=500&auto=format&fit=crop" },
-      { id: "radiology", name: "Radiology Unit", image: "https://images.unsplash.com/photo-1551601651-2a8555f1a136?q=80&w=500&auto=format&fit=crop" },
-      { id: "emergency", name: "Emergency Unit", image: "https://images.unsplash.com/photo-1597764698832-2e04b9c9cf92?q=80&w=500&auto=format&fit=crop" },
-      { id: "laboratory", name: "Laboratory Unit", image: "https://images.unsplash.com/photo-1581595220162-6cf0ef55c3a5?q=80&w=500&auto=format&fit=crop" },
-      { id: "digital-xray", name: "Digital X-ray Unit", image: "https://images.unsplash.com/photo-1615461066841-61194e5aabe2?q=80&w=500&auto=format&fit=crop" },
-      { id: "outpatient", name: "OutPatient Unit", image: "https://images.unsplash.com/photo-1615461066841-61194e5aabe2?q=80&w=500&auto=format&fit=crop" },
-      { id: "inpatient", name: "Inpatient Unit", image: "https://images.unsplash.com/photo-1582720875271-190ff5a52a21?q=80&w=500&auto=format&fit=crop" },
-      { id: "operation-theater", name: "Major & Minor Operation Theater", image: "https://images.unsplash.com/photo-1550831107-1553da8c8464?q=80&w=500&auto=format&fit=crop" }
+      { id: "icu", name: "ICU", image: icuImage },
+      { id: "radiology", name: "Radiology Unit", image: usImage },
+      { id: "emergency", name: "Emergency Unit", image: emergencyImage },
+      { id: "laboratory", name: "Laboratory Unit", image: laboratoryImage },
+      { id: "digital-xray", name: "Digital X-ray Unit", image: xrayImage },
+      { id: "outpatient", name: "OutPatient Unit", image: opdImage },
+      { id: "inpatient", name: "Inpatient Unit", image: ipdImage },
+      { id: "operation-theater", name: "Major & Minor Operation Theater", image: orImage }
     ].map((area, index) => (
       <Link to={`/service-area/${area.id}`} key={index}>
         <div className="relative rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group">

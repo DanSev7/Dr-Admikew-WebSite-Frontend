@@ -7,19 +7,19 @@ const Testimonials = () => {
 
   const testimonials = [
     {
-      name: "John Smith",
+      name: "Abdi Mohamed",
       procedure: "Cardiac Surgery",
       text: "The care I received at Dr. Admikew Surgery Center was exceptional. The medical team was professional and caring throughout my cardiac procedure.",
       rating: 5,
     },
     {
-      name: "Sarah Johnson",
+      name: "Hodan Muktar",
       procedure: "Neurosurgery",
       text: "I was nervous about my surgery, but the doctors and staff made me feel comfortable and safe. The follow-up care was excellent.",
       rating: 5,
     },
     {
-      name: "Michael Brown",
+      name: "Solomon Tsegaye",
       procedure: "General Surgery",
       text: "State-of-the-art facilities and a highly skilled medical team. I couldn't have asked for better care during my recovery.",
       rating: 5,

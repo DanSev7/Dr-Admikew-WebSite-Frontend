@@ -253,9 +253,9 @@
         "name": "ዶ/ር አድምቀው በቀለ",
         "specialty": "የልብ ቀዶ ጥገና ሐኪም"
       },
-      "migbaru": {
-        "name": "ዶ/ር ምግባሩ",
-        "specialty": "የአዕምሮ ቀዶ ጥገና ሐኪም"
+      "haileyesus": {
+        "name": "ዶ/ር ሃይለየሱስ",
+        "specialty": "የውስጥ ደዌ ሐኪም"
       },
       "girma": {
         "name": "ዶ/ር ግርማ ሞገስሞገስ",
@@ -321,7 +321,7 @@
       "x-ray": "ኤክስ-ሬይ",
       "ultrasound": "ኡልትራሳውንድ",
       "laboratoryTitle": "የላቦራቶሪ ምርመራዎችን ይምረጡ",
-      "xrayTitle": "የኤክስ-ሬይ አገልግሎቶችን ይምረጡ",
+      "x-rayTitle": "የኤክስ-ሬይ አገልግሎቶችን ይምረጡ",  
       "ultrasoundTitle": "የኡልትራሳውንድ አገልግሎቶችን ይምረጡ",
       "homeTitle": "የቤት አገልግሎቶችን ይምረጡ",
       "home": {

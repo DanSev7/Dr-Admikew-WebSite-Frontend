@@ -54,7 +54,6 @@ const Contact = () => {
     setFormData(prev => ({
       ...prev,
       selectedServices: prev.selectedServices.filter(service => service.code !== code),
-      // Clear otherServicesText if removing "Other"
       otherServicesText: prev.selectedServices.find(s => s.code === code)?.name === 'Others' ? '' : prev.otherServicesText,
     }));
   };
@@ -85,20 +84,14 @@ const Contact = () => {
 
   // Calculate total amount
   useEffect(() => {
-    // Base payment is always 300 Birr
     let total = 300;
-    
-    // Add department price if selected
     if (formData.selectedDepartment) {
       const dept = departments.find(d => d.id === formData.selectedDepartment);
       if (dept) {
         total += dept.price;
       }
     }
-    
-    // Add prices of selected services
     total += formData.selectedServices.reduce((sum, s) => sum + s.price, 0);
-    
     setTotalAmount(total);
   }, [formData.selectedServices, formData.selectedDepartment, departments]);
 
@@ -119,20 +112,18 @@ const Contact = () => {
 
   const handleHomeServiceToggle = (service) => {
     const isCurrentlySelected = formData.selectedServices.some(s => s.id === service.id);
-
     setFormData(prev => ({
       ...prev,
       selectedServices: isCurrentlySelected
         ? prev.selectedServices.filter(s => s.id !== service.id)
         : [...prev.selectedServices, service],
-      // Clear otherServicesText when "Other" is unchecked
       otherServicesText: service.name === 'Others' && isCurrentlySelected
         ? ''
         : prev.otherServicesText,
     }));
   };
 
-  // Check if "Other" option is selected
+  // Check if "Others" option is selected
   const isOtherSelected = formData.selectedServices.some(service => service.name === 'Others');
 
   const handleAppointmentSubmit = async (e) => {
@@ -141,21 +132,18 @@ const Contact = () => {
     setError('');
 
     try {
-      // Validate form data
       if (!formData.fullName || !formData.age || !formData.sex || !formData.phone || !formData.email || !formData.appointmentDate || !formData.appointmentTime) {
         setError('Please fill in all required fields');
         setLoading(false);
         return;
       }
 
-      // Create or get patient
       let patientId;
       const { data: existingPatient, error: patientError } = await supabase
         .from('patients')
         .select('id')
         .eq('mrn', formData.mrn)
         .single();
-
       if (patientError && patientError.code !== 'PGRST116') {
         throw new Error('Failed to check patient');
       }
@@ -189,7 +177,7 @@ const Contact = () => {
           appointment_time: formData.appointmentTime,
           department_id: formData.selectedDepartment,
           appointment_type: formData.serviceType === 'appointment' ? 'Clinic' : 'Home',
-          base_price: 300, // Base price is always 300
+          base_price: 300,
           total_amount: totalAmount,
           payment_status: 'Pending',
           chapa_transaction_id: txRef,
@@ -211,27 +199,6 @@ const Contact = () => {
         if (clinicError) throw new Error('Failed to link clinic services');
       }
 
-      if (formData.serviceType === 'home') {
-        if (formData.selectedServices.length > 0) {
-          const homeSelections = formData.selectedServices.map(service => ({
-            appointment_id: appointment.id,
-            home_service_option_id: service.id,
-          }));
-          const { error: homeError } = await supabase
-            .from('home_service_selections')
-            .insert(homeSelections);
-          if (homeError) throw new Error('Failed to link home services');
-        }
-
-        const { error: locationError } = await supabase
-          .from('home_service_locations')
-          .insert({
-            appointment_id: appointment.id,
-            location: formData.location,
-          });
-        if (locationError) throw new Error('Failed to add location');
-      }
-
       const response = await fetch('http://localhost:5000/api/chapa/initiate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -244,15 +211,13 @@ const Contact = () => {
           name: formData.fullName,
         }),
       });
-      
+
       const paymentData = await response.json();
       if (!response.ok) throw new Error(paymentData.error || 'Failed to initiate payment');
       console.log("Payment Data : ", paymentData);
-      
-      // Navigate to payment page with appointment data
+
       window.location.href = paymentData.checkoutUrl;
-      
-      // Store appointment data in localStorage for PaymentSuccess page
+
       localStorage.setItem('appointmentData', JSON.stringify({
         name: formData.fullName,
         email: formData.email,
@@ -266,7 +231,6 @@ const Contact = () => {
         totalAmount: totalAmount,
         txRef: txRef
       }));
-      
     } catch (err) {
       setError(err.message);
       setLoading(false);
@@ -279,7 +243,6 @@ const Contact = () => {
     setContactError('');
     setContactSuccess('');
 
-    // Client-side validation
     const { name, email, phone, message } = contactFormData;
     if (!name || !email || !phone || !message) {
       setContactError(t('contact.form.validationError'));
@@ -293,7 +256,6 @@ const Contact = () => {
     }
 
     try {
-      // Save to database
       const { error } = await supabase
         .from('contact_messages')
         .insert({
@@ -304,7 +266,6 @@ const Contact = () => {
         });
       if (error) throw new Error('Failed to send message');
 
-      // Send email
       const response = await fetch('http://localhost:5000/api/send-email', {
         method: 'POST',
         headers: {
@@ -349,6 +310,26 @@ const Contact = () => {
       opacity: 1,
       transition: {
         duration: 0.5,
+      },
+    },
+  };
+
+  // Animation for zoom-in/zoom-out and color blink
+  const zoomBlinkVariants = {
+    animate: {
+      scale: [1, 1.2, 1],
+      color: ['#0ea5e9', '#0369a1', '#0ea5e9'], // sky-500 to sky-700
+      transition: {
+        scale: {
+          repeat: Infinity,
+          duration: 1.5,
+          ease: 'easeInOut',
+        },
+        color: {
+          repeat: Infinity,
+          duration: 1,
+          ease: 'linear',
+        },
       },
     },
   };
@@ -404,7 +385,7 @@ const Contact = () => {
           <motion.div variants={itemVariants} className="bg-white shadow-lg rounded-2xl p-6">
             <div className="flex items-start">
               <FaPhone className="w-6 h-6 text-sky-600 mr-4" />
-              <div>
+in              <div>
                 <h3 className="text-lg font-semibold text-gray-800">{t('contact.phoneTitle')}</h3>
                 <p className="text-gray-600">+251 25 278 2051</p>
               </div>
@@ -431,7 +412,7 @@ const Contact = () => {
           className="bg-white shadow-lg rounded-2xl p-8 grid md:grid-cols-2 gap-10"
         >
           <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-gray-800">Book Appointment</h2>
+            <h2 className="text-.Minimize2xl font-bold text-gray-800">Book Appointment</h2>
             <p className="text-gray-600">
               Need a consultation or follow-up? Fill in the details and our team will get in touch with you to confirm your appointment.
             </p>
@@ -464,17 +445,26 @@ const Contact = () => {
             </div>
 
             {formData.serviceType === 'home' && (
-              <div className="bg-amber-50 border-l-4 border-amber-400 p-4 mb-6 rounded-r-lg flex items-start space-x-3">
-                <FaExclamationTriangle className="text-amber-400 text-xl flex-shrink-0 mt-1" />
-                <div>
-                  <h3 className="font-medium text-amber-800">Location Restriction</h3>
-                  <p className="text-amber-700 mt-1">
-                    {t('booking.homeServiceWarning')}
-                  </p>
-                </div>
+              <div className="flex flex-col items-center justify-center h-40">
+                <motion.h2
+                  variants={zoomBlinkVariants}
+                  animate="animate"
+                  className="text-xl font-semibold"
+                >
+                  Under Construction
+                </motion.h2>
+                <motion.p
+                  variants={zoomBlinkVariants}
+                  animate="animate"
+                  className="text-sm mt-2"
+                >
+                  Coming Soon ...
+                </motion.p>
               </div>
             )}
 
+            {formData.serviceType === 'appointment' && (
+              <>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -610,75 +600,16 @@ const Contact = () => {
                 <option value="">{t('booking.selectDepartmentPlaceholder')}</option>
                 {departments.map(dept => (
                   <option key={dept.id} value={dept.id}>
-                    {dept.name}
+                        {dept.name}
                   </option>
                 ))}
               </select>
             </div>
 
-            {formData.serviceType === 'home' && (
-              <div className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    {t('booking.location')}*
-                  </label>
-                  <input
-                    type="text"
-                    value={formData.location}
-                    disabled
-                    className="w-full p-2 border rounded-lg bg-gray-50"
-                  />
-                  <p className="mt-1 text-sm text-red-500">
-                    {t('booking.services.locationNote')}
-                  </p>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    {t('booking.services.homeServices')}*
-                  </label>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    {homeServices.map(service => (
-                      <label
-                        key={service.id}
-                        className="flex items-center space-x-3 p-3 border rounded-lg cursor-pointer hover:bg-gray-50"
-                      >
-                        <input
-                          type="checkbox"
-                          checked={formData.selectedServices.some(s => s.id === service.id)}
-                          onChange={() => handleHomeServiceToggle(service)}
-                          className="w-4 h-4 text-sky-600 rounded focus:ring-sky-500"
-                        />
-                        <span className="text-gray-700">
-                          {service.name}
-                        </span>
-                      </label>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Display text area when "Other" is selected */}
-                {isOtherSelected && (
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    {t('booking.services.home.others')}
-                  </label>
-                  <textarea
-                      value={formData.otherServicesText}
-                      onChange={(e) => setFormData(prev => ({ ...prev, otherServicesText: e.target.value }))}
-                    placeholder={t('booking.services.home.othersPlaceholder')}
-                      className="w-full p-3 border rounded-lg min-h-[100px] resize-y focus:ring-sky-500 focus:border-sky-500"
-                  />
-                </div>
-                )}
-              </div>
-            )}
-
-            {formData.serviceType === 'appointment' && (
               <div className="space-y-4">
                 <h3 className="font-semibold">{t('booking.selectServices')}</h3>
                 <div className="flex flex-wrap gap-3">
-                  {['laboratory', 'x-ray', 'ultrasound'].map(type => (
+                    {['laboratory', 'x-ray', 'ultrasound'].map(type => (
                     <button
                       key={type}
                       type="button"
@@ -690,25 +621,24 @@ const Contact = () => {
                   ))}
                 </div>
               </div>
-            )}
 
                 <div className="flex flex-wrap gap-2">
                   {formData.selectedServices.map(service => (
-                <div
-                  key={service.id}
-                  className="relative bg-sky-100 text-sky-600 px-2 py-0.5 rounded text-xs pr-5"
-                >
-                  {service.name}
-                  <button
-                    type="button"
-                    onClick={() => handleRemoveService(service.code)}
-                    className="absolute top-0 right-0 p-1 text-red-500 hover:text-red-700"
-                  >
-                    <AiOutlineClose size={10} />
-                  </button>
+                    <div
+                      key={service.id}
+                      className="relative bg-sky-100 text-sky-600 px-2 py-0.5 rounded text-xs pr-5"
+                    >
+                      {service.name}
+                      <button
+                        type="button"
+                        onClick={() => handleRemoveService(service.code)}
+                        className="absolute top-0 right-0 p-1 text-red-500 hover:text-red-700"
+                      >
+                        <AiOutlineClose size={10} />
+                      </button>
+                    </div>
+                  ))}
                 </div>
-              ))}
-              </div>
 
             <div>
               <button
@@ -722,6 +652,8 @@ const Contact = () => {
                 {loading ? t('booking.submitting') : t('booking.submit')}
               </button>
             </div>
+              </>
+            )}
           </form>
         </motion.div>
 
@@ -856,10 +788,8 @@ const Contact = () => {
         type={currentServiceType}
         selectedServices={formData.selectedServices}
         onSelect={(services) => {
-          // Merge the new services with existing ones, avoiding duplicates by code
           const existingCodes = formData.selectedServices.map(s => s.code);
           const newServices = services.filter(s => !existingCodes.includes(s.code));
-          
           setFormData(prev => ({
             ...prev,
             selectedServices: [...prev.selectedServices, ...newServices],

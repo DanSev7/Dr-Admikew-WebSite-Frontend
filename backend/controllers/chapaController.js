@@ -22,7 +22,7 @@ const config = {
 
 // INITIATE PAYMENT
 const initiatePayment = async (req, res) => {
-    const { appointmentId, amount, email, phone, fullName,tx_ref } = req.body;
+    const { appointmentId, amount, email, phone, name,tx_ref } = req.body;
   console.log("Body : ", req.body);
 
   try {
@@ -32,8 +32,8 @@ const initiatePayment = async (req, res) => {
       currency: 'ETB',
       email,
       phone_number: phone,
-      first_name: fullName.split(' ')[0],
-      last_name: fullName.split(' ').slice(1).join(' ') || 'Unknown',
+      first_name: name.split(' ')[0],
+      last_name: name.split(' ').slice(1).join(' ') || 'Unknown',
       tx_ref: tx_ref,
       callback_url: CALLBACK_URL,
       return_url: RETURN_URL,

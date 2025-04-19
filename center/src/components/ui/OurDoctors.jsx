@@ -13,9 +13,9 @@ const OurDoctors = () => {
       image: "https://images.unsplash.com/photo-1603398399627-a6fefe1f6585?auto=format&fit=crop&w=500&q=80",
     },
     {
-      name: "Dr. Migbaru",
-      specialty: "Neurosurgeon",
-      image: "https://images.unsplash.com/photo-1621451537084-4f2da7a4c79c?auto=format&fit=crop&w=500&q=80",
+      name: "Dr. Biruk Belay",
+      specialty: "General Surgeon",
+      // image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=500&q=80",
     },
     {
       name: "Dr. Girma Moges",
@@ -23,9 +23,9 @@ const OurDoctors = () => {
       image: "https://images.unsplash.com/photo-1622253692159-30f3f0600c13?auto=format&fit=crop&w=500&q=80",
     },
     {
-      name: "Dr. Biruk Belay",
-      specialty: "General Surgeon",
-      image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=500&q=80",
+      name: "Dr. Haileyesus",
+      specialty: "Internist",
+      image: "https://images.unsplash.com/photo-1621451537084-4f2da7a4c79c?auto=format&fit=crop&w=500&q=80",
     },
   ];
   

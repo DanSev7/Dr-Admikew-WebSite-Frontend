@@ -295,7 +295,7 @@
       "x-ray": "Raajo",
       "ultrasound": "Ultrasound",
       "laboratoryTitle": "Dooro Baaritaanada Sheybaarka",
-      "xrayTitle": "Dooro Adeegyada Raajo",
+      "x-rayTitle": "Dooro Adeegyada Raajo",
       "ultrasoundTitle": "Dooro Adeegyada Ultrasound",
       "homeTitle": "Dooro Adeegyada Guriga",
       "others": "Adeegyo Kale",

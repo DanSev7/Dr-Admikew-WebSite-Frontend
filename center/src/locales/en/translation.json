@@ -285,9 +285,9 @@
         "name": "Dr. Admikew Bekele",
         "specialty": "Cardiothoracic Surgeon"
       },
-      "migbaru": {
-        "name": "Dr. Migbaru",
-        "specialty": "Neurosurgeon"
+      "haileyesus": {
+        "name": "Dr. Haileyesus",
+        "specialty": "Internist"
       },
       "girma": {
         "name": "Dr. Girma Mogos",
@@ -366,7 +366,7 @@
       "x-ray": "X-Ray",
       "ultrasound": "Ultrasound",
       "laboratoryTitle": "Select Laboratory Tests",
-      "xrayTitle": "Select X-Ray Services",
+      "x-rayTitle": "Select X-Ray Services",
       "ultrasoundTitle": "Select Ultrasound Services",
       "homeTitle": "Select Home Services",
       "home": {

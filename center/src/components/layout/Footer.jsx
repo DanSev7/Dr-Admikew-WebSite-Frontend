@@ -120,7 +120,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="mt-8 pt-6 border-t border-sky-600 text-center">
           <p>© {new Date().getFullYear()} - {t("centerName")}</p>
-          <p className="mt-2">{t("footer.developedBy")}</p>
+          {/* <p className="mt-2">{t("footer.developedBy")}</p> */}
         </div>
       </div>
     </footer>
