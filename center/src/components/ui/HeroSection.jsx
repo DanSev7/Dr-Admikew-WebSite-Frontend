@@ -66,7 +66,7 @@ const HeroSection = () => {
             <div className="flex flex-col md:flex-row gap-4 justify-center md:justify-start">
                 {/* Book Appointment */}
               <Link
-                to="/contact"
+                to="/appointment"
                 className="inline-flex items-center justify-center px-6 py-3 bg-sky-600 text-white rounded-full hover:bg-sky-700 transition-colors duration-300"
               >
                 <FaCalendarAlt className="mr-2" />
