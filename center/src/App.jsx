@@ -11,6 +11,7 @@ import Contact from "./pages/Contact";
 import OurDoctors from "./components/ui/OurDoctors";
 import ServiceAreaDetailPage from "./pages/ServiceAreaDetailPage";
 import PaymentSuccess from "./pages/PaymentSuccess";
+import Appointment from "./pages/appointment";
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="/services/:serviceId" element={<ServiceDetail />} />
           <Route path="/service-area/:serviceId" element={<ServiceAreaDetailPage />} />
           <Route path="/payment-success" element={<PaymentSuccess />} />
+          <Route path="/appointment" element={<Appointment />} />
         </Routes>
       </main>
       <Footer /> {/* Add the Footer here */}

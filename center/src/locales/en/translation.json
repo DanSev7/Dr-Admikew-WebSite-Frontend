@@ -5,6 +5,7 @@
     "home": "Home",
     "about": "About Us",
     "services": "Services",
+    "appointment": "Appointment",
     "servicesMenu": {
       "overview": "Our Services",
       "home": "Home Services"
@@ -12,6 +13,10 @@
     "doctors": "Doctors",
     "contact": "Contact",
     "bookAppointment": "Book Appointment"
+  },
+  "appointment": {
+    "title": "Appointments",
+    "subtitle": "Make Appointments"
   },
   "footer": {
     "aboutUs": "About Our Center",

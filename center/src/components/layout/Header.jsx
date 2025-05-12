@@ -98,7 +98,7 @@ const Header = () => {
 
             {/* Book Appointment Button */}
             <button
-              onClick={() => navigate('/contact')}
+              onClick={() => navigate('/appointment')}
               className="bg-sky-600 text-white px-6 py-2 rounded-full hover:bg-sky-700 transition-colors flex items-center"
             >
               <FaCalendarAlt className="mr-2" />
@@ -206,4 +206,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Header; 
