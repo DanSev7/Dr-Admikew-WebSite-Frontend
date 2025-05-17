@@ -1,21 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { FaPaperPlane, FaExclamationTriangle } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
+import { FaPaperPlane } from 'react-icons/fa';
 import { createClient } from '@supabase/supabase-js';
-import ServiceSelectionModal from '../components/ui/ServiceSelectionModal';
 import { AiOutlineClose } from 'react-icons/ai';
+
+// Lazy load components
+const ServiceSelectionModal = lazy(() => import('../components/ui/ServiceSelectionModal'));
 
 // Initialize Supabase client
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
+// Loading component for modal
+const ModalLoadingFallback = () => (
+  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-sky-600"></div>
+  </div>
+);
+
 const Appointment = () => {
   const { t } = useTranslation();
   const location = useLocation();
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     fullName: '',
     age: '',
@@ -35,7 +42,6 @@ const Appointment = () => {
   const [isServiceModalOpen, setIsServiceModalOpen] = useState(false);
   const [currentServiceType, setCurrentServiceType] = useState('');
   const [departments, setDepartments] = useState([]);
-  const [homeServices, setHomeServices] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -48,7 +54,7 @@ const Appointment = () => {
     }));
   };
 
-  // Fetch departments and home services on mount
+  // Fetch departments on mount
   useEffect(() => {
     const fetchData = async () => {
       const { data: deptData, error: deptError } = await supabase
@@ -59,15 +65,6 @@ const Appointment = () => {
         return;
       }
       setDepartments(deptData);
-
-      const { data: homeData, error: homeError } = await supabase
-        .from('home_service_options')
-        .select('id, name, price');
-      if (homeError) {
-        setError('Failed to load home services');
-        return;
-      }
-      setHomeServices(homeData);
     };
     fetchData();
   }, []);
@@ -98,19 +95,6 @@ const Appointment = () => {
   const handleServiceSelection = (type) => {
     setCurrentServiceType(type);
     setIsServiceModalOpen(true);
-  };
-
-  const handleHomeServiceToggle = (service) => {
-    const isCurrentlySelected = formData.selectedServices.some(s => s.id === service.id);
-    setFormData(prev => ({
-      ...prev,
-      selectedServices: isCurrentlySelected
-        ? prev.selectedServices.filter(s => s.id !== service.id)
-        : [...prev.selectedServices, service],
-      otherServicesText: service.name === 'Others' && isCurrentlySelected
-        ? ''
-        : prev.otherServicesText,
-    }));
   };
 
   const handleAppointmentSubmit = async (e) => {
@@ -224,47 +208,6 @@ const Appointment = () => {
     }
   };
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  };
-
-  // Animation for zoom-in/zoom-out and color blink
-  const zoomBlinkVariants = {
-    animate: {
-      scale: [1, 1.2, 1],
-      color: ['#0ea5e9', '#0369a1', '#0ea5e9'], // sky-500 to sky-700
-      transition: {
-        scale: {
-          repeat: Infinity,
-          duration: 1.5,
-          ease: 'easeInOut',
-        },
-        color: {
-          repeat: Infinity,
-          duration: 1,
-          ease: 'linear',
-        },
-      },
-    },
-  };
-
   return (
     <div className="py-20 bg-gray-50">
       {/* Breadcrumb + Page Header */}
@@ -278,32 +221,18 @@ const Appointment = () => {
         </nav>
 
         <div className="text-center max-w-3xl mx-auto">
-          <motion.h1
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-bold text-gray-800 mb-4"
-          >
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
             {t('appointment.title')}
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-lg text-gray-600"
-          >
+          </h1>
+          <p className="text-lg text-gray-600">
             {t('appointment.subtitle')}
-          </motion.p>
+          </p>
         </div>
       </div>
 
       <div className="container mx-auto px-4">
         {/* Book Appointment */}
-        <motion.div
-          variants={itemVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="bg-white shadow-lg rounded-2xl p-8 grid md:grid-cols-2 gap-10"
-        >
+        <div className="bg-white shadow-lg rounded-2xl p-8 grid md:grid-cols-2 gap-10">
           <div className="space-y-4">
             <h2 className="text-2xl font-bold text-gray-800">Book Appointment</h2>
             <p className="text-gray-600">
@@ -339,20 +268,12 @@ const Appointment = () => {
 
             {formData.serviceType === 'home' && (
               <div className="flex flex-col items-center justify-center h-40">
-                <motion.h2
-                  variants={zoomBlinkVariants}
-                  animate="animate"
-                  className="text-xl font-semibold"
-                >
+                <h2 className="text-xl font-semibold">
                   Under Construction
-                </motion.h2>
-                <motion.p
-                  variants={zoomBlinkVariants}
-                  animate="animate"
-                  className="text-sm mt-2"
-                >
+                </h2>
+                <p className="text-sm mt-2">
                   Coming Soon ...
-                </motion.p>
+                </p>
               </div>
             )}
 
@@ -548,23 +469,25 @@ const Appointment = () => {
               </>
             )}
           </form>
-        </motion.div>
+        </div>
       </div>
 
-      <ServiceSelectionModal
-        isOpen={isServiceModalOpen}
-        onClose={() => setIsServiceModalOpen(false)}
-        type={currentServiceType}
-        selectedServices={formData.selectedServices}
-        onSelect={(services) => {
-          const existingCodes = formData.selectedServices.map(s => s.code);
-          const newServices = services.filter(s => !existingCodes.includes(s.code));
-          setFormData(prev => ({
-            ...prev,
-            selectedServices: [...prev.selectedServices, ...newServices],
-          }));
-        }}
-      />
+      <Suspense fallback={<ModalLoadingFallback />}>
+        <ServiceSelectionModal
+          isOpen={isServiceModalOpen}
+          onClose={() => setIsServiceModalOpen(false)}
+          type={currentServiceType}
+          selectedServices={formData.selectedServices}
+          onSelect={(services) => {
+            const existingCodes = formData.selectedServices.map(s => s.code);
+            const newServices = services.filter(s => !existingCodes.includes(s.code));
+            setFormData(prev => ({
+              ...prev,
+              selectedServices: [...prev.selectedServices, ...newServices],
+            }));
+          }}
+        />
+      </Suspense>
     </div>
   );
 };
