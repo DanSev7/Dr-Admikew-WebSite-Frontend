@@ -13,6 +13,8 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 // Loading component for modal
 const ModalLoadingFallback = () => (
   <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
@@ -170,7 +172,7 @@ const Appointment = () => {
         if (clinicError) throw new Error('Failed to link clinic services');
       }
 
-      const response = await fetch('http://localhost:5000/api/chapa/initiate', {
+      const response = await fetch(`${API_URL}/api/chapa/initiate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

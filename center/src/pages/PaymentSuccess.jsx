@@ -53,8 +53,9 @@
 // export default PaymentSuccess;
 import React, { useState, useEffect } from "react";
 import { AiOutlineCheckCircle } from "react-icons/ai";
-import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 const PaymentSuccess = () => {
   const navigate = useNavigate();
@@ -92,7 +93,7 @@ const PaymentSuccess = () => {
         };
 
         // Send email
-        const response = await fetch('http://localhost:5000/api/send-email', {
+        const response = await fetch(`${API_URL}/api/send-email`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -122,19 +123,10 @@ const PaymentSuccess = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-green-50 to-green-100 p-6">
-      <motion.div
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="bg-white rounded-3xl shadow-2xl p-10 flex flex-col items-center space-y-6 max-w-md w-full"
-      >
-        <motion.div
-          initial={{ rotate: -180 }}
-          animate={{ rotate: 0 }}
-          transition={{ duration: 0.6 }}
-        >
+      <div className="bg-white rounded-3xl shadow-2xl p-10 flex flex-col items-center space-y-6 max-w-md w-full">
+        <div>
           <AiOutlineCheckCircle className="text-sky-500" size={100} />
-        </motion.div>
+        </div>
 
         <h2 className="text-3xl font-bold text-sky-600 text-center">
           Payment Successful!
@@ -152,7 +144,7 @@ const PaymentSuccess = () => {
         >
           Go Back Home
         </button>
-      </motion.div>
+      </div>
     </div>
   );
 };

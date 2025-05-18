@@ -10,6 +10,8 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 const Contact = () => {
   const { t } = useTranslation();
   const [contactFormData, setContactFormData] = useState({
@@ -51,7 +53,7 @@ const Contact = () => {
         });
       if (error) throw new Error('Failed to send message');
 
-      const response = await fetch('http://localhost:5000/api/send-email', {
+      const response = await fetch(`${API_URL}/api/send-email`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

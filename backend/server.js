@@ -4,11 +4,26 @@ const chapaRoutes = require('./routes/chapaRoutes');
 const emailRoutes = require('./routes/emailRoutes');
 const axios = require('axios');
 const cors = require('cors');
+const compression = require('compression');
+const helmet = require('helmet');
 require('dotenv').config();
 
 const app = express();
-app.use(cors());
+
+// CORS configuration
+const corsOptions = {
+  origin: process.env.NODE_ENV === 'production' 
+    ? 'https://dradmikewmedcenter.com' 
+    : 'http://localhost:5173',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
+app.use(compression());
+app.use(helmet());
 
 // Initialize Supabase client
 const supabaseUrl = process.env.SUPABASE_URL;
@@ -86,7 +101,15 @@ app.get('/payment-success', (req, res) => {
   res.redirect('/'); // Redirect to home or a success page
 });
 
+// Error Handling
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ message: 'Something went wrong!' });
+});
+
 const PORT = process.env.PORT || 5000;
+const HOST = process.env.NODE_ENV === 'production' ? 'api.dradmikewmedcenter.com' : 'localhost';
+
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server running on ${HOST}:${PORT}`);
 });
