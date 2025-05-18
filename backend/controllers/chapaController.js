@@ -7,7 +7,7 @@ const { createClient } = require('@supabase/supabase-js');
 const CHAPA_URL = process.env.CHAPA_URL || "https://api.chapa.co/v1/transaction/initialize";
 const CHAPA_AUTH = process.env.CHAPA_AUTH || "CHASECK_TEST-jXs31NxZNPiC3d3pKJqGZjxrWwFLVsqg";
 const CALLBACK_URL = process.env.CALLBACK_URL || "http://localhost:5000/api/chapa/verify-payment/";
-const RETURN_URL = process.env.RETURN_URL || "http://localhost:5173/payment-success";
+const RETURN_URL = process.env.RETURN_URL || "https://dradmikewmedcenter.com/payment-success";
 // Initialize Supabase client
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
