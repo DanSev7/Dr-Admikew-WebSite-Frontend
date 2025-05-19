@@ -7,12 +7,14 @@ import { Routes, Route } from 'react-router-dom';
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 const Contact = lazy(() => import("./pages/Contact"));
-const OurDoctors = lazy(() => import("./components/ui/OurDoctors"));
+const OurDoctors = lazy(() => import("./pages/OurDoctors"));
 const Services = lazy(() => import("./pages/Services"));
 const ServiceDetail = lazy(() => import('./pages/ServiceDetail'));
 const ServiceAreaDetailPage = lazy(() => import("./pages/ServiceAreaDetailPage"));
 const PaymentSuccess = lazy(() => import("./pages/PaymentSuccess"));
 const Appointment = lazy(() => import("./pages/appointment"));
+const ServiceArea = lazy(() => import("./pages/ServiceArea"));
+
 
 // Loading component
 const LoadingFallback = () => (
@@ -35,6 +37,7 @@ const App = () => {
             <Route path="/services" element={<Services />} />
             <Route path="/services/:serviceId" element={<ServiceDetail />} />
             <Route path="/service-area/:serviceId" element={<ServiceAreaDetailPage />} />
+            <Route path="/service-areas" element={<ServiceArea />} />
             <Route path="/payment-success" element={<PaymentSuccess />} />
             <Route path="/appointment" element={<Appointment />} />
           </Routes>

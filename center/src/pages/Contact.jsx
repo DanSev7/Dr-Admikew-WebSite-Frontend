@@ -164,7 +164,7 @@ const Contact = () => {
               <FaEnvelope className="w-6 h-6 text-sky-600 mr-4" />
               <div>
                 <h3 className="text-lg font-semibold text-gray-800">{t('contact.emailTitle')}</h3>
-                <p className="text-gray-600">info@dradmikewcenter.com</p>
+                <p className="text-gray-600">info@anbesg.com</p>
               </div>
             </div>
           </motion.div>

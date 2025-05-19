@@ -5,10 +5,12 @@
     "home": "Home",
     "about": "About Us",
     "services": "Services",
+    "serviceArea": "Service Area",
     "appointment": "Appointment",
     "servicesMenu": {
       "overview": "Our Services",
-      "home": "Home Services"
+      "home": "Home Services",
+      "serviceArea": "Service Areas"
     },
     "doctors": "Doctors",
     "contact": "Contact",

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FaUserMd, FaArrowRight } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 
-const OurDoctors = () => {
+const Doctors = () => {
   const { t } = useTranslation();
   
   const doctors = [
@@ -32,9 +32,9 @@ const OurDoctors = () => {
   
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-white ml-10 mr-10">
       {/* Hero Section with Breadcrumb */}
-      <div className="px-7 md:px-8 lg:px-14 xl:px-18 mb-16 mt-6">
+      {/* <div className="px-7 md:px-8 lg:px-14 xl:px-18 mb-16 mt-6">
         <nav className="mb-8">
           <ol className="flex items-center space-x-2 text-gray-500">
             <li><a href="/" className="hover:text-sky-600">{t('nav.home')}</a></li>
@@ -42,7 +42,7 @@ const OurDoctors = () => {
             <li className="text-sky-600">{t('nav.doctors')}</li>
           </ol>
         </nav>
-      </div>
+      </div> */}
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between mb-12">
           <div>
@@ -90,4 +90,4 @@ const OurDoctors = () => {
   );
 };
 
-export default OurDoctors; 
+export default Doctors; 

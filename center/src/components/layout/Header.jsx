@@ -58,7 +58,12 @@ const Header = () => {
   };
 
   const handleHomeServiceClick = () => {
-    navigate('/contact', { state: { serviceType: 'home' } });
+    navigate('/appointment', { state: { serviceType: 'home' } });
+    setIsServiceDropdownOpen(false);
+    setIsMenuOpen(false);
+  };
+  const handleServiceAreaClick = () => {
+    navigate('/service-areas', { state: { serviceType: 'serviceArea' } });
     setIsServiceDropdownOpen(false);
     setIsMenuOpen(false);
   };
@@ -110,6 +115,12 @@ const Header = () => {
                     className="w-full text-left px-4 py-2.5 text-gray-700 hover:bg-sky-50 hover:text-sky-600 font-medium text-sm"
                   >
                     {t("nav.servicesMenu.home")}
+                  </button>
+                  <button
+                    onClick={handleServiceAreaClick}
+                    className="w-full text-left px-4 py-2.5 text-gray-700 hover:bg-sky-50 hover:text-sky-600 font-medium text-sm"
+                  >
+                    {t("nav.servicesMenu.serviceArea")}
                   </button>
                 </div>
               )}
