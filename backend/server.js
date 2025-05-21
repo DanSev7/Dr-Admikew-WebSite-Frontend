@@ -11,10 +11,16 @@ require('dotenv').config();
 const app = express();
 
 // CORS configuration
+// const corsOptions = {
+//   origin: process.env.NODE_ENV === 'production' 
+//     ? 'https://dradmikewmedcenter.com' 
+//     : 'http://localhost:5173' ,
+//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+//   allowedHeaders: ['Content-Type', 'Authorization'],
+//   credentials: true
+// };
 const corsOptions = {
-  origin: process.env.NODE_ENV === 'production' 
-    ? 'https://dradmikewmedcenter.com' 
-    : 'http://localhost:5173',
+  origin: 'http://localhost:5173',  // hardcoded for local dev
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
@@ -108,7 +114,8 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 5000;
-const HOST = process.env.NODE_ENV === 'production' ? 'api.dradmikewmedcenter.com' : 'localhost';
+// const HOST = process.env.NODE_ENV === 'production' ? 'api.dradmikewmedcenter.com' : 'localhost';
+const HOST = 'localhost';
 
 app.listen(PORT, () => {
   console.log(`Server running on ${HOST}:${PORT}`);
