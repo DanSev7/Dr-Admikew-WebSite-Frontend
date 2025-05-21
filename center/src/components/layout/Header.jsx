@@ -218,6 +218,12 @@ const Header = () => {
                     >
                       {t("nav.servicesMenu.home")}
                     </button>
+                    <button
+                      onClick={handleServiceAreaClick}
+                      className="w-full text-left px-4 py-2 text-gray-700 hover:bg-sky-50 hover:text-sky-600 rounded-lg text-sm font-medium"
+                    >
+                      {t("nav.servicesMenu.serviceArea")}
+                    </button>
                   </div>
                 )}
               </div>

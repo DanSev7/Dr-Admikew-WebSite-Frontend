@@ -145,28 +145,28 @@ const ServiceArea = () => {
       {/* CTA Section */}
     
       <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4 }}
-        className="container mx-auto px-4 mt-16"
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.4 }}
+  className="container mx-auto px-4 mt-16"
+>
+  <div className="bg-gradient-to-r from-sky-600 to-sky-700 text-white rounded-xl shadow-xl p-8 flex flex-col md:flex-row items-center justify-between text-center md:text-left">
+    <div className="w-full md:w-2/3 mb-6 md:mb-0">
+      <h2 className="text-3xl font-bold mb-4">{t('services.cta.title')}</h2>
+      <p className="text-lg leading-relaxed">
+        Book an appointment with our specialists today            
+      </p>
+    </div>
+    <div className="w-full md:w-auto flex justify-center md:justify-end">
+      <Link 
+        to="/appointment"
+        className="bg-sky-800 text-white px-6 py-3 rounded-full font-semibold hover:bg-sky-900 transition-colors duration-300 shadow-md"
       >
-        <div className="bg-gradient-to-r from-sky-600 to-sky-700 text-white rounded-xl shadow-xl p-8 md:flex md:items-center md:justify-between">
-          <div className="md:w-2/3 text-center md:text-left mb-6 md:mb-0">
-            <h2 className="text-3xl font-bold mb-4">{t('services.cta.title')}</h2>
-            <p className="text-lg leading-relaxed">
-              Book an appointment with our specialists today            
-            </p>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-end">
-            <Link 
-              to="/appointment"
-              className="inline-block bg-sky-800 text-white px-6 py-3 rounded-full font-semibold hover:bg-sky-900 transition-colors duration-300 shadow-md"
-            >
-              {t('services.cta.button')}
-            </Link>
-          </div>
-        </div>
-      </motion.div>
+        {t('services.cta.button')}
+      </Link>
+    </div>
+  </div>
+</motion.div>
     </div>
   );
 };
