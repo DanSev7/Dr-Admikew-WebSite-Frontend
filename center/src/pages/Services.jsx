@@ -73,11 +73,11 @@ const Services = () => {
   }, [searchTerm, selectedCategory, t]);
 
   return (
-    <div className="py-20 bg-gray-100">
+    <div className="py-20 bg-gray-50">
       {/* Hero Section with Breadcrumb */}
       <div className="px-7 md:px-8 lg:px-14 xl:px-18 mb-16 mt-2">
         <nav className="mb-8">
-          <ol className="flex items-center space-x-2 text-gray-600 font-medium text-sm">
+          <ol className="flex items-center space-x-2 text-gray-600 font-medium text-md">
             <li><Link to="/" className="hover:text-sky-600 transition-colors">{t('nav.home')}</Link></li>
             <li>/</li>
             <li className="text-sky-600">{t('nav.services')}</li>

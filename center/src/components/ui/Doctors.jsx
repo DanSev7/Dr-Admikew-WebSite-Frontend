@@ -3,29 +3,47 @@ import { Link } from 'react-router-dom';
 import { FaUserMd, FaArrowRight } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 
+// Import images from assets
+// import admikewImage from '../assets/images/admikew.jpg';
+import birukImage from '../../assets/images/biruk.jpg';
+// import girmaImage from '../../assets/images/girma.jpg';
+import biniamImage from '../../assets/images/bini.jpg';
+import haileyesusImage from '../../assets/images/haile.jpg';
+import samrawitImage from '../../assets/images/samra.jpg';
 const Doctors = () => {
   const { t } = useTranslation();
   
+  
   const doctors = [
-    {
-      name: "Dr. Admikew Bekele",
-      specialty: "Cardiothoracic Surgeon",
-      image: "https://images.unsplash.com/photo-1603398399627-a6fefe1f6585?auto=format&fit=crop&w=500&q=80",
-    },
+    // {
+    //   name: "Dr. Admikew Bekele",
+    //   specialty: "Cardiothoracic Surgeon",
+    //   image: admikewImage,
+    // },
     {
       name: "Dr. Biruk Belay",
       specialty: "General Surgeon",
-      // image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=500&q=80",
+      image: birukImage,
     },
+    // {
+    //   name: "Dr. Girma Moges",
+    //   specialty: "Plastic Surgeon",
+    //   image: girmaImage,
+    // },
     {
-      name: "Dr. Girma Moges",
-      specialty: "Plastic Surgeon",
-      image: "https://images.unsplash.com/photo-1622253692159-30f3f0600c13?auto=format&fit=crop&w=500&q=80",
+      name: "Dr. Biniam",
+      specialty: "Hematologist",
+      image: biniamImage,
     },
     {
       name: "Dr. Haileyesus",
       specialty: "Internist",
-      image: "https://images.unsplash.com/photo-1621451537084-4f2da7a4c79c?auto=format&fit=crop&w=500&q=80",
+      image: haileyesusImage,
+    },
+    {
+      name: "Dr. Samrawit",
+      specialty: "Anistologist",
+      image: samrawitImage,
     },
   ];
   
@@ -67,7 +85,7 @@ const Doctors = () => {
                 <img 
                   src={doctor.image} 
                   alt={doctor.name}
-                  className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-80 object-cover transform group-hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>

@@ -3,7 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 import { FaPaperPlane } from 'react-icons/fa';
 import { createClient } from '@supabase/supabase-js';
-import { AiOutlineClose } from 'react-icons/ai';
+import { AiOutlineClose } from 'react-icons/ai';  
+import { motion } from 'framer-motion';
 
 // Lazy load components
 const ServiceSelectionModal = lazy(() => import('../components/ui/ServiceSelectionModal'));
@@ -212,46 +213,99 @@ const Appointment = () => {
 
   return (
     <div className="py-20 bg-gray-50">
-      {/* Breadcrumb + Page Header */}
-      <div className="px-7 md:px-8 lg:px-14 xl:px-18 mb-16 mt-2">
+      {/* Hero Section with Breadcrumb */}
+      
+        <div className="px-7 md:px-8 lg:px-14 xl:px-18 mb-16 mt-2">
         <nav className="mb-8">
-          <ol className="flex items-center space-x-2 text-gray-500">
-            <li><a href="/" className="hover:text-sky-600">{t('nav.home')}</a></li>
+          <ol className="flex items-center space-x-2 text-gray-600 font-medium text-md">
+            <li><a href="/" className="hover:black-white transition-colors">{t('nav.home')}</a></li>
             <li>/</li>
             <li className="text-sky-600">{t('nav.appointment')}</li>
           </ol>
         </nav>
-
-        <div className="text-center max-w-3xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-            {t('appointment.title')}
-          </h1>
-          <p className="text-lg text-gray-600">
-            {t('appointment.subtitle')}
-          </p>
+          <div className="text-center max-w-3xl mx-auto">
+            <motion.h1 
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-4xl md:text-5xl font-bold mb-4 tracking-tight"
+            >
+              {t('appointment.title')}
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="text-lg leading-relaxed"
+            >
+              {t('appointment.subtitle')}
+            </motion.p>
+          </div>
         </div>
-      </div>
 
       <div className="container mx-auto px-4">
         {/* Book Appointment */}
-        <div className="bg-white shadow-lg rounded-2xl p-8 grid md:grid-cols-2 gap-10">
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-gray-800">Book Appointment</h2>
-            <p className="text-gray-600">
-              Need a consultation or follow-up? Fill in the details and our team will get in touch with you to confirm your appointment.
-            </p>
-            <p className="text-gray-600 text-sm italic">
+        <div className="bg-white shadow-xl rounded-2xl p-8 grid md:grid-cols-2 gap-10 bg-gradient-to-br from-white to-gray-50">
+          <div className="space-y-6">
+            <motion.h2 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-3xl font-bold text-gray-900"
+            >
+              Book Your Appointment
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.1 }}
+              className="text-gray-600 leading-relaxed"
+            >
+              Schedule a consultation or follow-up with our expert team. Fill in the details below, and we'll confirm your appointment promptly.
+            </motion.p>
+            <motion.p 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-gray-500 text-sm italic"
+            >
               Fields marked with * are required.
-            </p>
-            {error && <p className="text-red-500">{error}</p>}
+            </motion.p>
+            {error && (
+              <motion.p 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="text-red-500 font-medium"
+              >
+                {error}
+              </motion.p>
+            )}
+            {formData.serviceType === 'appointment' && (
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 }}
+                className="bg-sky-100 rounded-lg p-4"
+              >
+                <p className="text-sky-600 font-semibold">Total Amount: ${totalAmount}</p>
+                <p className="text-sky-600 text-sm mt-1">*Initial 300 birr is for Registration</p>
+              </motion.div>
+            )}
           </div>
 
           <form onSubmit={handleAppointmentSubmit} className="space-y-6">
-            <div className="flex space-x-4">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="flex space-x-4"
+            >
               <button
                 type="button"
-                className={`px-4 py-2 rounded-full ${
-                  formData.serviceType === 'appointment' ? 'bg-sky-600 text-white' : 'bg-gray-100'
+                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                  formData.serviceType === 'appointment'
+                    ? 'bg-sky-600 text-white shadow-md'
+                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
                 onClick={() => setFormData(prev => ({ ...prev, serviceType: 'appointment', selectedServices: [] }))}
               >
@@ -259,24 +313,39 @@ const Appointment = () => {
               </button>
               <button
                 type="button"
-                className={`px-4 py-2 rounded-full ${
-                  formData.serviceType === 'home' ? 'bg-sky-600 text-white' : 'bg-gray-100'
+                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                  formData.serviceType === 'home'
+                    ? 'bg-sky-600 text-white shadow-md'
+                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
                 onClick={() => setFormData(prev => ({ ...prev, serviceType: 'home', selectedServices: [] }))}
               >
                 {t('booking.homeService')}
               </button>
-            </div>
+            </motion.div>
 
             {formData.serviceType === 'home' && (
-              <div className="flex flex-col items-center justify-center h-40">
-                <h2 className="text-xl font-semibold">
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.5, yoyo: Infinity, ease: "easeInOut" }}
+                className="flex flex-col items-center justify-center h-40 bg-sky-100 rounded-xl p-6"
+              >
+                <motion.h2
+                  animate={{ scale: [1, 1.1, 1], opacity: [1, 0.8, 1] }}
+                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                  className="text-2xl font-bold text-sky-600"
+                >
                   Under Construction
-                </h2>
-                <p className="text-sm mt-2">
-                  Coming Soon ...
-                </p>
-              </div>
+                </motion.h2>
+                <motion.p
+                  animate={{ scale: [1, 1.05, 1], opacity: [1, 0.9, 1] }}
+                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
+                  className="text-sm text-sky-600 mt-2 font-medium"
+                >
+                  Coming Soon...
+                </motion.p>
+              </motion.div>
             )}
 
             {formData.serviceType === 'appointment' && (
@@ -290,11 +359,10 @@ const Appointment = () => {
                       type="text"
                       value={formData.fullName}
                       onChange={(e) => setFormData(prev => ({ ...prev, fullName: e.target.value }))}
-                      className="w-full p-2 border rounded-lg"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-600 focus:border-sky-600 transition-all duration-300"
                       required
                     />
                   </div>
-
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       {t('booking.mrn')}
@@ -304,7 +372,7 @@ const Appointment = () => {
                       value={formData.mrn || ''}
                       onChange={(e) => setFormData(prev => ({ ...prev, mrn: e.target.value }))}
                       placeholder={t('booking.mrnPlaceholder')}
-                      className="w-full p-2 border rounded-lg"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-600 focus:border-sky-600 transition-all duration-300"
                     />
                   </div>
                 </div>
@@ -322,37 +390,44 @@ const Appointment = () => {
                         const value = Math.max(0, parseInt(e.target.value) || 0);
                         setFormData(prev => ({ ...prev, age: value.toString() }));
                       }}
-                      className="w-full p-2 border rounded-lg"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-600 focus:border-sky-600 transition-all duration-300"
                       required
                     />
                   </div>
                   <div>
-                    <label htmlFor="sex" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="sex" className="block text-sm font-medium text-gray-700 mb-1">
                       {t('booking.sex')}*
                     </label>
-                    <select
-                      id="sex"
-                      className="mt-1 block w-full px-4 py-[10px] border border-gray-300 rounded-lg focus:ring-sky-500 focus:border-sky-500"
-                      value={formData.sex}
-                      onChange={(e) => setFormData(prev => ({ ...prev, sex: e.target.value }))}
-                      required
-                    >
-                      <option value="">{t('booking.selectSex')}</option>
-                      <option value="Male">{t('booking.male')}</option>
-                      <option value="Female">{t('booking.female')}</option>
-                    </select>
+                    <div className="relative">
+                      <select
+                        id="sex"
+                        className="appearance-none w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-600 focus:border-sky-600 transition-all duration-300 bg-white"
+                        value={formData.sex}
+                        onChange={(e) => setFormData(prev => ({ ...prev, sex: e.target.value }))}
+                        required
+                      >
+                        <option value="">{t('booking.selectSex')}</option>
+                        <option value="Male">{t('booking.male')}</option>
+                        <option value="Female">{t('booking.female')}</option>
+                      </select>
+                      <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                        <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
                       {t('booking.phone')}*
                     </label>
                     <input
                       type="tel"
                       id="phone"
-                      className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-sky-500 focus:border-sky-500"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-600 focus:border-sky-600 transition-all duration-300"
                       placeholder="09XXXXXXXX"
                       value={formData.phone}
                       onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
@@ -360,13 +435,13 @@ const Appointment = () => {
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                       {t('booking.email')}*
                     </label>
                     <input
                       type="email"
                       id="email"
-                      className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-sky-500 focus:border-sky-500"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-600 focus:border-sky-600 transition-all duration-300"
                       placeholder="example@gmail.com"
                       value={formData.email}
                       onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
@@ -375,7 +450,7 @@ const Appointment = () => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       {t('booking.date')}*
@@ -385,7 +460,7 @@ const Appointment = () => {
                       value={formData.appointmentDate}
                       onChange={(e) => setFormData(prev => ({ ...prev, appointmentDate: e.target.value }))}
                       min={new Date().toISOString().split('T')[0]}
-                      className="w-full p-2 border rounded-lg"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-600 focus:border-sky-600 transition-all duration-300"
                       required
                     />
                   </div>
@@ -397,7 +472,7 @@ const Appointment = () => {
                       type="time"
                       value={formData.appointmentTime}
                       onChange={(e) => setFormData(prev => ({ ...prev, appointmentTime: e.target.value }))}
-                      className="w-full p-2 border rounded-lg"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-600 focus:border-sky-600 transition-all duration-300"
                       required
                     />
                   </div>
@@ -407,30 +482,37 @@ const Appointment = () => {
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     {t('booking.selectDepartment')}*
                   </label>
-                  <select
-                    value={formData.selectedDepartment}
-                    onChange={(e) => setFormData(prev => ({ ...prev, selectedDepartment: e.target.value }))}
-                    className="w-full p-2 border rounded-lg"
-                    required
-                  >
-                    <option value="">{t('booking.selectDepartmentPlaceholder')}</option>
-                    {departments.map(dept => (
-                      <option key={dept.id} value={dept.id}>
-                        {dept.name}
-                      </option>
-                    ))}
-                  </select>
+                  <div className="relative">
+                    <select
+                      value={formData.selectedDepartment}
+                      onChange={(e) => setFormData(prev => ({ ...prev, selectedDepartment: e.target.value }))}
+                      className="appearance-none w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-600 focus:border-sky-600 transition-all duration-300 bg-white"
+                      required
+                    >
+                      <option value="">{t('booking.selectDepartmentPlaceholder')}</option>
+                      {departments.map(dept => (
+                        <option key={dept.id} value={dept.id}>
+                          {dept.name}
+                        </option>
+                      ))}
+                    </select>
+                    <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                      <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="space-y-4">
-                  <h3 className="font-semibold">{t('booking.selectServices')}</h3>
+                  <h3 className="text-lg font-semibold text-gray-900">{t('booking.selectServices')}</h3>
                   <div className="flex flex-wrap gap-3">
                     {['laboratory', 'x-ray', 'ultrasound'].map(type => (
                       <button
                         key={type}
                         type="button"
                         onClick={() => handleServiceSelection(type)}
-                        className="px-4 py-2 border rounded-lg hover:bg-sky-50"
+                        className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 font-medium hover:bg-sky-50 hover:border-sky-600 transition-all duration-300"
                       >
                         {t(`booking.services.${type}`)}
                       </button>
@@ -442,15 +524,15 @@ const Appointment = () => {
                   {formData.selectedServices.map(service => (
                     <div
                       key={service.id}
-                      className="relative bg-sky-100 text-sky-600 px-2 py-0.5 rounded text-xs pr-5"
+                      className="relative bg-sky-100 text-sky-600 px-3 py-1 rounded-lg text-sm pr-8"
                     >
                       {service.name}
                       <button
                         type="button"
                         onClick={() => handleRemoveService(service.code)}
-                        className="absolute top-0 right-0 p-1 text-red-500 hover:text-red-700"
+                        className="absolute top-1/2 right-2 transform -translate-y-1/2 text-red-500 hover:text-red-700"
                       >
-                        <AiOutlineClose size={10} />
+                        <AiOutlineClose size={14} />
                       </button>
                     </div>
                   ))}
@@ -460,7 +542,7 @@ const Appointment = () => {
                   <button
                     type="submit"
                     disabled={loading}
-                    className={`w-full flex items-center justify-center px-6 py-3 bg-sky-600 text-white rounded-lg font-semibold hover:bg-sky-700 transition-colors duration-300 ${
+                    className={`w-full flex items-center justify-center px-6 py-3 bg-sky-600 text-white rounded-lg font-semibold hover:bg-sky-700 transition-all duration-300 shadow-md ${
                       loading ? 'opacity-50 cursor-not-allowed' : ''
                     }`}
                   >
@@ -494,4 +576,4 @@ const Appointment = () => {
   );
 };
 
-export default Appointment; 
+export default Appointment;

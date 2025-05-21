@@ -70,7 +70,7 @@ const About = () => {
       {/* Hero Section with Breadcrumb */}
       <div className="px-7 md:px-8 lg:px-14 xl:px-18 mb-16 mt-2">
         <nav className="mb-8">
-          <ol className="flex items-center space-x-2 text-gray-500">
+          <ol className="flex items-center space-x-2 text-gray-500 font-medium text-md">
             <li><a href="/" className="hover:text-sky-600">{t('nav.home')}</a></li>
             <li>/</li>
             <li className="text-sky-600">{t('nav.about')}</li>
