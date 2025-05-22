@@ -21,7 +21,7 @@ const Doctors = () => {
     //   image: admikewImage,
     // },
     {
-      name: "Dr. Biruk Belay",
+      name: "Dr. Biruk Omer",
       specialty: "General Surgeon",
       image: birukImage,
     },
@@ -31,18 +31,18 @@ const Doctors = () => {
     //   image: girmaImage,
     // },
     {
-      name: "Dr. Biniam",
+      name: "Dr. Biniam Maasho",
       specialty: "Hematologist",
       image: biniamImage,
     },
     {
-      name: "Dr. Haileyesus",
+      name: "Dr. Haileyesus Yeneabat",
       specialty: "Internist",
       image: haileyesusImage,
     },
     {
-      name: "Dr. Samrawit",
-      specialty: "Anistologist",
+      name: "Dr.Tensaye Kebede",
+      specialty: "Anesthesiologists",
       image: samrawitImage,
     },
   ];

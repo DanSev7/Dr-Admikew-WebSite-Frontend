@@ -15,23 +15,23 @@ const OurDoctors = () => {
 
   const doctors = [
     {
-      name: 'Dr. Biruk Belay',
+      name: 'Dr. Biruk Omer',
       specialty: 'General Surgeon',
       image: birukImage,
     },
     {
-      name: 'Dr. Biniam',
-      specialty: 'Hematologist',
-      image: biniamImage,
-    },
-    {
-      name: 'Dr. Haileyesus',
+      name: 'Dr. Haileyesus Yeneabat',
       specialty: 'Internist',
       image: haileyesusImage,
     },
     {
-      name: 'Dr. Samrawit',
-      specialty: 'Anistologist',
+      name: 'Dr. Biniam Maasho',
+      specialty: 'Hematologist',
+      image: biniamImage,
+    },
+    {
+      name: 'Dr.Tensaye Kebede',
+      specialty: 'Anesthesiologists',
       image: samrawitImage,
     },
   ];

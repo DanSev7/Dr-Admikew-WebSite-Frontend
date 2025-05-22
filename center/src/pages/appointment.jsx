@@ -1,7 +1,7 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
-import { FaPaperPlane } from 'react-icons/fa';
+import { FaPaperPlane, FaMoneyBillWave } from 'react-icons/fa';
 import { createClient } from '@supabase/supabase-js';
 import { AiOutlineClose } from 'react-icons/ai';  
 import { motion } from 'framer-motion';
@@ -46,8 +46,10 @@ const Appointment = () => {
   const [currentServiceType, setCurrentServiceType] = useState('');
   const [departments, setDepartments] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
-  const [loading, setLoading] = useState(false);
+  const [paymentLoading, setPaymentLoading] = useState(false);
+  const [emailLoading, setEmailLoading] = useState(false);
   const [error, setError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   const handleRemoveService = (code) => {
     setFormData(prev => ({
@@ -100,15 +102,17 @@ const Appointment = () => {
     setIsServiceModalOpen(true);
   };
 
-  const handleAppointmentSubmit = async (e) => {
+  const handlePaymentSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    e.stopPropagation(); // Prevent event bubbling
+    setPaymentLoading(true);
     setError('');
+    setSuccessMessage(''); // Clear success message on new action
 
     try {
       if (!formData.fullName || !formData.age || !formData.sex || !formData.phone || !formData.email || !formData.appointmentDate || !formData.appointmentTime) {
         setError('Please fill in all required fields');
-        setLoading(false);
+        setPaymentLoading(false);
         return;
       }
 
@@ -207,41 +211,152 @@ const Appointment = () => {
       }));
     } catch (err) {
       setError(err.message);
-      setLoading(false);
+      setPaymentLoading(false);
+    }
+  };
+
+  const handleEmailBooking = async (e) => {
+    e.preventDefault();
+    e.stopPropagation(); // Prevent event bubbling
+    setEmailLoading(true);
+    setError('');
+    setSuccessMessage(''); // Clear previous success message
+
+    try {
+      if (!formData.fullName || !formData.age || !formData.sex || !formData.phone || !formData.email || !formData.appointmentDate || !formData.appointmentTime) {
+        setError('Please fill in all required fields');
+        setEmailLoading(false);
+        return;
+      }
+
+      let patientId;
+      const { data: existingPatient, error: patientError } = await supabase
+        .from('patients')
+        .select('id')
+        .eq('mrn', formData.mrn)
+        .single();
+      if (patientError && patientError.code !== 'PGRST116') {
+        throw new Error('Failed to check patient');
+      }
+
+      if (existingPatient) {
+        patientId = existingPatient.id;
+      } else {
+        const { data: newPatient, error: createError } = await supabase
+          .from('patients')
+          .insert({
+            full_name: formData.fullName,
+            age: parseInt(formData.age),
+            sex: formData.sex,
+            phone_number: formData.phone,
+            email: formData.email,
+            address: formData.location,
+            mrn: formData.mrn || null,
+          })
+          .select('id')
+          .single();
+        if (createError) throw new Error('Failed to create patient');
+        patientId = newPatient.id;
+      }
+
+      const { data: appointment, error: apptError } = await supabase
+        .from('appointments')
+        .insert({
+          patient_id: patientId,
+          appointment_date: formData.appointmentDate,
+          appointment_time: formData.appointmentTime,
+          department_id: formData.selectedDepartment,
+          appointment_type: formData.serviceType === 'appointment' ? 'Clinic' : 'Home',
+          base_price: 300,
+          total_amount: totalAmount,
+          payment_status: 'Pending',
+          other_services: formData.otherServicesText || null,
+        })
+        .select('id')
+        .single();
+
+      if (apptError) throw new Error('Failed to create appointment');
+
+      if (formData.serviceType === 'appointment' && formData.selectedServices.length > 0) {
+        const clinicServices = formData.selectedServices.map(service => ({
+          appointment_id: appointment.id,
+          service_id: service.id,
+        }));
+        const { error: clinicError } = await supabase
+          .from('clinic_visit_services')
+          .insert(clinicServices);
+        if (clinicError) throw new Error('Failed to link clinic services');
+      }
+
+      const response = await fetch(`${API_URL}/api/send-booking-email`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          totalAmount: totalAmount,
+          appointmentId: appointment.id,
+        }),
+      });
+
+      const emailData = await response.json();
+      if (!response.ok) throw new Error(emailData.error || 'Failed to send booking email');
+
+      setFormData({
+        fullName: '',
+        age: '',
+        sex: '',
+        phone: '',
+        email: '',
+        appointmentDate: '',
+        appointmentTime: '',
+        selectedDepartment: '',
+        serviceType: 'appointment',
+        location: 'Jigjiga',
+        selectedServices: [],
+        mrn: '',
+        otherServices: '',
+        otherServicesText: '',
+      });
+      setSuccessMessage(t('booking.successMessage')); // Use translation for success message
+      setEmailLoading(false);
+    } catch (err) {
+      setError(err.message);
+      setEmailLoading(false);
     }
   };
 
   return (
     <div className="py-20 bg-gray-50">
       {/* Hero Section with Breadcrumb */}
-      
-        <div className="px-7 md:px-8 lg:px-14 xl:px-18 mb-16 mt-2">
+      <div className="px-7 md:px-8 lg:px-14 xl:px-18 mb-16 mt-2">
         <nav className="mb-8">
           <ol className="flex items-center space-x-2 text-gray-600 font-medium text-md">
-            <li><a href="/" className="hover:black-white transition-colors">{t('nav.home')}</a></li>
+            <li><a href="/" className="hover:text-sky-600 transition-colors">{t('nav.home')}</a></li>
             <li>/</li>
             <li className="text-sky-600">{t('nav.appointment')}</li>
           </ol>
         </nav>
-          <div className="text-center max-w-3xl mx-auto">
-            <motion.h1 
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-4xl md:text-5xl font-bold mb-4 tracking-tight"
-            >
-              {t('appointment.title')}
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="text-lg leading-relaxed"
-            >
-              {t('appointment.subtitle')}
-            </motion.p>
-          </div>
+        <div className="text-center max-w-3xl mx-auto">
+          <motion.h1 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-4xl md:text-5xl font-bold mb-4 tracking-tight text-black"
+          >
+            {t('appointment.title')}
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-lg leading-relaxed text-gray-600"
+          >
+            {t('appointment.subtitle')}
+          </motion.p>
         </div>
+      </div>
 
       <div className="container mx-auto px-4">
         {/* Book Appointment */}
@@ -251,7 +366,7 @@ const Appointment = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-3xl font-bold text-gray-900"
+              className="text-3xl font-bold text-black"
             >
               Book Your Appointment
             </motion.h2>
@@ -285,7 +400,7 @@ const Appointment = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3 }}
-                className="bg-sky-100 rounded-lg p-4"
+                className="bg-sky-50 rounded-lg p-4"
               >
                 <p className="text-sky-600 font-semibold">Total Amount: ${totalAmount}</p>
                 <p className="text-sky-600 text-sm mt-1">*Initial 300 birr is for Registration</p>
@@ -293,7 +408,21 @@ const Appointment = () => {
             )}
           </div>
 
-          <form onSubmit={handleAppointmentSubmit} className="space-y-6">
+          <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+            {successMessage && (
+                <div className="bg-green-50 border-l-4 border-green-400 p-4 mb-6 rounded-r-lg">
+                  <p className="text-green-700">{successMessage}</p>
+                </div>
+            )}
+            {error && (
+              <motion.p 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="text-red-500 font-medium"
+              >
+                {error}
+              </motion.p>
+            )}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -329,7 +458,7 @@ const Appointment = () => {
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.5, yoyo: Infinity, ease: "easeInOut" }}
-                className="flex flex-col items-center justify-center h-40 bg-sky-100 rounded-xl p-6"
+                className="flex flex-col items-center justify-center h-40 bg-sky-50 rounded-xl p-6"
               >
                 <motion.h2
                   animate={{ scale: [1, 1.1, 1], opacity: [1, 0.8, 1] }}
@@ -505,7 +634,7 @@ const Appointment = () => {
                 </div>
 
                 <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-gray-900">{t('booking.selectServices')}</h3>
+                  <h3 className="text-lg font-semibold text-gray-800">{t('booking.selectServices')}</h3>
                   <div className="flex flex-wrap gap-3">
                     {['laboratory', 'x-ray', 'ultrasound'].map(type => (
                       <button
@@ -524,7 +653,7 @@ const Appointment = () => {
                   {formData.selectedServices.map(service => (
                     <div
                       key={service.id}
-                      className="relative bg-sky-100 text-sky-600 px-3 py-1 rounded-lg text-sm pr-8"
+                      className="relative bg-sky-50 text-sky-600 px-3 py-1 rounded-lg text-sm pr-8"
                     >
                       {service.name}
                       <button
@@ -538,16 +667,28 @@ const Appointment = () => {
                   ))}
                 </div>
 
-                <div>
+                <div className="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4">
                   <button
-                    type="submit"
-                    disabled={loading}
-                    className={`w-full flex items-center justify-center px-6 py-3 bg-sky-600 text-white rounded-lg font-semibold hover:bg-sky-700 transition-all duration-300 shadow-md ${
-                      loading ? 'opacity-50 cursor-not-allowed' : ''
+                    type="button"
+                    onClick={handlePaymentSubmit}
+                    disabled={paymentLoading}
+                    className={`w-full flex items-center justify-center px-6 py-3 bg-sky-500 text-white rounded-lg font-semibold hover:bg-sky-600 transition-all duration-300 shadow-md ${
+                      paymentLoading ? 'opacity-50 cursor-not-allowed' : ''
+                    }`}
+                  >
+                    <FaMoneyBillWave className="mr-2" />
+                    {paymentLoading ? t('booking.submitting') : t('booking.confirmPayment')}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleEmailBooking}
+                    disabled={emailLoading}
+                    className={`w-full flex items-center justify-center px-6 py-3 bg-sky-900 text-white rounded-lg font-semibold hover:bg-sky-950 transition-all duration-300 shadow-md ${
+                      emailLoading ? 'opacity-50 cursor-not-allowed' : ''
                     }`}
                   >
                     <FaPaperPlane className="mr-2" />
-                    {loading ? t('booking.submitting') : t('booking.submit')}
+                    {emailLoading ? t('booking.submitting') : t('booking.requestAppointment')}
                   </button>
                 </div>
               </>

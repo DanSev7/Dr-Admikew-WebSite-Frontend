@@ -288,20 +288,20 @@
     "subtitle": "Meet our team of experienced surgical specialists",
     "viewAll": "View All Doctors",
     "team": {
-      "admikew": {
-        "name": "Dr. Admikew Bekele",
-        "specialty": "Cardiothoracic Surgeon"
+      "tensay": {
+        "name": "Dr.Tensaye Kebede",
+        "specialty": "Anesthesiologists"
       },
       "haileyesus": {
-        "name": "Dr. Haileyesus",
+        "name": "Dr. Haileyesus Yeneabat",
         "specialty": "Internist"
       },
-      "girma": {
-        "name": "Dr. Girma Mogos",
-        "specialty": "Plastic Surgeon"
+      "biniam": {
+        "name": "Dr. Biniam Maasho",
+        "specialty": "Hematologist"
       },
       "biruk": {
-        "name": "Dr. Biruk Umer",
+        "name": "Dr. Biruk Omer",
         "specialty": "General Surgeon"
       }
     },
@@ -367,7 +367,12 @@
     "requiredFields": "Fields marked with * are required",
     "submit": "Submit Appointment",
     "time": "Appointment Time",
-    "submitting": "Sending...",
+    "proceedToPayment": "Proceed to Payment",
+    "bookViaEmail": "Book via Email",
+    "submitting": "Submitting...",
+    "confirmPayment": "Confirm Payment",
+    "requestAppointment": "Request Appointment",
+    "successMessage": "Thank you! Your Appointment has been sent.",
     "services": {
       "laboratory": "Laboratory Tests",
       "x-ray": "X-Ray",
