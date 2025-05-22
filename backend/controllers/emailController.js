@@ -11,13 +11,13 @@ const emailCache = new NodeCache({ stdTTL: 3600 });
 const createEmailTemplate = (content) => `
   <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9fafb; border-radius: 8px;">
     <div style="background-color: #0284c7; padding: 20px; border-radius: 8px 8px 0 0; text-align: center;">
-      <h1 style="color: white; margin: 0;">Dr. Admikew Surgery Center</h1>
+      <h1 style="color: white; margin: 0;">Dr. Admikew Surgical & Medical Center</h1>
     </div>
     <div style="padding: 20px; background-color: white; border-radius: 0 0 8px 8px;">
       ${content}
       <hr style="border: 0; border-top: 1px solid #e5e7eb; margin: 20px 0;">
       <p style="color: #6b7280; font-size: 12px; text-align: center;">
-        © ${new Date().getFullYear()} Dr. Admikew Surgery Center. All rights reserved.
+        © ${new Date().getFullYear()} Dr. Admikew Surgical & Medical Center. All rights reserved.
       </p>
     </div>
   </div>
@@ -33,6 +33,30 @@ const validateContactForm = ({ name, email, message, phone }) => {
   }
   if (phone && !validator.isMobilePhone(phone, 'any')) {
     throw new Error('Invalid phone number format.');
+  }
+};
+
+// Validate booking details
+const validateBookingDetails = ({ name, email, phone, totalAmount, appointmentId }) => {
+  if (!name || !email || !phone || !totalAmount || !appointmentId) {
+    console.error('Missing booking details:', { name, email, phone, totalAmount, appointmentId });
+    throw new Error('Missing required booking details.');
+  }
+  if (!validator.isEmail(email)) {
+    console.error('Invalid email format:', { email });
+    throw new Error('Invalid email format.');
+  }
+  if (!validator.isMobilePhone(phone, 'any')) {
+    console.error('Invalid phone number format:', { phone });
+    throw new Error('Invalid phone number format.');
+  }
+  if (totalAmount <= 0) {
+    console.error('Invalid total amount:', { totalAmount });
+    throw new Error('Total amount must be greater than zero.');
+  }
+  if (!validator.isUUID(appointmentId) && !validator.isInt(appointmentId.toString())) {
+    console.error('Invalid appointment ID format:', { appointmentId });
+    throw new Error('Invalid appointment ID format.');
   }
 };
 
@@ -71,7 +95,7 @@ const submitContactForm = async (req, res) => {
 
     const adminEmailOptions = {
       from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER,
+      to: process.env.ADMIN_EMAIL || process.env.EMAIL_USER,
       subject: 'New Contact Form Submission',
       html: createEmailTemplate(`
         <h2 style="color: #1f2937;">New Contact Form Submission</h2>
@@ -85,7 +109,7 @@ const submitContactForm = async (req, res) => {
     const userEmailOptions = {
       from: process.env.EMAIL_USER,
       to: email,
-      subject: 'Thank You for Contacting Dr. Admikew Surgery Center!',
+      subject: 'Thank You for Contacting Dr. Admikew Surgical & Medical Center!',
       html: createEmailTemplate(`
         <h2 style="color: #1f2937;">Hi ${name},</h2>
         <p>Thank you for reaching out! We've received your message and will respond within 24-48 hours.</p>
@@ -107,6 +131,134 @@ const submitContactForm = async (req, res) => {
   } catch (err) {
     console.error('Contact form submission error:', err.message);
     res.status(400).json({ success: false, message: err.message || 'Failed to submit form.' });
+  }
+};
+
+// Send Booking Confirmation Email
+const sendBookingEmail = async ({ name, email, phone, totalAmount, appointmentId }) => {
+  console.log('Sending booking confirmation email:', { name, email, phone, totalAmount, appointmentId });
+
+  try {
+    // Check cache to prevent duplicate emails
+    const cacheKey = `booking_email_${appointmentId}`;
+    if (emailCache.get(cacheKey)) {
+      console.log('Duplicate booking email attempt blocked:', { appointmentId });
+      return;
+    }
+
+    validateBookingDetails({ name, email, phone, totalAmount, appointmentId });
+
+    // Fetch appointment details from Supabase for additional context
+    const { data: appointment, error: apptError } = await supabase
+      .from('appointments')
+      .select('appointment_date, appointment_time, department_id')
+      .eq('id', appointmentId)
+      .single();
+
+    if (apptError || !appointment) {
+      console.error('Failed to fetch appointment details:', apptError);
+      throw new Error('Invalid appointment ID.');
+    }
+
+    // Fetch department name
+    const { data: department, error: deptError } = await supabase
+      .from('departments')
+      .select('name')
+      .eq('id', appointment.department_id)
+      .single();
+
+    if (deptError || !department) {
+      console.error('Failed to fetch department details:', deptError);
+      throw new Error('Invalid department ID.');
+    }
+
+    // <li><strong>Appointment ID:</strong> ${appointmentId}</li>
+    
+    const userEmailOptions = {
+      from: process.env.EMAIL_USER,
+      to: email,
+      subject: 'Booking Confirmation - Dr. Admikew Surgical & Medical Center',
+      html: createEmailTemplate(`
+        <h2 style="color: #1f2937;">Hi ${name},</h2>
+        <p>Your appointment booking has been successfully received. Please visit the center to complete your payment of <strong>${totalAmount} ETB</strong>.</p>
+        <p><strong>Booking Details:</strong></p>
+        <ul style="list-style: none; padding: 0;">
+          <li><strong>Date:</strong> ${new Date(appointment.appointment_date).toLocaleDateString()}</li>
+          <li><strong>Time:</strong> ${appointment.appointment_time}</li>
+          <li><strong>Department:</strong> ${department.name}</li>
+          <li><strong>Total Amount:</strong> ${totalAmount} ETB</li>
+          <li><strong>Phone:</strong> ${phone}</li>
+        </ul>
+        <p>We look forward to seeing you!</p>
+      `),
+    };
+
+    const adminEmailOptions = {
+      from: process.env.EMAIL_USER,
+      to: process.env.ADMIN_EMAIL || process.env.EMAIL_USER,
+      subject: `New Appointment Booking - ${name}`,
+      html: createEmailTemplate(`
+        <h2 style="color: #1f2937;">New Appointment Booking</h2>
+        <p>A new appointment has been booked with the following details:</p>
+        <ul style="list-style: none; padding: 0;">
+          <li><strong>Name:</strong> ${name}</li>
+          <li><strong>Email:</strong> ${email}</li>
+          <li><strong>Phone:</strong> ${phone}</li>
+          <li><strong>Appointment ID:</strong> ${appointmentId}</li>
+          <li><strong>Date:</strong> ${new Date(appointment.appointment_date).toLocaleDateString()}</li>
+          <li><strong>Time:</strong> ${appointment.appointment_time}</li>
+          <li><strong>Department:</strong> ${department.name}</li>
+          <li><strong>Total Amount:</strong> ${totalAmount} ETB</li>
+        </ul>
+      `),
+    };
+
+    await Promise.all([
+      transporter.sendMail(userEmailOptions),
+      transporter.sendMail(adminEmailOptions),
+    ]);
+
+    // Mark email as sent in cache
+    emailCache.set(cacheKey, true);
+    console.log('Booking confirmation email sent:', { appointmentId });
+  } catch (err) {
+    console.error('Error sending booking confirmation email:', err.message, { appointmentId });
+    throw err;
+  }
+};
+
+// Handle Booking Email Route
+const sendBookingEmailRoute = async (req, res) => {
+  console.log('Received request to /send-booking-email:', req.body);
+
+  try {
+    const { name, email, phone, totalAmount, appointmentId } = req.body;
+
+    validateBookingDetails({ name, email, phone, totalAmount, appointmentId });
+
+    // Store booking submission in Supabase
+    const { error } = await supabase
+      .from('booking_submissions')
+      .insert([{ name, email, phone, total_amount: totalAmount, appointment_id: appointmentId }]);
+
+    if (error) {
+      console.error('Supabase insert error:', error);
+      throw new Error('Failed to save booking data.');
+    }
+
+    const bookingDetails = {
+      name,
+      email,
+      phone,
+      totalAmount,
+      appointmentId,
+    };
+
+    await sendBookingEmail(bookingDetails);
+    res.status(200).json({ success: true, message: 'Booking email sent successfully.' });
+  } catch (err) {
+    console.error('Error in sendBookingEmailRoute:', err.message);
+    res.status(400).json({ success: false, message: err.message || 'Failed to send booking email.' });
   }
 };
 
@@ -147,7 +299,7 @@ const sendPaymentSuccessEmail = async ({ name, email, amount, status = 'Complete
 
     const adminEmailOptions = {
       from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_USER,
+      to: process.env.ADMIN_EMAIL || process.env.EMAIL_USER,
       subject: `New Payment Received - ${name}`,
       html: createEmailTemplate(`
         <h2 style="color: #1f2937;">New Payment Received</h2>
@@ -206,4 +358,6 @@ module.exports = {
   submitContactForm,
   sendPaymentSuccessEmail,
   sendPaymentSuccessEmailRoute,
+  sendBookingEmail,
+  sendBookingEmailRoute,
 };
