@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FaHeartbeat, FaBrain, FaCut, FaChild, FaUserMd, FaTeeth, FaSearch, FaArrowRight } from 'react-icons/fa';
+import { FaHeartbeat, FaBrain, FaCut, FaChild, FaBone, FaTeeth, FaVial, FaStethoscope, FaSearch, FaArrowRight, FaUserInjured  } from 'react-icons/fa';
 import { GiKidneys } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import hematologyImage from '../assets/images/hematology.avif';
+import orthoImage from '../assets/images/ortho.jpg';
+
 
 const Services = () => {
   const { t } = useTranslation();
@@ -51,11 +54,30 @@ const Services = () => {
       image: "https://images.unsplash.com/photo-1518152006812-edab29b069ac?q=80&w=500&auto=format&fit=crop",
     },
     {
-      icon: <FaUserMd className="w-12 h-12" />,
+      icon: <FaUserInjured  className="w-12 h-12" />,
       key: "general",
       category: "general",
       image: "https://images.unsplash.com/photo-1571772996211-2f02c9727629?q=80&w=500&auto=format&fit=crop",
     },
+    {
+      icon: <FaVial className="w-12 h-12" />,
+      key: "hematologist",
+      category: "specialized",
+      image: hematologyImage,
+    },
+    {
+      icon: <FaStethoscope className="w-12 h-12" />,
+      key: "internalMedicine",
+      category: "general",
+      image: "https://images.unsplash.com/photo-1550831107-1553da8c8464?q=80&w=500&auto=format&fit=crop",
+    },
+    {
+      icon: <FaBone className="w-12 h-12" />,
+      key: "orthopedicSurgery",
+      category: "surgical",
+      image: orthoImage,
+    }
+    
   ];
 
   useEffect(() => {
@@ -200,35 +222,34 @@ const Services = () => {
 
       {/* Combined CTA Section */}
       <motion.div 
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ delay: 0.4 }}
-  className="container mx-auto px-4 mt-16"
->
-  <div className="bg-gradient-to-r from-sky-600 to-sky-700 text-white rounded-xl shadow-xl p-8 flex flex-col md:flex-row items-center md:items-start justify-center md:justify-between text-center md:text-left">
-    <div className="w-full md:w-2/3 mb-6 md:mb-0">
-      <h2 className="text-3xl font-bold mb-4">{t('services.cta.title')}</h2>
-      <p className="text-lg leading-relaxed">
-        Discover our specialized facilities or book a consultation with our expert team today.
-      </p>
-    </div>
-    <div className="w-full md:w-auto flex flex-col sm:flex-row gap-4 justify-center md:justify-end">
-      <Link 
-        to="/service-areas"
-        className="inline-block bg-white text-sky-600 px-6 py-3 rounded-full font-semibold hover:bg-sky-50 transition-colors duration-300 shadow-md"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4 }}
+        className="container mx-auto px-4 mt-16"
       >
-        View Service Areas
-      </Link>
-      <Link 
-        to="/appointment"
-        className="inline-block bg-sky-800 text-white px-6 py-3 rounded-full font-semibold hover:bg-sky-900 transition-colors duration-300 shadow-md"
-      >
-        {t('services.cta.button')}
-      </Link>
-    </div>
-  </div>
-</motion.div>
-
+        <div className="bg-gradient-to-r from-sky-600 to-sky-700 text-white rounded-xl shadow-xl p-8 flex flex-col md:flex-row items-center md:items-start justify-center md:justify-between text-center md:text-left">
+          <div className="w-full md:w-2/3 mb-6 md:mb-0">
+            <h2 className="text-3xl font-bold mb-4">{t('services.cta.title')}</h2>
+            <p className="text-lg leading-relaxed">
+              Discover our specialized facilities or book a consultation with our expert team today.
+            </p>
+          </div>
+          <div className="w-full md:w-auto flex flex-col sm:flex-row gap-4 justify-center md:justify-end">
+            <Link 
+              to="/service-areas"
+              className="inline-block bg-white text-sky-600 px-6 py-3 rounded-full font-semibold hover:bg-sky-50 transition-colors duration-300 shadow-md"
+            >
+              View Service Areas
+            </Link>
+            <Link 
+              to="/appointment"
+              className="inline-block bg-sky-800 text-white px-6 py-3 rounded-full font-semibold hover:bg-sky-900 transition-colors duration-300 shadow-md"
+            >
+              {t('services.cta.button')}
+            </Link>
+          </div>
+        </div>
+      </motion.div>
     </div>
   );
 };

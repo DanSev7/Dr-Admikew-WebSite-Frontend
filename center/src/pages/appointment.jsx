@@ -4,7 +4,8 @@ import { useLocation } from 'react-router-dom';
 import { FaPaperPlane, FaMoneyBillWave } from 'react-icons/fa';
 import { createClient } from '@supabase/supabase-js';
 import { AiOutlineClose } from 'react-icons/ai';  
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import discountImage from '../assets/images/discount.png';
 
 // Lazy load components
 const ServiceSelectionModal = lazy(() => import('../components/ui/ServiceSelectionModal'));
@@ -22,6 +23,77 @@ const ModalLoadingFallback = () => (
     <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-sky-600"></div>
   </div>
 );
+
+// Payment Options Modal Component
+const PaymentOptionsModal = ({ isOpen, onClose, onPayAtCenter, onPayWithChapa, totalAmount, isLoading }) => {
+  const { t } = useTranslation();
+  // Calculate 10% discount: discounted amount is 90% of totalAmount
+  const discountedAmount = (totalAmount * 0.9).toFixed(2); // e.g., 300 * 0.9 = 270
+  const originalAmount = totalAmount.toFixed(2); // e.g., 300
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+        >
+          <motion.div
+            initial={{ scale: 0.8, y: 50 }}
+            animate={{ scale: 1, y: 0 }}
+            exit={{ scale: 0.8, y: 50 }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
+            className="bg-white rounded-2xl p-8 w-full max-w-lg mx-4 shadow-2xl"
+          >
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-2xl font-bold text-gray-800">{t('payment.optionsTitle')}</h2>
+              <button
+                onClick={onClose}
+                className="text-gray-500 hover:text-gray-700 transition-colors"
+              >
+                <AiOutlineClose size={24} />
+              </button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={onPayAtCenter}
+                disabled={isLoading}
+                className={`flex flex-col items-center justify-center p-4 bg-sky-50 border border-sky-200 rounded-lg hover:bg-sky-100 transition-all duration-300 ${
+                  isLoading ? 'opacity-50 cursor-not-allowed' : ''
+                }`}
+              >
+                <FaPaperPlane className="text-sky-600 mb-2" size={24} />
+                <span className="text-lg font-semibold text-gray-800">{t('payment.payAtCenter')}</span>
+                <span className="text-sm text-gray-600">{originalAmount} ETB</span>
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={onPayWithChapa}
+                disabled={isLoading}
+                className={`flex flex-col items-center justify-center p-4 bg-sky-600 text-white rounded-lg hover:bg-sky-700 transition-all duration-300 ${
+                  isLoading ? 'opacity-50 cursor-not-allowed' : ''
+                }`}
+              >
+                <FaMoneyBillWave className="mb-2" size={24} />
+                <span className="text-lg font-semibold">{t('payment.payWithChapa')}</span>
+                <div className="text-sm">
+                  <span className="line-through text-gray-200">{originalAmount} ETB</span>
+                  <span className="ml-2">{discountedAmount} ETB</span>
+                </div>
+              </motion.button>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
 
 const Appointment = () => {
   const { t } = useTranslation();
@@ -43,6 +115,7 @@ const Appointment = () => {
     otherServicesText: '',
   });
   const [isServiceModalOpen, setIsServiceModalOpen] = useState(false);
+  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
   const [currentServiceType, setCurrentServiceType] = useState('');
   const [departments, setDepartments] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
@@ -102,6 +175,30 @@ const Appointment = () => {
     setIsServiceModalOpen(true);
   };
 
+  const validateForm = () => {
+    if (
+      !formData.fullName ||
+      !formData.age ||
+      !formData.sex ||
+      !formData.phone ||
+      !formData.email ||
+      !formData.appointmentDate ||
+      !formData.appointmentTime ||
+      !formData.selectedDepartment
+    ) {
+      setError(t('booking.requiredFieldsError'));
+      return false;
+    }
+    return true;
+  };
+
+  const handleProceedToPayment = () => {
+    setError('');
+    if (validateForm()) {
+      setIsPaymentModalOpen(true);
+    }
+  };
+
   const handlePaymentSubmit = async (e) => {
     e.preventDefault();
     e.stopPropagation(); // Prevent event bubbling
@@ -110,9 +207,9 @@ const Appointment = () => {
     setSuccessMessage(''); // Clear success message on new action
 
     try {
-      if (!formData.fullName || !formData.age || !formData.sex || !formData.phone || !formData.email || !formData.appointmentDate || !formData.appointmentTime) {
-        setError('Please fill in all required fields');
+      if (!validateForm()) {
         setPaymentLoading(false);
+        setIsPaymentModalOpen(false); // Close modal on validation failure
         return;
       }
 
@@ -146,6 +243,7 @@ const Appointment = () => {
         patientId = newPatient.id;
       }
       const txRef = `TX-${Date.now()}-${crypto.randomUUID()}`;
+      const discountedAmount = totalAmount * 0.9; // Apply 10% discount for Chapa payment
 
       const { data: appointment, error: apptError } = await supabase
         .from('appointments')
@@ -156,7 +254,7 @@ const Appointment = () => {
           department_id: formData.selectedDepartment,
           appointment_type: formData.serviceType === 'appointment' ? 'Clinic' : 'Home',
           base_price: 300,
-          total_amount: totalAmount,
+          total_amount: discountedAmount, // Store discounted amount for Chapa
           payment_status: 'Pending',
           chapa_transaction_id: txRef,
           other_services: formData.otherServicesText || null,
@@ -183,7 +281,7 @@ const Appointment = () => {
         body: JSON.stringify({
           tx_ref: txRef,
           appointmentId: appointment.id,
-          amount: totalAmount,
+          amount: discountedAmount,
           email: formData.email,
           phone: formData.phone,
           name: formData.fullName,
@@ -194,6 +292,8 @@ const Appointment = () => {
       if (!response.ok) throw new Error(paymentData.error || 'Failed to initiate payment');
       console.log("Payment Data : ", paymentData);
 
+      setPaymentLoading(false); // Stop loading before redirect
+      setIsPaymentModalOpen(false); // Close modal before redirect
       window.location.href = paymentData.checkoutUrl;
 
       localStorage.setItem('appointmentData', JSON.stringify({
@@ -206,12 +306,13 @@ const Appointment = () => {
         selectedDepartment: formData.selectedDepartment,
         selectedServices: formData.selectedServices,
         otherServicesText: formData.otherServicesText,
-        totalAmount: totalAmount,
+        totalAmount: discountedAmount,
         txRef: txRef
       }));
     } catch (err) {
       setError(err.message);
       setPaymentLoading(false);
+      setIsPaymentModalOpen(false); // Close modal on error
     }
   };
 
@@ -223,9 +324,9 @@ const Appointment = () => {
     setSuccessMessage(''); // Clear previous success message
 
     try {
-      if (!formData.fullName || !formData.age || !formData.sex || !formData.phone || !formData.email || !formData.appointmentDate || !formData.appointmentTime) {
-        setError('Please fill in all required fields');
+      if (!validateForm()) {
         setEmailLoading(false);
+        setIsPaymentModalOpen(false); // Close modal on validation failure
         return;
       }
 
@@ -268,7 +369,7 @@ const Appointment = () => {
           department_id: formData.selectedDepartment,
           appointment_type: formData.serviceType === 'appointment' ? 'Clinic' : 'Home',
           base_price: 300,
-          total_amount: totalAmount,
+          total_amount: totalAmount, // Full amount for Pay at Center
           payment_status: 'Pending',
           other_services: formData.otherServicesText || null,
         })
@@ -321,9 +422,11 @@ const Appointment = () => {
       });
       setSuccessMessage(t('booking.successMessage')); // Use translation for success message
       setEmailLoading(false);
+      setIsPaymentModalOpen(false); // Close modal on success
     } catch (err) {
       setError(err.message);
       setEmailLoading(false);
+      setIsPaymentModalOpen(false); // Close modal on error
     }
   };
 
@@ -386,33 +489,53 @@ const Appointment = () => {
             >
               Fields marked with * are required.
             </motion.p>
-            {error && (
-              <motion.p 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="text-red-500 font-medium"
-              >
-                {error}
-              </motion.p>
-            )}
             {formData.serviceType === 'appointment' && (
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.3 }}
-                className="bg-sky-50 rounded-lg p-4"
-              >
-                <p className="text-sky-600 font-semibold">Total Amount: ${totalAmount}</p>
-                <p className="text-sky-600 text-sm mt-1">*Initial 300 birr is for Registration</p>
-              </motion.div>
+              <>
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="bg-sky-50 rounded-lg p-4"
+                >
+                  <p className="text-sky-600 font-semibold">Total Amount: {totalAmount} ETB</p>
+                  <p className="text-sky-600 text-sm mt-1">*Initial 300 birr is for Registration</p>
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.4 }}
+                  className="flex flex-col md:flex-row items-center md:items-start gap-6 bg-white shadow-lg rounded-xl p-5 hover:shadow-xl transition-shadow duration-300"
+                >
+                  <motion.img
+                    src={discountImage}
+                    alt="10% Discount"
+                    className="w-36 h-36 object-contain"
+                    animate={{ scale: [1, 1.15, 1], y: [0, -8, 0] }}
+                    transition={{
+                      duration: 2.5,
+                      repeat: Infinity,
+                      repeatType: "loop",
+                      ease: "easeInOut"
+                    }}
+                  />
+                  <div className="text-center md:text-left">
+                    <p className="text-sky-700 text-xl font-bold mb-1">
+                      {t('booking.discountTitle')}
+                    </p>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      {t('booking.discountDescription')}
+                    </p>
+                  </div>
+                </motion.div>
+              </>
             )}
           </div>
 
           <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
             {successMessage && (
-                <div className="bg-green-50 border-l-4 border-green-400 p-4 mb-6 rounded-r-lg">
-                  <p className="text-green-700">{successMessage}</p>
-                </div>
+              <div className="bg-green-50 border-l-4 border-green-400 p-4 mb-6 rounded-r-lg">
+                <p className="text-green-700">{successMessage}</p>
+              </div>
             )}
             {error && (
               <motion.p 
@@ -667,30 +790,23 @@ const Appointment = () => {
                   ))}
                 </div>
 
-                <div className="flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                >
                   <button
                     type="button"
-                    onClick={handlePaymentSubmit}
-                    disabled={paymentLoading}
-                    className={`w-full flex items-center justify-center px-6 py-3 bg-sky-500 text-white rounded-lg font-semibold hover:bg-sky-600 transition-all duration-300 shadow-md ${
-                      paymentLoading ? 'opacity-50 cursor-not-allowed' : ''
+                    onClick={handleProceedToPayment}
+                    disabled={paymentLoading || emailLoading}
+                    className={`w-full flex items-center justify-center px-6 py-3 bg-sky-600 text-white rounded-lg font-semibold hover:bg-sky-700 transition-all duration-300 shadow-md ${
+                      (paymentLoading || emailLoading) ? 'opacity-50 cursor-not-allowed' : ''
                     }`}
                   >
                     <FaMoneyBillWave className="mr-2" />
-                    {paymentLoading ? t('booking.submitting') : t('booking.confirmPayment')}
+                    {t('booking.continueToPayment')}
                   </button>
-                  <button
-                    type="button"
-                    onClick={handleEmailBooking}
-                    disabled={emailLoading}
-                    className={`w-full flex items-center justify-center px-6 py-3 bg-sky-900 text-white rounded-lg font-semibold hover:bg-sky-950 transition-all duration-300 shadow-md ${
-                      emailLoading ? 'opacity-50 cursor-not-allowed' : ''
-                    }`}
-                  >
-                    <FaPaperPlane className="mr-2" />
-                    {emailLoading ? t('booking.submitting') : t('booking.requestAppointment')}
-                  </button>
-                </div>
+                </motion.div>
               </>
             )}
           </form>
@@ -713,6 +829,15 @@ const Appointment = () => {
           }}
         />
       </Suspense>
+
+      <PaymentOptionsModal
+        isOpen={isPaymentModalOpen}
+        onClose={() => setIsPaymentModalOpen(false)}
+        onPayAtCenter={handleEmailBooking}
+        onPayWithChapa={handlePaymentSubmit}
+        totalAmount={totalAmount}
+        isLoading={paymentLoading || emailLoading}
+      />
     </div>
   );
 };

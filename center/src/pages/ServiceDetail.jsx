@@ -24,7 +24,8 @@ const ServiceDetail = () => {
       pediatric: ["general", "ophthalmology"],
       urological: ["general", "pediatric"],
       general: ["urological", "plastic"],
-      ophthalmology: ["maxillofacial", "pediatric"]
+      ophthalmology: ["maxillofacial", "pediatric"],
+      orthopedicSurgery: ["neuro", "general"]
     };
 
     return serviceCategories[serviceId] || [];
@@ -120,24 +121,25 @@ const ServiceDetail = () => {
 
               {/* Interactive Procedures Section */}
               <div className="mt-8">
-                <h2 className="text-2xl font-bold mb-6">{t('services.common.procedures')}</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {procedures.map((procedure, index) => (
-                    <motion.div 
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="flex items-start p-4 bg-sky-50 rounded-lg hover:bg-sky-100 transition-colors cursor-pointer"
-                    >
-                      <span className="w-2 h-2 bg-sky-600 rounded-full mt-2 mr-3"></span>
-                      <div>
-                        <h3 className="font-semibold text-lg">{procedure}</h3>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
+  <h2 className="text-2xl font-bold mb-6">{t('services.common.procedures')}</h2>
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    {procedures.map((procedure, index) => (
+      <motion.div 
+        key={index}
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: index * 0.1 }}
+        className="flex items-start p-4 bg-sky-50 rounded-lg hover:bg-sky-100 transition-colors cursor-pointer"
+      >
+        <span className="w-2 h-2 bg-sky-600 rounded-full mt-2 mr-3"></span>
+        <div>
+          <h3 className="font-semibold text-lg">{procedure}</h3>
+        </div>
+      </motion.div>
+    ))}
+  </div>
+</div>
+
 
               {/* Related Services Section */}
               <div className="mt-12">
@@ -181,7 +183,7 @@ const ServiceDetail = () => {
             >
               <h3 className="text-xl font-bold mb-4">{t('services.common.bookAppointment')}</h3>
               <button 
-                onClick={() => window.location.href='/contact'}
+                onClick={() => window.location.href='/appointment'}
                 className="w-full bg-sky-600 text-white px-6 py-3 rounded-lg flex items-center justify-center hover:bg-sky-700 transition-colors"
               >
                 <FaCalendarAlt className="mr-2" />
