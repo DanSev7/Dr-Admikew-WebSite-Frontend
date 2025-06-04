@@ -5,6 +5,7 @@ const contactController = {
   async submitContact(req, res) {
     try {
       const { full_name, email, phone, message } = req.body;
+      console.log("Full Name : ", full_name);
 
       // Store contact message in database
       const { data: contact, error } = await supabase
