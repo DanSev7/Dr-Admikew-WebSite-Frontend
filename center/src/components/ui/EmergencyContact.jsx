@@ -1,7 +1,10 @@
 import React from 'react';
 import { FaPhone, FaAmbulance, FaClock } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 const EmergencyContact = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="bg-sky-600 text-white py-12">
       <div className="container mx-auto">
@@ -12,8 +15,8 @@ const EmergencyContact = () => {
                 <FaPhone className="w-6 h-6 text-sky-600" />
               </div>
               <div>
-                <h3 className="text-xl font-semibold">Emergency Contact</h3>
-                <p className="text-sky-100">+251 25 278 2051</p>
+                <h3 className="text-xl font-semibold">{t('emergency.contact.title')}</h3>
+                <p className="text-sky-100">{t('emergency.contact.number')}</p>
               </div>
             </div>
 
@@ -22,8 +25,8 @@ const EmergencyContact = () => {
                 <FaAmbulance className="w-6 h-6 text-sky-600" />
               </div>
               <div>
-                <h3 className="text-xl font-semibold">Ambulance Service</h3>
-                <p className="text-sky-100">24/7 Available</p>
+                <h3 className="text-xl font-semibold">{t('emergency.ambulance.title')}</h3>
+                <p className="text-sky-100">{t('emergency.ambulance.availability')}</p>
               </div>
             </div>
 
@@ -32,8 +35,8 @@ const EmergencyContact = () => {
                 <FaClock className="w-6 h-6 text-sky-600" />
               </div>
               <div>
-                <h3 className="text-xl font-semibold">Working Hours</h3>
-                <p className="text-sky-100">Open 24 Hours</p>
+                <h3 className="text-xl font-semibold">{t('emergency.hours.title')}</h3>
+                <p className="text-sky-100">{t('emergency.hours.availability')}</p>
               </div>
             </div>
           </div>

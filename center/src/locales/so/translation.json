@@ -13,6 +13,41 @@
     "contact": "Nala Soo Xiriir",
     "bookAppointment": "Ballan Qabso"
   },
+  "about": {
+    "title": "Ku Saabsan Naga",
+    "subtitle": "Bixinta daryeelka jaraha ee aamin ah iyo khabiir ah ee Jigjiga, Itoobiya.",
+    "features": [
+      {
+        "title": "Dhaktarro Khabiir ah",
+        "description": "Kooxdeenu waxay ka kooban tahay dhaktarro khabiir ah oo ku dedican inay bixiyaan daryeel tayo leh oo hubinaya natiijooyin guul leh marti-doonayaasheena."
+      },
+      {
+        "title": "Qalabka Casriga ah",
+        "description": "Waxaan bixinaa qalabka caafimaad ee horumaray iyo fasiliti casri ah si loo helo khibrad ugu fiican ee daryeelka jaraha."
+      },
+      {
+        "title": "Daryeel Tayo leh",
+        "description": "Waxaa nagu go'an inaan ilaalino heerar sare ee amniga martida iyo inaan bixino daryeelka jaraha ee tayo sare mar walba."
+      },
+      {
+        "title": "Taageerada Martida",
+        "description": "Kooxdeena naxariis leh waxay bixisaa taageero joogto ah ka hor, inta lagu jiro iyo ka dib jaraha si loo hubiyo soo kabasho ugu fiican."
+      }
+    ],
+    "mission": {
+      "title": "Mishankeena",
+      "description": "Waxaa nagu go'an inaan bixino daryeelka jaraha ee tayo sare leh ee martida ku saleysan adeegsiga horumarka, habraacyada axaadiqda iyo teknoolajiyada caafimaad ee horumaray."
+    },
+    "vision": {
+      "title": "Aragtideena",
+      "description": "Inaan noqono bixiyeyaasha ugu sarreeya ee daryeelka jaraha, aan go'aaminno heerarka ugu sarreeya ee tayada iyo amniga martida ee Jigjiga iyo gobollada ku xeeran."
+    },
+    "values": {
+      "title": "Qiimahayaga Aasaasiga ah",
+      "description": "Waxaa nagu go'an inaan bixino daryeel naxariis leh, tayo sare, iyo daacadnimo, iyadoo la saadaalinayo wanaaga martida. Iyadoo la wada shaqeynayo iyo habraacyada axaadiqda, waxaan ujeednaa inaan horumarinno natiijooyinka iyo caafimaadka bulshadeena."
+    }
+  },
+  
   "hero": {
     "tagline": "Caafimaadkaaga Habkaaga",
     "description": "Qalliino horumarsan oo leh tignoolajiyad casri ah iyo daryeel naxariis leh",
@@ -224,7 +259,7 @@
         "description": "Dhakhaatiir khibrad leh oo ku takhasusay qeybaha kala duwan"
       },
       "surgeries": {
-        "number": "1000+",
+        "number": "25+",
         "title": "Qalliino Guul Ah",
         "description": "Qalliino si guul leh loo dhammeeyay"
       },
@@ -243,7 +278,28 @@
     }
   },
   "testimonials": {
-    "title": "Waxa Ay Bukaanadu Ka Yiraahdeen"
+    "title": "Markhaatiyada Bukaanka",
+    "subtitle": "Waxa ay bukaannadayadu naga sheegaan",
+    "data": [
+      {
+        "name": "Abdi Mohamed",
+        "procedure": "Qalliinka Wadnaha",
+        "text": "Daryeelkii aan ka helay Xarunta Qalliinka Dr. Admikew wuxuu ahaa mid heer sare ah. Kooxda caafimaadku waxay ahaayeen kuwo xirfad leh oo naxariis badan inta lagu jiray qallinkayga wadnaha.",
+        "rating": 5
+      },
+      {
+        "name": "Hodan Muktar",
+        "procedure": "Qalliinka Maskaxda",
+        "text": "Waxaan ka cabsanaa qalliinkayga, laakiin dhakhaatiirta iyo shaqaalaha waxay iga dhigeen mid degan oo nabad qaba. Daryeelka dabagalka ahaa aad buu u fiicnaa.",
+        "rating": 5
+      },
+      {
+        "name": "Solomon Tsegaye",
+        "procedure": "Qalliinka Guud",
+        "text": "Goobo casri ah iyo koox caafimaad oo xirfad sare leh. Uma aanan baahnayn daryeel ka wanaagsan intii aan soo kabsanaayay.",
+        "rating": 5
+      }
+    ]
   },
 "contact": {
     "title": "Nala Soo Xiriir",
@@ -276,33 +332,67 @@
       "stayConnected": "La Soco Si Joogto Ah"
     }
   },
-  "booking": {
-    "title": "Ballan Qabso",
+"booking": {
+    "title": "Ballan Qaado",
     "centerVisit": "Booqashada Xarunta",
-    "homeService": "Adeega Guriga",
-    "homeServiceWarning": "Adeega guriga waxaa heli kara dadka degan Jigjiga oo keliya.",
-    "mrn": "Lambarka Diiwaanka Caafimaadka",
-    "mrnPlaceholder": "Geli lambarka diiwaankaaga haddii aad hayso",
-    "date": "Taariikhda Ballanta",
+    "homeService": "Adeegga Guriga",
+    "continueToPayment": "Ku sii wad ikhtiyaaradda lacag bixinta",
+    "requiredFieldsError": "Fadlan buuxi goobaha loo baahan yahay",
+    "discountTitle": "Qiimo dhimis 10% ee lacag bixinta internetka",
+    "discountDescription": "Ku raaxayso qiimo dhimis 10% ballankaaga markaad lacag bixiso internetka adoo isticmaalaya Chapa, taasoo ka dhigaysa caafimaadkaaga mid aad u jaban",
+    "homeServiceWarning": "Adeegga guriga waxa loo heli karaa kaliya dadka ku nool Jigjiga",
+    "mrn": "MRN",
+    "mrnPlaceholder": "Geli MRN-kaaga haddii aad haysato",
+    "appointment": "Booqashada Qalliinka",
+    "personalInfo": "Macluumaadka Shaqsiyeed",
+    "email": "Cinwaanka Iimaylka",
+    "age": "Da'da",
+    "selectSex": "Dooro",
+    "sex": "Jinsiga",
+    "male": "Lab",
+    "female": "Dheddig",
+    "phone": "Lambarka Taleefanka",
+    "date": "Taariikhda Ballanka",
+    "location": "Goobta",
     "selectDoctor": "Dooro Dhakhtar",
     "selectDoctorPlaceholder": "Dooro dhakhtar",
     "selectServices": "Dooro Adeegyada",
-    "selectedServices": "Adeegyada La Doortay",
-    "submit": "Ballan Qabso",
-    "time": "Waqtiga Ballanta",
+    "selectedServices": "Adeegyada la dooraday",
+    "requiredFields": "Goobaha leh * waa kuwo loo baahan yahay",
+    "submit": "Gudbi Ballanka",
+    "description": "Qorshee fasax ama dib-u-eegis kooxdeena khabiir. Buuxi faahfaahinta hoose, waxaana xaqiijin doonna ballankaaga si degdeg ah",
+    "time": "Waqtiga Ballanka",
+    "totalAmount": "Wadarta Qadarka",
+    "registrationFee": "*300 birr u horeeya waa diiwaangelinta",
+    "proceedToPayment": "Ku sii wad lacag bixinta",
+    "underConstruction": "Waa la dhisi doonaa",
+    "comingSoon": "Dhawaan soo socda...",
+    "bookViaEmail": "Ballan qaado iimaylka",
+    "submitting": "Gudbineysa...",
+    "confirmPayment": "Xaqiiji Lacag Bixinta",
+    "requestAppointment": "Codso Ballan",
+    "successMessage": "Mahadsanid! Ballankaaga waa la diray",
     "services": {
-      "laboratory": "Baaritaanada Sheybaarka",
-      "x-ray": "Raajo",
+      "laboratory": "Tijaabooyinka Shaybaarka",
+      "x-ray": "X-Ray",
       "ultrasound": "Ultrasound",
-      "laboratoryTitle": "Dooro Baaritaanada Sheybaarka",
-      "x-rayTitle": "Dooro Adeegyada Raajo",
+      "laboratoryTitle": "Dooro Tijaabooyinka Shaybaarka",
+      "x-rayTitle": "Dooro Adeegyada X-Ray",
       "ultrasoundTitle": "Dooro Adeegyada Ultrasound",
       "homeTitle": "Dooro Adeegyada Guriga",
-      "others": "Adeegyo Kale",
-      "othersPlaceholder": "Fadlan sheeg adeegyada kale ee aad u baahan tahay..."
+      "home": {
+        "woundCare": "Daryeelka Jirrooyinka",
+        "injection": "Injection",
+        "followup": "Fasax Dib-u-eegis",
+        "nursing": "Daryeelka Caafimaadka",
+        "others": "Adeegyada Kale",
+        "othersPlaceholder": "Fadlan sheeg adeegyo kale oo aad u baahan tahay..."
+      },
+      "homeServices": "Adeegyada Guriga",
+      "locationNote": "Hadda, waxaan bixinaa adeegyo guriga kaliya Jigjiga"
     },
-    "selectDepartment": "Dooro Qaybta",
-    "selectDepartmentPlaceholder": "Dooro qaybta"
+    "selectDepartment": "Dooro Waaxda",
+    "selectDepartmentPlaceholder": "Dooro waax"
   },
   "common": {
     "cancel": "Jooji",
@@ -318,13 +408,17 @@
       "internist": "Dhakhtarka Gudaha"
     }
   },
-  "payment": {
-    "successTitle": "Bixinta Waa La Guuleystay",
-    "pendingTitle": "Bixintu Way Socotaa",
-    "failedMessage": "Bixintu way guuldareysatay. Fadlan isku day mar kale ama la xiriir taageerada.",
-    "successMessage": "Bixintaadu si guul leh ayaa loo dhammeeyay.",
-    "pendingMessage": "Bixintaada waa la farsameynayaa. Fadlan sug...",
-    "errorFetchingStatus": "Waxaa dhacay khalad inta la helayo xaaladda bixinta. Fadlan dib u cusboonaysii bogga.",
-    "backToHome": "Ku noqo Bogga Hore"
+"payment": {
+    "successTitle": "Lacag-bixinta ayaa guulaysatay",
+    "pendingTitle": "Lacag-bixinta waa la waday",
+    "failedMessage": "Lacag-bixintu kuma guuleysan. Fadlan isku day mar kale ama la xiriir taageerada.",
+    "successMessage": "Lacag-bixintaadu si guul leh ayaa u dhamaatay.",
+    "pendingMessage": "Lacag-bixintaadu waa la waday. Fadlan sug...",
+    "errorFetchingStatus": "Khalad ayaa ka dhacay soo dejinta xaaladda lacag-bixinta. Fadlan dib u cusbooneysii bogga.",
+    "backToHome": "Ku noqo guriga",
+    "optionsTitle": "Xulo Ikhtiyaarka Lacag-bixinta",
+    "payAtCenter": "Bixi Xarunta",
+    "payWithChapa": "Ku bixi Chapa",
+    "proceedToPayment": "Ku sii wad lacag-bixinta"
   }
 } 

@@ -9,7 +9,7 @@ import birukImage from '../../assets/images/biruk.jpg';
 // import girmaImage from '../../assets/images/girma.jpg';
 import biniamImage from '../../assets/images/bini.jpg';
 import haileyesusImage from '../../assets/images/haile.jpg';
-import samrawitImage from '../../assets/images/samra.jpg';
+import tensayeImage from '../../assets/images/Tensaye.png';
 const Doctors = () => {
   const { t } = useTranslation();
   
@@ -21,29 +21,24 @@ const Doctors = () => {
     //   image: admikewImage,
     // },
     {
-      name: "Dr. Biruk Omer",
-      specialty: "General Surgeon",
+      name: 'Dr. Biruk Omer',
+      specialty: 'Consultant General Surgeon',
       image: birukImage,
     },
-    // {
-    //   name: "Dr. Girma Moges",
-    //   specialty: "Plastic Surgeon",
-    //   image: girmaImage,
-    // },
     {
-      name: "Dr. Biniam Maasho",
-      specialty: "Hematologist",
-      image: biniamImage,
-    },
-    {
-      name: "Dr. Haileyesus Yeneabat",
-      specialty: "Internist",
+      name: 'Dr. Haileyesus Yeneabat',
+      specialty: 'Consultant Internist',
       image: haileyesusImage,
     },
     {
-      name: "Dr.Tensaye Kebede",
-      specialty: "Anesthesiologists",
-      image: samrawitImage,
+      name: 'Dr. Biniam Maasho',
+      specialty: 'Constltant Hematologist',
+      image: biniamImage,
+    },
+    {
+      name: 'Dr.Tensaye Kebede',
+      specialty: 'Consultant Anesthesiologists',
+      image: tensayeImage,
     },
   ];
   

@@ -1,30 +1,13 @@
 import React, { useState } from "react";
 import { FaQuoteLeft, FaChevronLeft, FaChevronRight, FaStar } from "react-icons/fa";
 import { useSwipeable } from "react-swipeable";
+import { useTranslation } from "react-i18next";
 
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const { t } = useTranslation(); // i18n hook
 
-  const testimonials = [
-    {
-      name: "Abdi Mohamed",
-      procedure: "Cardiac Surgery",
-      text: "The care I received at Dr. Admikew Surgery Center was exceptional. The medical team was professional and caring throughout my cardiac procedure.",
-      rating: 5,
-    },
-    {
-      name: "Hodan Muktar",
-      procedure: "Neurosurgery",
-      text: "I was nervous about my surgery, but the doctors and staff made me feel comfortable and safe. The follow-up care was excellent.",
-      rating: 5,
-    },
-    {
-      name: "Solomon Tsegaye",
-      procedure: "General Surgery",
-      text: "State-of-the-art facilities and a highly skilled medical team. I couldn't have asked for better care during my recovery.",
-      rating: 5,
-    },
-  ];
+  const testimonials = t("testimonials.data", { returnObjects: true });
 
   const nextTestimonial = () => {
     setCurrentIndex((prevIndex) =>
@@ -38,7 +21,6 @@ const Testimonials = () => {
     );
   };
 
-  // Swipe handlers for mobile
   const handlers = useSwipeable({
     onSwipedLeft: nextTestimonial,
     onSwipedRight: prevTestimonial,
@@ -49,9 +31,12 @@ const Testimonials = () => {
   return (
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
-          Patient Testimonials
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-4">
+          {t("testimonials.title")}
         </h2>
+        <p className="font-bold text-center text-gray-700 mb-1">
+          {t("testimonials.subtitle")}
+        </p>
         <div {...handlers} className="max-w-3xl mx-auto relative overflow-hidden">
           <div className="bg-white rounded-lg shadow-lg p-8 relative">
             <FaQuoteLeft className="text-4xl text-sky-600 mb-6" />
@@ -64,7 +49,9 @@ const Testimonials = () => {
                   <h3 className="font-semibold text-gray-800">
                     {testimonials[currentIndex].name}
                   </h3>
-                  <p className="text-sky-600">{testimonials[currentIndex].procedure}</p>
+                  <p className="text-sky-600">
+                    {testimonials[currentIndex].procedure}
+                  </p>
                 </div>
                 <div className="flex text-yellow-400">
                   {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
@@ -75,7 +62,7 @@ const Testimonials = () => {
             </div>
           </div>
 
-          {/* Desktop Arrows (Hidden on Mobile) */}
+          {/* Arrows */}
           <button
             onClick={prevTestimonial}
             className="absolute top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:bg-gray-100"
@@ -90,8 +77,7 @@ const Testimonials = () => {
             <FaChevronRight className="text-sky-600" />
           </button>
 
-
-          {/* Dots Indicator */}
+          {/* Dots */}
           <div className="flex justify-center mt-6 space-x-2">
             {testimonials.map((_, index) => (
               <button

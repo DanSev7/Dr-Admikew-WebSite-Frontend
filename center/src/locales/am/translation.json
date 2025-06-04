@@ -1,5 +1,5 @@
 {
-  "centerName": "ዶ/ር አድምቀው ቀዶ ጥገና ስፔሻሊቲ ማእከል",
+  "centerName": "ዶ/ር አድምቀው የቀዶ ጥገና እና የሕክምና ማእከል",
   "slogan": "ጤናዎ በእርስዎ መንገድ",
   "nav": {
     "home": "ዋና ገጽ",
@@ -13,6 +13,41 @@
     "contact": "አድራሻ",
     "bookAppointment": "ቀጠሮ ያስይዙ"
   },
+  "about": {
+    "title": "ስለ እኛ",
+    "subtitle": "በጅጅጋ፣ ኢትዮጵያ ውስጥ ደህንነቱ የተጠበቀ እና ባለሙያ የቀዶ ጥገና አገልግሎት ማቅረብ።",
+    "features": [
+      {
+        "title": "ባለሙያ ቀዶ ጥገና ሐኪሞች",
+        "description": "ቡድናችን ልዩ እንክብካቤ ለመስጠት እና ለታካሚዎቻችን የተሳካ ውጤት ለማረጋገጥ የተሰለጠኑ ቀዶ ጥገና ሐኪሞችን ያቀፈ ነው።"
+      },
+      {
+        "title": "ዘመናዊ መሳሪያዎች",
+        "description": "ለምርጥ የቀዶ ጥገና አገልግሎት የላቀ የሕክምና መሣሪያዎችን እና ዘመናዊ ተቋማትን እናቀርባለን።"
+      },
+      {
+        "title": "ጥራት ያለው እንክብካቤ",
+        "description": "በታካሚዎች ደህንነት ከፍተኛ ደረጃዎችን ለመጠበቅ እና ሁልጊዜ የተሻለ የቀዶ ጥገና አገልግሎት ለመስጠት ቁርጠኞች ነን።"
+      },
+      {
+        "title": "የታካሚ ድጋፍ",
+        "description": "ርኅሩኅ ቡድናችን ከቀዶ ጥገና በፊት፣ በአሠራሩ እና ከኋላ ተከታታይ ድጋፍ ያቀርባል፣ ይህም ለተሻለ ማገገም ያስችላል።"
+      }
+    ],
+    "mission": {
+      "title": "ተልእኳችን",
+      "description": "ፈጠራን፣ ሥነ ምግባራዊ ልምምዶችን እና የላቀ የሕክምና ቴክኖሎጂዎችን በመተግበር ልዩ የሆነ፣ በታካሚ ላይ ያተኮረ የቀዶ ጥገና አገልግሎት ለመስጠት እንጥራለን።"
+    },
+    "vision": {
+      "title": "ራእያችን",
+      "description": "በጅጅጋ እና በአካባቢው ክልሎች ውስጥ የቀዶ ጥገና አገልግሎት የላቀ አቅራቢ ለመሆን እና ለምርጥነት እና የታካሚ ደህንነት መስፈርት ለመቀነስ ነው።"
+    },
+    "values": {
+      "title": "የዋና ዋና እሴቶቻችን",
+      "description": "ርኅሩኅ እንክብካቤ፣ ምርጥነት እና ቅንነት በማሳየት የታካሚዎች ደህንነትን በእጅጉ እናስብቃለን። በጋራ ስራ እና ሥነ ምግባራዊ ልምምዶች በአካባቢያችን ውስጥ የጤና ውጤቶችን ለማሻሻል እንሰራለን።"
+    }
+  },
+ 
   "footer": {
     "aboutUs": "ስለ እኛ",
     "aboutDescription": "የተሟላ የሕክምና አገልግሎት በዘመናዊ መሣሪያዎች የምናቀርብ የቀዶ ጥገና ማእከል ነን።",
@@ -63,7 +98,7 @@
         "icon": "FaUserMd"
       },
       "surgeries": {
-        "number": "15+",
+        "number": "25+",
         "title": "የተሳኩ ቀዶ ጥገናዎች",
         "description": "በተሳካ ሁኔታ የተከናወኑ ቀዶ ጥገናዎች",
         "icon": "FaHospital"
@@ -83,8 +118,28 @@
     }
   },
   "testimonials": {
-    "title": "የታካሚዎች አስተያየት",
-    "subtitle": "ታካሚዎቻችን ስለ እኛ የሚሉት"
+    "title": "የታካሚዎች መስክርነት",
+    "subtitle": "ታካሚዎቻችን ስለ እኛ ምን ይላሉ",
+    "data": [
+      {
+        "name": "አብዲ መሐመድ",
+        "procedure": "የልብ ቀዶ ጥገና",
+        "text": "በዶ/ር አድሚኬው ቀዶ ጥገና ማዕከል የተሰጠኝ እንክብካቤ ልዩ ነበር። የሕክምና ቡድኑ በሙያ የተሟላና እንክብካቤ የተሞላ ነበሩ።",
+        "rating": 5
+      },
+      {
+        "name": "ሆዳን ሙክታር",
+        "procedure": "የአንጎል ቀዶ ጥገና",
+        "text": "እኔ ስላኝ ቀዶ ጥገና ተጨንቄ ነበርኩ፣ ግን ሐኪሞችና ሰራተኞች በመገምገምና በመደመር አስተናገዙኝ። የቀድሞ እንክብካቤ አስደናቂ ነበር።",
+        "rating": 5
+      },
+      {
+        "name": "ሶሎሞን ፀጋዬ",
+        "procedure": "አጠቃላይ ቀዶ ጥገና",
+        "text": "አስራማሚ መሳሪያዎችና ከፍ ያለ ብቃት ያላቸው የሕክምና ባለሙያዎች። በማለፊያዬ ዘመን የሚበልጥ እንክብካቤ ማግኘት አልቻልኩም።",
+        "rating": 5
+      }
+    ]
   },
   "hero": {
     "tagline": "ጤናዎ በእርስዎ መንገድ",
@@ -304,46 +359,82 @@
   },
   "booking": {
     "title": "ቀጠሮ ያስይዙ",
-    "centerVisit": "ማእከል ጉብኝት",
+    "centerVisit": "ወደ ማእከሉ ጉብኝት",
     "homeService": "የቤት አገልግሎት",
-    "homeServiceWarning": "የቤት አገልግሎት የሚገኘው በጅጅጋ ከተማ ለሚኖሩ ነዋሪዎች ብቻ ነው።",
-    "mrn": "የሕክምና መዝገብ ቁጥር",
-    "mrnPlaceholder": "የሕክምና መዝገብ ቁጥርዎ ካለ ያስገቡ",
+    "continueToPayment": "ወደ ክፍያ አማራጮች ይቀጥሉ",
+    "requiredFieldsError": "እባክዎ ሁሉንም አስፈላጊ መስኮች ይሙሉ",
+    "discountTitle": "10% የኦንላይን ክፍያ ቅናሽ",
+    "discountDescription": "በቻፓ በመጠቀም ኦንላይን ሲከፍሉ በቀጠሮዎ ላይ 10% ቅናሽ ይደሰቱ፣ ይህም የጤና እንክብካቤዎን ያነሳሳል።",
+    "homeServiceWarning": "የቤት አገልግሎት ለጅጅጋ ነዋሪዎች ብቻ ይገኛል።",
+    "mrn": "MRN",
+    "mrnPlaceholder": "MRN ካለዎት ያስገቡ",
+    "appointment": "የክሊኒክ ጉብኝት",
+    "personalInfo": "የግል መረጃ",
+    "email": "የኢሜይል አድራሻ",
+    "age": "ዕድሜ",
+    "selectSex": "ምረጥ",
+    "sex": "ጾታ",
+    "male": "ወንድ",
+    "female": "ሴት",
+    "phone": "ስልክ ቁጥር",
     "date": "የቀጠሮ ቀን",
-    "selectDoctor": "ሐኪም ይምረጡ",
-    "selectDoctorPlaceholder": "ሐኪም ይምረጡ",
-    "selectServices": "አገልግሎቶችን ይምረጡ",
+    "location": "ቦታ",
+    "selectDoctor": "ዶክተር ይምረጡ",
+    "selectDoctorPlaceholder": "ዶክተር ይምረጡ",
+    "selectServices": "አገልግሎቶች ይምረጡ",
     "selectedServices": "የተመረጡ አገልግሎቶች",
-    "submit": "ቀጠሮ ያስይዙ",
+    "requiredFields": "በ * የተሰመሩ መስኮች አስፈላጊ ናቸው",
+    "submit": "ቀጠሮ ያስገቡ",
+    "description": "ከባለሙያ ቡድናችን ጋር የምክር ወይም የተከታተይ ቀጠሮ ያስይዙ። ከዚህ በታች ያሉትን ዝርዝሮች ይሙሉ፣ እናም ቀጠሮዎን በፍጥነት እናረጋግጣለን።",
     "time": "የቀጠሮ ሰዓት",
+    "totalAmount": "ጠቅላላ መጠን",
+    "registrationFee": "*የመጀመሪያው 300 ብር ለምዝገባ ነው",
+    "proceedToPayment": "ወደ ክፍያ ይቀጥሉ",
+    "underConstruction": "በመስራት ላይ",
+    "comingSoon": "በቅርብ ይመጣል...",
+    "bookViaEmail": "በኢሜይል ቀጠሮ ያስይዙ",
+    "submitting": "በማስገባት ላይ...",
+    "confirmPayment": "ክፍያ ያረጋግጡ",
+    "requestAppointment": "ቀጠሮ ይጠይቁ",
+    "successMessage": "አመሰግናለሁ! ቀጠሮዎ ተልኳል።",
     "services": {
-      "laboratory": "የላቦራቶሪ ምርመራዎች",
+      "laboratory": "የላብራቶሪ ምርመራዎች",
       "x-ray": "ኤክስ-ሬይ",
-      "ultrasound": "ኡልትራሳውንድ",
-      "laboratoryTitle": "የላቦራቶሪ ምርመራዎችን ይምረጡ",
-      "x-rayTitle": "የኤክስ-ሬይ አገልግሎቶችን ይምረጡ",  
-      "ultrasoundTitle": "የኡልትራሳውንድ አገልግሎቶችን ይምረጡ",
-      "homeTitle": "የቤት አገልግሎቶችን ይምረጡ",
+      "ultrasound": "አልትራሳውንድ",
+      "laboratoryTitle": "የላብራቶሪ ምርመራዎች ይምረጡ",
+      "x-rayTitle": "የኤክስ-ሬይ አገልግሎቶች �ምረጡ",
+      "ultrasoundTitle": "የአልትራሳውንድ አገልግሎቶች ይምረጡ",
+      "homeTitle": "የቤት አገልግሎቶች ይምረጡ",
       "home": {
+        "woundCare": "የመቁስል እንክብካቤ",
+        "injection": "መጨብጥ",
+        "followup": "የተከታተይ ምክር",
+        "nursing": "የነርስ እንክብካቤ",
         "others": "ሌሎች አገልግሎቶች",
-        "othersPlaceholder": "እባክዎ ሌሎች የሚፈልጓቸውን አገልግሎቶች ይግለጹ..."
-      }
+        "othersPlaceholder": "እባክዎ ሌሎች አገልግሎቶች ካሉዎት ይግለጹ..."
+      },
+      "homeServices": "የቤት አገልግሎቶች",
+      "locationNote": "በአሁኑ ጊዜ የቤት አገልግሎት በጅጅጋ ብቻ እናቀርባለን"
     },
-    "selectDepartment": "ክፍል ይምረጡ",
-    "selectDepartmentPlaceholder": "ክፍል ይምረጡ"
+    "selectDepartment": "የምድብ ምረጥ",
+    "selectDepartmentPlaceholder": "የምድብ ምረጥ"
   },
   "common": {
     "cancel": "ይቅር",
     "confirm": "አረጋግጥ",
     "remove": "አስወግድ"
   },
-  "payment": {
-    "successTitle": "ክፍያው ተሳክቷል",
-    "pendingTitle": "ክፍያ በሂደት ላይ ነው",
-    "failedMessage": "ክፍያው አልተሳካም። እባክዎን ደግመው ይሞክሩ ወይም ደጋፊ ያነጋግሩ።",
-    "successMessage": "ክፍያው በተሳካ ሁኔታ ተጠናቋል።",
-    "pendingMessage": "ክፍያው በሂደት ላይ ነው። እባክዎ ትንሽ ይጠብቁ...",
-    "errorFetchingStatus": "የክፍያ ሁኔታ ማግኘት ላይ ስህተት ተፈጥሯል። እባክዎ ገጹን ዳግም ይጫኑ።",
-    "backToHome": "ወደ መነሻ ገፅ ተመለስ"
+"payment": {
+    "successTitle": "ክፍያው በተሳካ ሁኔታ ተከናውኗል",
+    "pendingTitle": "ክፍያው በሂደት ላይ ነው",
+    "failedMessage": "ክፍያው አልተሳካም። እባክዎ እንደገና ይሞክሩ ወይም ከድጋፍ ጋር ያገናኙ።",
+    "successMessage": "ክፍያዎ በተሳካ ሁኔታ ተጠናቅቋል።",
+    "pendingMessage": "ክፍያዎ እየተከናወነ ነው። እባክዎ ይጠብቁ...",
+    "errorFetchingStatus": "የክፍያ ሁኔታን በማግኘት ላይ ስህተት ተከስቷል። እባክዎ ገጹን ያድሱ።",
+    "backToHome": "ወደ መነሻ ተመለስ",
+    "optionsTitle": "የክፍያ አማራጭ ይምረጡ",
+    "payAtCenter": "በማእከሉ ይክፈሉ",
+    "payWithChapa": "በቻፓ ይክፈሉ",
+    "proceedToPayment": "ወደ ክፍያ ይቀጥሉ"
   }
 }

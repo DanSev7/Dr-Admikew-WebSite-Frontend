@@ -42,32 +42,11 @@ const CountUpNumber = ({ end, duration = 2000 }) => {
 const About = () => {
   const { t } = useTranslation();
 
-  const features = [
-    {
-      icon: <FaUserMd className="w-8 h-8 text-sky-600" />,
-      title: "Expert Surgeons",
-      description: "Our team consists of skilled surgeons committed to delivering exceptional care and ensuring successful outcomes for our patients."
-    },
-    {
-      icon: <FaHospital className="w-8 h-8 text-sky-600" />,
-      title: "Modern Facilities",
-      description: "We provide advanced medical equipment and state-of-the-art facilities for the best surgical care experience."
-    },
-    {
-      icon: <FaAward className="w-8 h-8 text-sky-600" />,
-      title: "Quality Care",
-      description: "We are dedicated to maintaining high standards in patient safety and delivering superior surgical care at all times."
-    },
-    {
-      icon: <FaHandHoldingMedical className="w-8 h-8 text-sky-600" />,
-      title: "Patient Support",
-      description: "Our compassionate team offers continuous support before, during, and after surgery to ensure optimal recovery."
-    }
-  ];
+  const features = t('about.features', { returnObjects: true });
 
   return (
     <div className="py-20 bg-gray-50">
-      {/* Hero Section with Breadcrumb */}
+      {/* Breadcrumb and Hero */}
       <div className="px-7 md:px-8 lg:px-14 xl:px-18 mb-16 mt-2">
         <nav className="mb-8">
           <ol className="flex items-center space-x-2 text-gray-500 font-medium text-md">
@@ -83,96 +62,91 @@ const About = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-5xl font-bold text-gray-800 mb-6"
           >
-            {t('about.title', 'About Us')}
+            {t('about.title')}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-xl text-gray-600"
           >
-            {t('about.subtitle', 'Delivering safe and expert surgical care in Jigjiga, Ethiopia.')}
+            {t('about.subtitle')}
           </motion.p>
         </div>
       </div>
 
-      {/* Features Grid */}
+      {/* Features Section */}
       <div className="px-7 md:px-8 lg:px-12 xl:px-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
-            >
-              <div className="mb-4">
-                {feature.icon}
+          {features.map((feature, index) => {
+            const icons = [FaUserMd, FaHospital, FaAward, FaHandHoldingMedical];
+            const Icon = icons[index];
+            return (
+              <div
+                key={index}
+                className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+              >
+                <div className="mb-4">
+                  <Icon className="w-8 h-8 text-sky-600" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-600">{feature.description}</p>
               </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                {feature.title}
-              </h3>
-              <p className="text-gray-600">
-                {feature.description}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Mission, Vision, Values */}
         <div className="grid md:grid-cols-3 gap-8 mb-16">
-          <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
+          <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg">
             <div className="flex items-center mb-4">
               <FaBullseye className="w-6 h-6 text-sky-600 mr-2" />
-              <h2 className="text-2xl font-bold text-gray-800">Our Mission</h2>
+              <h2 className="text-2xl font-bold text-gray-800">{t('about.mission.title')}</h2>
             </div>
-            <p className="text-gray-600">
-              We strive to deliver exceptional, patient-centered surgical care by embracing innovation, ethical practices, and advanced medical technologies.
-            </p>
+            <p className="text-gray-600">{t('about.mission.description')}</p>
           </div>
 
-          <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
+          <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg">
             <div className="flex items-center mb-4">
               <FaAward className="w-6 h-6 text-sky-600 mr-2" />
-              <h2 className="text-2xl font-bold text-gray-800">Our Vision</h2>
+              <h2 className="text-2xl font-bold text-gray-800">{t('about.vision.title')}</h2>
             </div>
-            <p className="text-gray-600">
-              To be a leading provider of top-tier surgical care, setting the standard for excellence and patient safety in Jigjiga and surrounding regions.
-            </p>
+            <p className="text-gray-600">{t('about.vision.description')}</p>
           </div>
 
-          <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-all duration-300">
+          <div className="bg-white p-8 rounded-lg shadow-md hover:shadow-lg">
             <div className="flex items-center mb-4">
               <FaHandHoldingMedical className="w-6 h-6 text-sky-600 mr-2" />
-              <h2 className="text-2xl font-bold text-gray-800">Our Core Values</h2>
+              <h2 className="text-2xl font-bold text-gray-800">{t('about.values.title')}</h2>
             </div>
-            <p className="text-gray-600">
-              We are committed to compassionate care, excellence, and integrity,
-              prioritizing patient well-being. Through collaboration and ethical practices,
-              we aim to improve outcomes and the health of our communities.
-            </p>
+            <p className="text-gray-600">{t('about.values.description')}</p>
           </div>
         </div>
 
-        {/* Stats Section */}
+        {/* Stats */}
         <div className="bg-sky-600 text-white rounded-lg p-8 mb-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {Object.entries(t('achievements.stats', { returnObjects: true })).map(([key, stat]) => (
-              <div key={key} className="transform hover:scale-105 transition-transform duration-300">
-                <div className="text-4xl font-bold mb-2">
-                  <CountUpNumber end={stat.number.replace('+', '')} />
+            {Object.entries(t('achievements.stats', { returnObjects: true })).map(([key, stat]) => {
+              const icons = {
+                patients: <FaUsers className="inline-block mr-2 text-xl" />,
+                hospitals: <FaHospitalAlt className="inline-block mr-2 text-xl" />,
+                heart: <FaHeartbeat className="inline-block mr-2 text-xl" />,
+                awards: <FaAward className="inline-block mr-2 text-xl" />
+              };
+              return (
+                <div key={key} className="transform hover:scale-105 transition-transform duration-300">
+                  <div className="text-4xl font-bold mb-2">
+                    <CountUpNumber end={stat.number.replace('+', '')} />
+                  </div>
+                  <div className="text-xl mb-1">{icons[key]} {stat.title}</div>
+                  <div className="text-sm text-sky-100">{stat.description}</div>
                 </div>
-                <div className="text-xl mb-1">
-                  {key === 'patients' && <FaUsers className="inline-block mr-2 text-xl" />}
-                  {key === 'hospitals' && <FaHospitalAlt className="inline-block mr-2 text-xl" />}
-                  {key === 'heart' && <FaHeartbeat className="inline-block mr-2 text-xl" />}
-                  {key === 'awards' && <FaAward className="inline-block mr-2 text-xl" />}
-                  {stat.title}
-                </div>
-                <div className="text-sm text-sky-100">{stat.description}</div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
-        {/* Testimonials Section */}
         <Testimonials />
       </div>
 

@@ -16,6 +16,41 @@
     "contact": "Contact",
     "bookAppointment": "Book Appointment"
   },
+  "about": {
+    "title": "About Us",
+    "subtitle": "Delivering safe and expert surgical care in Jigjiga, Ethiopia.",
+    "features": [
+      {
+        "title": "Expert Surgeons",
+        "description": "Our team consists of skilled surgeons committed to delivering exceptional care and ensuring successful outcomes for our patients."
+      },
+      {
+        "title": "Modern Facilities",
+        "description": "We provide advanced medical equipment and state-of-the-art facilities for the best surgical care experience."
+      },
+      {
+        "title": "Quality Care",
+        "description": "We are dedicated to maintaining high standards in patient safety and delivering superior surgical care at all times."
+      },
+      {
+        "title": "Patient Support",
+        "description": "Our compassionate team offers continuous support before, during, and after surgery to ensure optimal recovery."
+      }
+    ],
+    "mission": {
+      "title": "Our Mission",
+      "description": "We strive to deliver exceptional, patient-centered surgical care by embracing innovation, ethical practices, and advanced medical technologies."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "To be a leading provider of top-tier surgical care, setting the standard for excellence and patient safety in Jigjiga and surrounding regions."
+    },
+    "values": {
+      "title": "Our Core Values",
+      "description": "We are committed to compassionate care, excellence, and integrity, prioritizing patient well-being. Through collaboration and ethical practices, we aim to improve outcomes and the health of our communities."
+    }
+  },
+ 
   "appointment": {
     "title": "Appointments",
     "subtitle": "Make Appointments"
@@ -70,7 +105,7 @@
         "icon": "FaUserMd"
       },
       "surgeries": {
-        "number": "15+",
+        "number": "25+",
         "title": "Successful Surgeries",
         "description": "Successfully completed operations",
         "icon": "FaHospital"
@@ -91,7 +126,27 @@
   },
   "testimonials": {
     "title": "Patient Testimonials",
-    "subtitle": "What our patients say about us"
+    "subtitle": "What our patients say about us",
+    "data": [
+      {
+        "name": "Abdi Mohamed",
+        "procedure": "Cardiac Surgery",
+        "text": "The care I received at Dr. Admikew Surgery Center was exceptional. The medical team was professional and caring throughout my cardiac procedure.",
+        "rating": 5
+      },
+      {
+        "name": "Hodan Muktar",
+        "procedure": "Neurosurgery",
+        "text": "I was nervous about my surgery, but the doctors and staff made me feel comfortable and safe. The follow-up care was excellent.",
+        "rating": 5
+      },
+      {
+        "name": "Solomon Tsegaye",
+        "procedure": "General Surgery",
+        "text": "State-of-the-art facilities and a highly skilled medical team. I couldn't have asked for better care during my recovery.",
+        "rating": 5
+      }
+    ]
   },
   "hero": {
     "tagline": "Your Health, Your Way",
@@ -1083,8 +1138,13 @@
     "selectedServices": "Selected Services",
     "requiredFields": "Fields marked with * are required",
     "submit": "Submit Appointment",
+    "description": "Schedule a consultation or follow-up with our expert team. Fill in the details below, and we'll confirm your appointment promptly.",
     "time": "Appointment Time",
+    "totalAmount": "Total Amount",
+    "registrationFee": "*Initial 300 birr is for Registration",
     "proceedToPayment": "Proceed to Payment",
+    "underConstruction": "Under Construction",
+    "comingSoon": "Coming Soon...",
     "bookViaEmail": "Book via Email",
     "submitting": "Submitting...",
     "confirmPayment": "Confirm Payment",

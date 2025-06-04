@@ -14,6 +14,18 @@ const supabase = createClient(
 );
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
+// Utility function for UUID generation
+const generateUUID = () => {
+  if (crypto && typeof crypto.randomUUID === 'function') {
+    return crypto.randomUUID();
+  }
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+    const r = Math.random() * 16 | 0;
+    const v = c === 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+};
+
 const ModalLoadingFallback = () => (
   <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
     <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-sky-600"></div>
@@ -80,6 +92,7 @@ const Appointment = () => {
     }
     total += formData.selectedServices.reduce((sum, s) => sum + s.price, 0);
     setTotalAmount(total);
+    // console.log("total Amount : ", total);
   }, [formData.selectedServices, formData.selectedDepartment, departments]);
 
   useEffect(() => {
@@ -137,7 +150,8 @@ const Appointment = () => {
         patientId = newPatient.id;
       }
 
-      const txRef = `TX-${Date.now()}-${crypto.randomUUID()}`;
+      const txRef = `TX-${Date.now()}-${generateUUID()}`;
+
       const { data: appointment, error: apptError } = await supabase
         .from('appointments')
         .insert({
@@ -174,7 +188,7 @@ const Appointment = () => {
         body: JSON.stringify({
           tx_ref: txRef,
           appointmentId: appointment.id,
-          amount: discountedAmount, // Send discounted amount
+          amount: discountedAmount,
           email: formData.email,
           phone: formData.phone,
           name: formData.fullName,
@@ -317,7 +331,7 @@ const Appointment = () => {
   };
 
   return (
-    <div className="py-16 bg-gray-50 min-h-screen">
+    <div className="py-20 bg-gray-50 min-h-screen">
       <div className="container mx-auto px-4">
         <nav className="mb-8 flex items-center space-x-2 text-gray-600 font-medium">
           <a href="/" className="hover:text-sky-600">{t('nav.home')}</a>
@@ -368,7 +382,8 @@ const Appointment = () => {
                   transition={{ delay: 0.3 }}
                   className="bg-sky-50 rounded-lg p-4"
                 >
-                  <p className="text-sky-600 font-semibold">{t('booking.totalAmount', { amount: totalAmount })}</p>
+                    
+                  <p className="text-sky-600 font-semibold">{t('booking.totalAmount')} :  { totalAmount }</p>
                   <p className="text-sky-600 text-sm mt-1">{t('booking.registrationFee')}</p>
                 </motion.div>
                 <motion.div
@@ -653,21 +668,21 @@ const Appointment = () => {
       </div>
 
       <Suspense fallback={<ModalLoadingFallback />}>
-        <ServiceSelectionModal
-          isOpen={isServiceModalOpen}
-          onClose={() => setIsServiceModalOpen(false)}
-          type={currentServiceType}
-          selectedServices={formData.selectedServices}
-          onSelect={(services) => {
+         <ServiceSelectionModal
+            isOpen={isServiceModalOpen}
+            onClose={() => setIsServiceModalOpen(false)}
+            type={currentServiceType}
+            selectedServices={formData.selectedServices}
+            onSelect={(services) => {
             const existingCodes = formData.selectedServices.map(s => s.code);
             const newServices = services.filter(s => !existingCodes.includes(s.code));
             setFormData(prev => ({
-              ...prev,
-              selectedServices: [...prev.selectedServices, ...newServices],
+                ...prev,
+                selectedServices: [...prev.selectedServices, ...newServices],
             }));
-          }}
-        />
-      </Suspense>
+            }}
+          />
+        </Suspense>
     </div>
   );
 };

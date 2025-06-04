@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 import birukImage from '../assets/images/biruk.jpg';
 import biniamImage from '../assets/images/bini.jpg';
 import haileyesusImage from '../assets/images/haile.jpg';
-import samrawitImage from '../assets/images/samra.jpg';
+import tensayeImage from '../assets/images/Tensaye.png';
 
 const OurDoctors = () => {
   const { t } = useTranslation();
@@ -16,23 +16,43 @@ const OurDoctors = () => {
   const doctors = [
     {
       name: 'Dr. Biruk Omer',
-      specialty: 'General Surgeon',
+      specialty: 'Consultant General Surgeon',
       image: birukImage,
     },
     {
       name: 'Dr. Haileyesus Yeneabat',
-      specialty: 'Internist',
+      specialty: 'Consultant Internist',
       image: haileyesusImage,
     },
     {
       name: 'Dr. Biniam Maasho',
-      specialty: 'Hematologist',
+      specialty: 'Constltant Hematologist',
       image: biniamImage,
     },
     {
       name: 'Dr.Tensaye Kebede',
-      specialty: 'Anesthesiologists',
-      image: samrawitImage,
+      specialty: 'Consultant Anesthesiologists',
+      image: tensayeImage,
+    },
+    {
+      name: 'Dr.Admikew Bekele',
+      specialty: 'Consultant Cardiothoracic and Vascular Surgeon',
+      // image: tensayeImage,
+    },
+    {
+      name: 'Dr.Girma Moges',
+      specialty: 'Consultant Plastic and Reconstructive Surgeon',
+      // image: tensayeImage,
+    },
+    {
+      name: 'Dr.Migbaru Endaweke',
+      specialty: 'Consultant Neurologist',
+      // image: tensayeImage,
+    },
+    {
+      name: 'Dr. Shikure Esmale',
+      specialty: 'Consultant Orthopedic Surgeon',
+      // image: tensayeImage,
     },
   ];
 
