@@ -1,7 +1,7 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
-import { FaPaperPlane, FaMoneyBillWave, FaTimes } from 'react-icons/fa';
+import { FaPaperPlane, FaMoneyBillWave, FaTimes, FaCheckCircle } from 'react-icons/fa';
 import { createClient } from '@supabase/supabase-js';
 import { motion } from 'framer-motion';
 import discountImage from '../assets/images/discount.png';
@@ -32,6 +32,30 @@ const ModalLoadingFallback = () => (
   </div>
 );
 
+// Success Modal Component
+const SuccessModal = ({ isOpen, message }) => {
+  if (!isOpen) return null;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.8 }}
+      transition={{ duration: 0.3 }}
+      className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
+    >
+      <div className="bg-white rounded-xl p-6 shadow-2xl max-w-sm w-full mx-4">
+        <div className="flex flex-col items-center gap-4">
+          <div className="bg-green-500 rounded-full p-3">
+            <FaCheckCircle className="text-white" size={32} />
+          </div>
+          <p className="text-lg font-semibold text-gray-800 text-center">{message}</p>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
 const Appointment = () => {
   const { t } = useTranslation();
   const { state } = useLocation();
@@ -51,6 +75,7 @@ const Appointment = () => {
     otherServicesText: '',
   });
   const [isServiceModalOpen, setIsServiceModalOpen] = useState(false);
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false); // New state for success modal
   const [currentServiceType, setCurrentServiceType] = useState('');
   const [departments, setDepartments] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
@@ -92,7 +117,6 @@ const Appointment = () => {
     }
     total += formData.selectedServices.reduce((sum, s) => sum + s.price, 0);
     setTotalAmount(total);
-    // console.log("total Amount : ", total);
   }, [formData.selectedServices, formData.selectedDepartment, departments]);
 
   useEffect(() => {
@@ -323,15 +347,33 @@ const Appointment = () => {
         otherServicesText: '',
       });
       setSuccessMessage(t('booking.successMessage'));
-      setEmailLoading(false);
+      setIsSuccessModalOpen(true); // Show success modal
+
+      // Clear success message after 10 seconds
+      const messageTimeout = setTimeout(() => {
+        setSuccessMessage('');
+      }, 5000);
+
+      // Close success modal after 4 seconds
+      const modalTimeout = setTimeout(() => {
+        setIsSuccessModalOpen(false);
+      }, 4000);
+
+      // Cleanup timeouts
+      return () => {
+        clearTimeout(messageTimeout);
+        clearTimeout(modalTimeout);
+      };
     } catch (err) {
       setError(err.message);
+      setEmailLoading(false);
+    } finally {
       setEmailLoading(false);
     }
   };
 
   return (
-    <div className="py-20 bg-gray-50 min-h-screen">
+    <div className="py-16 bg-gray-50 min-h-screen">
       <div className="container mx-auto px-4">
         <nav className="mb-8 flex items-center space-x-2 text-gray-600 font-medium">
           <a href="/" className="hover:text-sky-600">{t('nav.home')}</a>
@@ -382,8 +424,7 @@ const Appointment = () => {
                   transition={{ delay: 0.3 }}
                   className="bg-sky-50 rounded-lg p-4"
                 >
-                    
-                  <p className="text-sky-600 font-semibold">{t('booking.totalAmount')} :  { totalAmount }</p>
+                  <p className="text-sky-600 font-semibold">{t('booking.totalAmount', { amount: totalAmount })}</p>
                   <p className="text-sky-600 text-sm mt-1">{t('booking.registrationFee')}</p>
                 </motion.div>
                 <motion.div
@@ -514,7 +555,7 @@ const Appointment = () => {
                         <option value="Male">{t('booking.male')}</option>
                         <option value="Female">{t('booking.female')}</option>
                       </select>
-                      <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                      <div className="absolute inset-0 right-0 flex items-center px-2 pointer-events-none">
                         <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                         </svg>
@@ -586,7 +627,7 @@ const Appointment = () => {
                         <option key={dept.id} value={dept.id}>{dept.name}</option>
                       ))}
                     </select>
-                    <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                    <div className="absolute inset-0 right-0 flex items-center px-2 pointer-events-none">
                       <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                       </svg>
@@ -668,21 +709,26 @@ const Appointment = () => {
       </div>
 
       <Suspense fallback={<ModalLoadingFallback />}>
-         <ServiceSelectionModal
-            isOpen={isServiceModalOpen}
-            onClose={() => setIsServiceModalOpen(false)}
-            type={currentServiceType}
-            selectedServices={formData.selectedServices}
-            onSelect={(services) => {
+        <ServiceSelectionModal
+          isOpen={isServiceModalOpen}
+          onClose={() => setIsServiceModalOpen(false)}
+          type={currentServiceType}
+          selectedServices={formData.selectedServices}
+          onSelect={(services) => {
             const existingCodes = formData.selectedServices.map(s => s.code);
             const newServices = services.filter(s => !existingCodes.includes(s.code));
             setFormData(prev => ({
-                ...prev,
-                selectedServices: [...prev.selectedServices, ...newServices],
+              ...prev,
+              selectedServices: [...prev.selectedServices, ...newServices],
             }));
-            }}
-          />
-        </Suspense>
+          }}
+        />
+      </Suspense>
+
+      <SuccessModal
+        isOpen={isSuccessModalOpen}
+        message={t('booking.successMessage')}
+      />
     </div>
   );
 };

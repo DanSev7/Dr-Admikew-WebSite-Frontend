@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 // Import images from assets
 // import admikewImage from '../assets/images/admikew.jpg';
-import birukImage from '../../assets/images/biruk.jpg';
+import birukImage from '../../assets/images/biruk.png';
 // import girmaImage from '../../assets/images/girma.jpg';
 import biniamImage from '../../assets/images/bini.jpg';
 import haileyesusImage from '../../assets/images/haile.jpg';
@@ -21,13 +21,13 @@ const Doctors = () => {
     //   image: admikewImage,
     // },
     {
-      name: 'Dr. Biruk Omer',
-      specialty: 'Consultant General Surgeon',
+      name: 'Dr. Biruk Umer',
+      specialty: 'General Surgeon',
       image: birukImage,
     },
     {
       name: 'Dr. Haileyesus Yeneabat',
-      specialty: 'Consultant Internist',
+      specialty: 'Internal Medicine',
       image: haileyesusImage,
     },
     {
@@ -37,7 +37,7 @@ const Doctors = () => {
     },
     {
       name: 'Dr.Tensaye Kebede',
-      specialty: 'Consultant Anesthesiologists',
+      specialty: 'Anesthesiologists',
       image: tensayeImage,
     },
   ];
@@ -46,16 +46,7 @@ const Doctors = () => {
 
   return (
     <section className="py-16 bg-white ml-10 mr-10">
-      {/* Hero Section with Breadcrumb */}
-      {/* <div className="px-7 md:px-8 lg:px-14 xl:px-18 mb-16 mt-6">
-        <nav className="mb-8">
-          <ol className="flex items-center space-x-2 text-gray-500">
-            <li><a href="/" className="hover:text-sky-600">{t('nav.home')}</a></li>
-            <li>/</li>
-            <li className="text-sky-600">{t('nav.doctors')}</li>
-          </ol>
-        </nav>
-      </div> */}
+   
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between mb-12">
           <div>
@@ -80,9 +71,9 @@ const Doctors = () => {
                 <img 
                   src={doctor.image} 
                   alt={doctor.name}
-                  className="w-full h-80 object-cover transform group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-[360px] object-cover transform group-hover:scale-105 transition-transform duration-300"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t group-hover:bg-sky-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t group-hover:bg-sky-300/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-gray-800 mb-1">{doctor.name}</h3>

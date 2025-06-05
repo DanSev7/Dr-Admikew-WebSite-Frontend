@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 
 // Import images from assets
-import birukImage from '../assets/images/biruk.jpg';
+import birukImage from '../assets/images/biruk.png';
 import biniamImage from '../assets/images/bini.jpg';
 import haileyesusImage from '../assets/images/haile.jpg';
 import tensayeImage from '../assets/images/Tensaye.png';
@@ -15,13 +15,13 @@ const OurDoctors = () => {
 
   const doctors = [
     {
-      name: 'Dr. Biruk Omer',
-      specialty: 'Consultant General Surgeon',
+      name: 'Dr. Biruk Umer',
+      specialty: 'General Surgeon',
       image: birukImage,
     },
     {
       name: 'Dr. Haileyesus Yeneabat',
-      specialty: 'Consultant Internist',
+      specialty: 'Internal Medicine',
       image: haileyesusImage,
     },
     {
@@ -31,7 +31,7 @@ const OurDoctors = () => {
     },
     {
       name: 'Dr.Tensaye Kebede',
-      specialty: 'Consultant Anesthesiologists',
+      specialty: 'Anesthesiologists',
       image: tensayeImage,
     },
     {
@@ -41,17 +41,17 @@ const OurDoctors = () => {
     },
     {
       name: 'Dr.Girma Moges',
-      specialty: 'Consultant Plastic and Reconstructive Surgeon',
+      specialty: 'Plastic and Reconstructive Surgeon',
       // image: tensayeImage,
     },
     {
       name: 'Dr.Migbaru Endaweke',
-      specialty: 'Consultant Neurologist',
+      specialty: 'Neurologist',
       // image: tensayeImage,
     },
     {
       name: 'Dr. Shikure Esmale',
-      specialty: 'Consultant Orthopedic Surgeon',
+      specialty: 'Orthopedic Surgeon',
       // image: tensayeImage,
     },
   ];
@@ -114,9 +114,9 @@ const OurDoctors = () => {
                 <img
                   src={doctor.image}
                   alt={doctor.name}
-                  className="w-full h-80 object-cover transform group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-[360px] object-cover transform group-hover:scale-105 transition-transform duration-300"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t group-hover:bg-sky-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t group-hover:bg-sky-300/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-gray-800 mb-1">{doctor.name}</h3>
