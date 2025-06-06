@@ -27,12 +27,12 @@ const Doctors = () => {
     },
     {
       name: 'Dr. Haileyesus Yeneabat',
-      specialty: 'Internal Medicine',
+      specialty: 'Internist',
       image: haileyesusImage,
     },
     {
       name: 'Dr. Biniam Maasho',
-      specialty: 'Constltant Hematologist',
+      specialty: 'Consultant Internist & Hematologist',
       image: biniamImage,
     },
     {

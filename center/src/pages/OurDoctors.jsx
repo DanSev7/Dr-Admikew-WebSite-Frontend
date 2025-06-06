@@ -21,12 +21,12 @@ const OurDoctors = () => {
     },
     {
       name: 'Dr. Haileyesus Yeneabat',
-      specialty: 'Internal Medicine',
+      specialty: 'Internist',
       image: haileyesusImage,
     },
     {
       name: 'Dr. Biniam Maasho',
-      specialty: 'Constltant Hematologist',
+      specialty: 'Consultant Internist & Hematologist',
       image: biniamImage,
     },
     {
@@ -36,7 +36,7 @@ const OurDoctors = () => {
     },
     {
       name: 'Dr.Admikew Bekele',
-      specialty: 'Consultant Cardiothoracic and Vascular Surgeon',
+      specialty: 'Consultant General, Cardiothoracic and Vascular Surgeon',
       // image: tensayeImage,
     },
     {
@@ -46,7 +46,7 @@ const OurDoctors = () => {
     },
     {
       name: 'Dr.Migbaru Endaweke',
-      specialty: 'Neurologist',
+      specialty: 'Neurosurgeon',
       // image: tensayeImage,
     },
     {
