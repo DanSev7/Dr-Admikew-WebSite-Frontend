@@ -56,6 +56,22 @@ const SuccessModal = ({ isOpen, message }) => {
   );
 };
 
+const generateTimeSlots = () => {
+  const slots = [];
+  // Generate slots from 8 AM to 1 PM (13:00)
+  for (let hour = 8; hour <= 13; hour++) {
+    for (let minute = 0; minute < 60; minute += 20) {
+      const period = hour >= 12 ? 'PM' : 'AM';
+      const displayHour = hour > 12 ? hour - 12 : hour;
+      const time = `${displayHour}:${minute.toString().padStart(2, '0')} ${period}`;
+      // Store in 24-hour format for database
+      const dbTime = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
+      slots.push({ display: time, value: dbTime });
+    }
+  }
+  return slots;
+};
+
 const Appointment = () => {
   const { t } = useTranslation();
   const { state } = useLocation();
@@ -83,6 +99,7 @@ const Appointment = () => {
   const [emailLoading, setEmailLoading] = useState(false);
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+  const [availableTimes, setAvailableTimes] = useState(generateTimeSlots());
 
   const discountedAmount = (totalAmount * 0.9).toFixed(2);
   const originalAmount = totalAmount.toFixed(2);
@@ -124,6 +141,57 @@ const Appointment = () => {
       setFormData(prev => ({ ...prev, serviceType: state.serviceType }));
     }
   }, [state]);
+
+  useEffect(() => {
+    const fetchBookedTimes = async () => {
+      if (!formData.appointmentDate || !formData.selectedDepartment) {
+        setAvailableTimes(generateTimeSlots());
+        return;
+      }
+
+      try {
+        const { data: bookedAppointments, error } = await supabase
+          .from('appointments')
+          .select('appointment_time')
+          .eq('appointment_date', formData.appointmentDate)
+          .eq('department_id', formData.selectedDepartment);
+
+        if (error) {
+          console.error('Error fetching booked times:', error);
+          setError(t('errors.fetchBookedTimes'));
+          setAvailableTimes(generateTimeSlots());
+          return;
+        }
+
+        // Get all booked times and remove seconds
+        const bookedTimes = bookedAppointments.map(appt => 
+          appt.appointment_time.substring(0, 5) // Remove seconds from time
+        );
+        console.log('Booked times:', bookedTimes);
+
+        // Generate all possible time slots
+        const allTimes = generateTimeSlots();
+        console.log('All time slots:', allTimes);
+
+        // Filter out booked times
+        const filteredTimes = allTimes.filter(time => !bookedTimes.includes(time.value));
+        console.log('Available times:', filteredTimes);
+
+        setAvailableTimes(filteredTimes);
+
+        // Reset appointmentTime if it's no longer available
+        if (formData.appointmentTime && !filteredTimes.some(time => time.value === formData.appointmentTime)) {
+          setFormData(prev => ({ ...prev, appointmentTime: '' }));
+        }
+      } catch (err) {
+        console.error('Error in fetchBookedTimes:', err);
+        setError(t('errors.fetchBookedTimes'));
+        setAvailableTimes(generateTimeSlots());
+      }
+    };
+
+    fetchBookedTimes();
+  }, [formData.appointmentDate, formData.selectedDepartment, t]);
 
   const handleServiceSelection = (type) => {
     setCurrentServiceType(type);
@@ -373,7 +441,7 @@ const Appointment = () => {
   };
 
   return (
-    <div className="py-16 bg-gray-50 min-h-screen">
+    <div className="py-20 bg-gray-50 min-h-screen">
       <div className="container mx-auto px-4">
         <nav className="mb-8 flex items-center space-x-2 text-gray-600 font-medium">
           <a href="/" className="hover:text-sky-600">{t('nav.home')}</a>
@@ -555,7 +623,7 @@ const Appointment = () => {
                         <option value="Male">{t('booking.male')}</option>
                         <option value="Female">{t('booking.female')}</option>
                       </select>
-                      <div className="absolute inset-0 right-0 flex items-center px-2 pointer-events-none">
+                      <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                         <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                         </svg>
@@ -589,30 +657,6 @@ const Appointment = () => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700">{t('booking.date')}*</label>
-                    <input
-                      type="date"
-                      value={formData.appointmentDate}
-                      onChange={(e) => setFormData(prev => ({ ...prev, appointmentDate: e.target.value }))}
-                      min={new Date().toISOString().split('T')[0]}
-                      className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-sky-600 focus:border-sky-600"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700">{t('booking.time')}*</label>
-                    <input
-                      type="time"
-                      value={formData.appointmentTime}
-                      onChange={(e) => setFormData(prev => ({ ...prev, appointmentTime: e.target.value }))}
-                      className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-sky-600 focus:border-sky-600"
-                      required
-                    />
-                  </div>
-                </div>
-
                 <div>
                   <label className="block text-sm font-medium text-gray-700">{t('booking.selectDepartment')}*</label>
                   <div className="relative">
@@ -634,6 +678,42 @@ const Appointment = () => {
                     </div>
                   </div>
                 </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">{t('booking.date')}*</label>
+                    <input
+                      type="date"
+                      value={formData.appointmentDate}
+                      onChange={(e) => setFormData(prev => ({ ...prev, appointmentDate: e.target.value }))}
+                      min={new Date().toISOString().split('T')[0]}
+                      className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-sky-600 focus:border-sky-600"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">{t('booking.time')}*</label>
+                    <div className="relative">
+                      <select
+                        value={formData.appointmentTime}
+                        onChange={(e) => setFormData(prev => ({ ...prev, appointmentTime: e.target.value }))}
+                        className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-sky-600 focus:border-sky-600 appearance-none"
+                        required
+                      >
+                        <option value="">{t('booking.selectTime')}</option>
+                        {availableTimes.map(time => (
+                          <option key={time.value} value={time.value}>{time.display}</option>
+                        ))}
+                      </select>
+                      <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                        <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
 
                 <div className="space-y-2">
                   <h3 className="text-lg font-semibold text-gray-800">{t('booking.selectServices')}</h3>

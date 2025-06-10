@@ -72,7 +72,7 @@ const Footer = () => {
             <div className="space-y-4">
               <p className="flex items-center">
                 <FaMapMarkerAlt className="mr-2" />
-                Jigjiga, Somalia (9Q6X+M86)
+                Jigjiga, Somali  (9Q6X+M86)
               </p>
 
               <a

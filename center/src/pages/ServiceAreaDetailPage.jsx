@@ -31,7 +31,7 @@ const serviceAreas = [
     features: ["24/7 Monitoring", "Advanced Life Support", "Critical Care Specialists"],
     workingHours: "24/7",
     contact: "+251 25 278 2051",
-    location: "Jigjiga, Somalia",
+    location: "Jigjiga, Somali",
     additionalImages: [
       { name: "ICU room", image: bed3Image }
     ]
@@ -44,7 +44,7 @@ const serviceAreas = [
     features: ["Digital Imaging", "Ultrasound"],
     workingHours: "24/7",
     contact: "+251 25 278 2051",
-    location: "Jigjiga, Somalia"
+    location: "Jigjiga, Somali"
   },
   { 
     id: "emergency", 
@@ -54,7 +54,7 @@ const serviceAreas = [
     features: ["Rapid Response", "Trauma Care", "Emergency Surgery"],
     workingHours: "24/7",
     contact: "+251 25 278 2051",
-    location: "Jigjiga, Somalia"
+    location: "Jigjiga, Somali"
   },
   { 
     id: "laboratory", 
@@ -64,7 +64,7 @@ const serviceAreas = [
     features: ["Blood Tests", "Pathology", "Microbiology"],
     workingHours: "24/7",
     contact: "+251 25 278 2051",
-    location: "Jigjiga, Somalia",
+    location: "Jigjiga, Somali",
     additionalImages: [
       { name: "Chemistry", image: chemistryImage },
       { name: "Centrifuge", image: centrifugeImage },
@@ -80,7 +80,7 @@ const serviceAreas = [
     features: ["Digital X-ray", "Low Radiation", "Quick Results"],
     workingHours: "24/7",
     contact: "+251 25 278 2051",
-    location: "Jigjiga, Somalia"
+    location: "Jigjiga, Somali"
   },
   { 
     id: "outpatient", 
@@ -90,7 +90,7 @@ const serviceAreas = [
     features: ["Consultations", "Follow-ups", "Day Care"],
     workingHours: "24/7",
     contact: "+251 25 278 2051",
-    location: "Jigjiga, Somalia",
+    location: "Jigjiga, Somali",
     additionalImages: [
       { name: "ECG", image: ecgImage },
       { name: "OPD", image: opdImage }
@@ -104,7 +104,7 @@ const serviceAreas = [
     features: ["Private Rooms", "Nursing Care", "Patient Monitoring"],
     workingHours: "24/7",
     contact: "+251 25 278 2051",
-    location: "Jigjiga, Somalia",
+    location: "Jigjiga, Somali",
     additionalImages: [
       { name: "Ward Bed", image: bed1Image },
       { name: "Ward Bed", image: bed2Image },
@@ -119,7 +119,7 @@ const serviceAreas = [
     features: ["Modern Equipment", "Sterile Environment", "Expert Surgeons"],
     workingHours: "24/7",
     contact: "+251 25 278 2051",
-    location: "Jigjiga, Somalia"
+    location: "Jigjiga, Somali"
   }
 ];
 

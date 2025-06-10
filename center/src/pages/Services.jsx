@@ -8,7 +8,11 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import hematologyImage from '../assets/images/hematology.avif';
 import orthoImage from '../assets/images/ortho.jpg';
-
+import cardioImage from '../assets/images/cardios.png';
+import neuroImage from '../assets/images/neuro.png';
+import maxilloImage from '../assets/images/maxillo.png';
+import plasticImage from '../assets/images/plastic.png';
+import pediaImage from '../assets/images/pedia.png';
 
 const Services = () => {
   const { t } = useTranslation();
@@ -21,31 +25,31 @@ const Services = () => {
       icon: <FaHeartbeat className="w-12 h-12" />,
       key: "cardio",
       category: "specialized",
-      image: "https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?q=80&w=500&auto=format&fit=crop",
+      image: cardioImage,
     },
     {
       icon: <FaBrain className="w-12 h-12" />,
       key: "neuro",
       category: "specialized",
-      image: "https://images.unsplash.com/photo-1579154204601-01588f351e67?q=80&w=500&auto=format&fit=crop",
+      image: neuroImage,
     },
     {
       icon: <FaTeeth className="w-12 h-12" />,
       key: "maxillofacial",
       category: "surgical",
-      image: "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?q=80&w=500&auto=format&fit=crop",
+      image: maxilloImage,
     },
     {
       icon: <FaCut className="w-12 h-12" />,
       key: "plastic",
       category: "surgical",
-      image: "https://images.unsplash.com/photo-1551601651-2a8555f1a136?q=80&w=500&auto=format&fit=crop",
+      image: plasticImage,
     },
     {
       icon: <FaChild className="w-12 h-12" />,
       key: "pediatric",
       category: "specialized",
-      image: "https://images.unsplash.com/photo-1581056771107-24ca5f033842?q=80&w=500&auto=format&fit=crop",
+      image: pediaImage,
     },
     {
       icon: <GiKidneys className="w-12 h-12" />,
@@ -174,7 +178,7 @@ const Services = () => {
               className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 group bg-gradient-to-br from-white to-gray-50"
             >
               <Link to={`/services/${service.key}`}>
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-52 overflow-hidden">
                   <LazyLoadImage 
                     src={service.image} 
                     alt={t(`services.items.${service.key}.title`)}
