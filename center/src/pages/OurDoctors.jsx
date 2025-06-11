@@ -9,6 +9,7 @@ import birukImage from '../assets/images/biruk.png';
 import biniamImage from '../assets/images/bini.jpg';
 import haileyesusImage from '../assets/images/haile.jpg';
 import tensayeImage from '../assets/images/Tensaye.png';
+import getImage from '../assets/images/get.png';
 
 const OurDoctors = () => {
   const { t } = useTranslation();
@@ -18,6 +19,11 @@ const OurDoctors = () => {
       name: 'Dr. Biruk Umer',
       specialty: 'General Surgeon',
       image: birukImage,
+    },
+    {
+      name: 'Dr. Getasew Kassaw',
+      specialty: 'MD, Internist & Nephrologist',
+      image: getImage
     },
     {
       name: 'Dr. Haileyesus Yeneabat',
@@ -66,7 +72,7 @@ const OurDoctors = () => {
           transition={{ duration: 0.5 }}
           className="mb-8"
         >
-          <ol className="flex items-center space-x-2 text-gray-500 font-medium text-md">
+          <ol className="flex items-center space-x-2 text-gray-500 font-medium text-md ml-8">
             <li>
               <a href="/" className="hover:text-sky-600">
                 {t('nav.home')}

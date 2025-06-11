@@ -442,11 +442,13 @@ const Appointment = () => {
 
   return (
     <div className="py-20 bg-gray-50 min-h-screen">
-      <div className="container mx-auto px-4">
-        <nav className="mb-8 flex items-center space-x-2 text-gray-600 font-medium">
-          <a href="/" className="hover:text-sky-600">{t('nav.home')}</a>
-          <span>/</span>
-          <span className="text-sky-600">{t('nav.appointment')}</span>
+      <div className="px-7 md:px-8 lg:px-14 xl:px-18 mb-16 mt-2">
+      <nav className="mb-8 ml-8">
+          <ol className="flex items-center space-x-2 text-gray-500 font-medium text-md">
+            <li><a href="/" className="hover:text-sky-600">{t('nav.home')}</a></li>
+            <li>/</li>
+            <li className="text-sky-600">{t('nav.appointment')}</li>
+          </ol>
         </nav>
         <motion.div
           initial={{ opacity: 0, y: -20 }}

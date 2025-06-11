@@ -2,6 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaHeartbeat, FaBrain, FaUserMd, FaChild, FaCut, FaStethoscope, FaArrowRight } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
+import orthoImage from '../../assets/images/ortho.jpg';
+import cardioImage from '../../assets/images/cardios.png';
+import neuroImage from '../../assets/images/neuro.png';
+// import maxilloImage from '../assets/images/maxillo.png';
+import plasticImage from '../../assets/images/plastic.png';
+import pediaImage from '../../assets/images/pedia.png';
+import uroImage from '../../assets/images/uro.png';
+import generalImage from '../../assets/images/general.png';
 
 const OurServices = () => {
   const { t } = useTranslation();
@@ -10,32 +18,32 @@ const OurServices = () => {
     {
       icon: <FaHeartbeat className="w-8 h-8" />,
       key: "cardio",
-      image: "https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?q=80&w=500&auto=format&fit=crop",
+      image: cardioImage,
     },
     {
       icon: <FaBrain className="w-8 h-8" />,
       key: "neuro",
-      image: "https://images.unsplash.com/photo-1579154204601-01588f351e67?q=80&w=500&auto=format&fit=crop",
+      image: neuroImage,
     },
     {
       icon: <FaCut className="w-8 h-8" />,
       key: "plastic",
-      image: "https://images.unsplash.com/photo-1551601651-2a8555f1a136?q=80&w=500&auto=format&fit=crop",
+      image: plasticImage,
     },
     {
       icon: <FaChild className="w-8 h-8" />,
       key: "pediatric",
-      image: "https://images.unsplash.com/photo-1581056771107-24ca5f033842?q=80&w=500&auto=format&fit=crop",
+      image: pediaImage,
     },
     {
       icon: <FaStethoscope className="w-8 h-8" />,
       key: "urological",
-      image: "https://images.unsplash.com/photo-1518152006812-edab29b069ac?q=80&w=500&auto=format&fit=crop",
+      image: uroImage,
     },
     {
       icon: <FaUserMd className="w-8 h-8" />,
       key: "general",
-      image: "https://images.unsplash.com/photo-1571772996211-2f02c9727629?q=80&w=500&auto=format&fit=crop",
+      image: generalImage,
     },
   ];
 
@@ -66,7 +74,7 @@ const OurServices = () => {
               key={index}
               className="group bg-gray-50 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300"
             >
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-[200px] overflow-hidden">
                 <img
                   src={service.image}
                   alt={t(`services.items.${service.key}.title`)}

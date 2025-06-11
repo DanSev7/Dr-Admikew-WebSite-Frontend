@@ -8,8 +8,9 @@ import { useTranslation } from 'react-i18next';
 import birukImage from '../../assets/images/biruk.png';
 // import girmaImage from '../../assets/images/girma.jpg';
 import biniamImage from '../../assets/images/bini.jpg';
-import haileyesusImage from '../../assets/images/haile.jpg';
+// import haileyesusImage from '../../assets/images/haile.jpg';
 import tensayeImage from '../../assets/images/Tensaye.png';
+import getImage from '../../assets/images/get.png';
 const Doctors = () => {
   const { t } = useTranslation();
   
@@ -26,10 +27,15 @@ const Doctors = () => {
       image: birukImage,
     },
     {
-      name: 'Dr. Haileyesus Yeneabat',
-      specialty: 'Internist',
-      image: haileyesusImage,
+      name: 'Dr. Getasew Kassaw',
+      specialty: 'MD, Internist & Nephrologist',
+      image: getImage
     },
+    // {
+    //   name: 'Dr. Haileyesus Yeneabat',
+    //   specialty: 'Internist',
+    //   image: haileyesusImage,
+    // },
     {
       name: 'Dr. Biniam Maasho',
       specialty: 'Consultant Internist & Hematologist',

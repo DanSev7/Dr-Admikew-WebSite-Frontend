@@ -10,9 +10,13 @@ import hematologyImage from '../assets/images/hematology.avif';
 import orthoImage from '../assets/images/ortho.jpg';
 import cardioImage from '../assets/images/cardios.png';
 import neuroImage from '../assets/images/neuro.png';
-import maxilloImage from '../assets/images/maxillo.png';
+// import maxilloImage from '../assets/images/maxillo.png';
 import plasticImage from '../assets/images/plastic.png';
 import pediaImage from '../assets/images/pedia.png';
+import uroImage from '../assets/images/uro.png';
+import generalImage from '../assets/images/general.png';
+import internalImage from '../assets/images/internal.png';
+import nephrologyImage from '../assets/images/nephro.jpg';
 
 const Services = () => {
   const { t } = useTranslation();
@@ -33,12 +37,12 @@ const Services = () => {
       category: "specialized",
       image: neuroImage,
     },
-    {
-      icon: <FaTeeth className="w-12 h-12" />,
-      key: "maxillofacial",
-      category: "surgical",
-      image: maxilloImage,
-    },
+    // {
+    //   icon: <FaTeeth className="w-12 h-12" />,
+    //   key: "maxillofacial",
+    //   category: "surgical",
+    //   image: maxilloImage,
+    // },
     {
       icon: <FaCut className="w-12 h-12" />,
       key: "plastic",
@@ -55,13 +59,13 @@ const Services = () => {
       icon: <GiKidneys className="w-12 h-12" />,
       key: "urological",
       category: "surgical",
-      image: "https://images.unsplash.com/photo-1518152006812-edab29b069ac?q=80&w=500&auto=format&fit=crop",
+      image: uroImage,
     },
     {
       icon: <FaUserInjured  className="w-12 h-12" />,
       key: "general",
       category: "general",
-      image: "https://images.unsplash.com/photo-1571772996211-2f02c9727629?q=80&w=500&auto=format&fit=crop",
+      image: generalImage,
     },
     {
       icon: <FaVial className="w-12 h-12" />,
@@ -73,15 +77,26 @@ const Services = () => {
       icon: <FaStethoscope className="w-12 h-12" />,
       key: "internalMedicine",
       category: "general",
-      image: "https://images.unsplash.com/photo-1550831107-1553da8c8464?q=80&w=500&auto=format&fit=crop",
+      image: internalImage,
     },
     {
       icon: <FaBone className="w-12 h-12" />,
       key: "orthopedicSurgery",
       category: "surgical",
       image: orthoImage,
+    },
+    // {
+    //   icon: <FaVial className="w-12 h-12" />,
+    //   key: "nephrologist",
+    //   category: "medical",
+    //   image: nephrologyImage,
+    // }
+    {
+      icon: <GiKidneys className="w-12 h-12" />,
+      key: "nephrologist",
+      category: "medical",
+      image: nephrologyImage,
     }
-    
   ];
 
   useEffect(() => {
