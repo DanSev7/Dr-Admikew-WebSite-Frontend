@@ -12,7 +12,7 @@ async function generateInvoiceBuffer({ name, email, amount, status, tx_ref, date
     size: 'A4',
     info: {
       Title: 'Payment Receipt',
-      Author: 'Dr. Admikew Surgical & Medical Speciality Center',
+      Author: 'Dr. Admikew Medical and Surgical Center',
       Subject: 'Invoice',
       Keywords: 'receipt, payment, medical services'
     }
@@ -67,8 +67,8 @@ async function generateInvoiceBuffer({ name, email, amount, status, tx_ref, date
   doc.font('Helvetica')
      .fillColor(colors.gray)
      .fontSize(10)
-     .text('Dr. Admikew Surgical & Medical Speciality Center', 220, 80, { align: 'right' })
-     .text('Jigjiga, Somalia ', 220, 95, { align: 'right' })
+     .text('Dr. Admikew Medical and Surgical Center', 220, 80, { align: 'right' })
+     .text('Jigjiga, Somali ', 220, 95, { align: 'right' })
      .text('info@anbesg.com | +251-25-278-2051', 220, 110, { align: 'right' });
   
   // Receipt number and date section
@@ -197,7 +197,7 @@ async function generateInvoiceBuffer({ name, email, amount, status, tx_ref, date
   doc.font('Helvetica-Bold')
      .fillColor(colors.secondary)
      .fontSize(14)
-     .text('Thank You for Choosing Dr. Admikew Surgical & Medical Speciality Center', 50, doc.page.height - 160, { align: 'center' });
+     .text('Thank You for Choosing Dr. Admikew Medical and Surgical Center', 50, doc.page.height - 160, { align: 'center' });
   
   // Footer
   doc.font('Helvetica')
@@ -205,7 +205,7 @@ async function generateInvoiceBuffer({ name, email, amount, status, tx_ref, date
      .fontSize(9)
      .text('This is an electronically generated receipt and does not require signature.', 50, doc.page.height - 120, { align: 'center' })
      .text('For questions regarding this receipt, please contact info@anbesg.com', 50, doc.page.height - 100, { align: 'center' })
-     .text(`© ${moment().format('YYYY')} Dr. Admikew Surgical & Medical Speciality Center. All rights reserved.`, 50, doc.page.height - 85, { align: 'center' });
+     .text(`© ${moment().format('YYYY')} Dr. Admikew Medical and Surgical Center. All rights reserved.`, 50, doc.page.height - 85, { align: 'center' });
 
   doc.end();
   return endPromise;

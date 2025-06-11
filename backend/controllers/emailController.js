@@ -11,13 +11,13 @@ const emailCache = new NodeCache({ stdTTL: 3600 });
 const createEmailTemplate = (content) => `
   <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9fafb; border-radius: 8px;">
     <div style="background-color: #0284c7; padding: 20px; border-radius: 8px 8px 0 0; text-align: center;">
-      <h1 style="color: white; margin: 0;">Dr. Admikew Surgical & Medical Center</h1>
+      <h1 style="color: white; margin: 0;">Dr. Admikew Medical and Surgical Center</h1>
     </div>
     <div style="padding: 20px; background-color: white; border-radius: 0 0 8px 8px;">
       ${content}
       <hr style="border: 0; border-top: 1px solid #e5e7eb; margin: 20px 0;">
       <p style="color: #6b7280; font-size: 12px; text-align: center;">
-        © ${new Date().getFullYear()} Dr. Admikew Surgical & Medical Center. All rights reserved.
+        © ${new Date().getFullYear()} Dr. Admikew Medical and Surgical Center. All rights reserved.
       </p>
     </div>
   </div>
@@ -109,7 +109,7 @@ const submitContactForm = async (req, res) => {
     const userEmailOptions = {
       from: process.env.EMAIL_USER,
       to: email,
-      subject: 'Thank You for Contacting Dr. Admikew Surgical & Medical Center!',
+      subject: 'Thank You for Contacting Dr. Admikew Medical and Surgical Center!',
       html: createEmailTemplate(`
         <h2 style="color: #1f2937;">Hi ${name},</h2>
         <p>Thank you for reaching out! We've received your message and will respond within 24-48 hours.</p>
@@ -177,7 +177,7 @@ const sendBookingEmail = async ({ name, email, phone, totalAmount, appointmentId
     const userEmailOptions = {
       from: process.env.EMAIL_USER,
       to: email,
-      subject: 'Booking Confirmation - Dr. Admikew Surgical & Medical Center',
+      subject: 'Booking Confirmation - Dr. Admikew Medical and Surgical Center',
       html: createEmailTemplate(`
         <h2 style="color: #1f2937;">Hi ${name},</h2>
         <p>Your appointment booking has been successfully received. Please visit the center to complete your payment of <strong>${totalAmount} ETB</strong>.</p>
